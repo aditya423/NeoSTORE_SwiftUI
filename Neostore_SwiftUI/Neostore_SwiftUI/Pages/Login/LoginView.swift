@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  LoginView.swift
 //  Neostore_SwiftUI
 //
-//  Created by Neosoft on 10/01/24.
+//  Created by Neosoft on 11/01/24.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct LoginView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -19,8 +19,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LoginView()
     }
 }

@@ -2,7 +2,7 @@
 //  Neostore_SwiftUIApp.swift
 //  Neostore_SwiftUI
 //
-//  Created by Neosoft on 10/01/24.
+//  Created by Neosoft on 11/01/24.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct Neostore_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }

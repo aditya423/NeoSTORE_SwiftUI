@@ -7,22 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9296FB242B4ED3E300104226 /* Neostore_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9296FB232B4ED3E300104226 /* Neostore_SwiftUIApp.swift */; };
-		9296FB262B4ED3E300104226 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9296FB252B4ED3E300104226 /* ContentView.swift */; };
-		9296FB282B4ED3E800104226 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9296FB272B4ED3E800104226 /* Assets.xcassets */; };
-		9296FB2B2B4ED3E800104226 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9296FB2A2B4ED3E800104226 /* Preview Assets.xcassets */; };
+		928F1C5A2B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928F1C592B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift */; };
+		928F1C5C2B4FBBE6007AD919 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928F1C5B2B4FBBE6007AD919 /* LoginView.swift */; };
+		928F1C5E2B4FBBEB007AD919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C5D2B4FBBEB007AD919 /* Assets.xcassets */; };
+		928F1C612B4FBBEB007AD919 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C602B4FBBEB007AD919 /* Preview Assets.xcassets */; };
+		928F1C6F2B4FC135007AD919 /* Gotham-Font in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C6E2B4FC135007AD919 /* Gotham-Font */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9296FB202B4ED3E300104226 /* Neostore_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neostore_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9296FB232B4ED3E300104226 /* Neostore_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neostore_SwiftUIApp.swift; sourceTree = "<group>"; };
-		9296FB252B4ED3E300104226 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		9296FB272B4ED3E800104226 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9296FB2A2B4ED3E800104226 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		928F1C562B4FBBE6007AD919 /* Neostore_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neostore_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		928F1C592B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neostore_SwiftUIApp.swift; sourceTree = "<group>"; };
+		928F1C5B2B4FBBE6007AD919 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		928F1C5D2B4FBBEB007AD919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		928F1C602B4FBBEB007AD919 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		928F1C6E2B4FC135007AD919 /* Gotham-Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Gotham-Font"; sourceTree = "<group>"; };
+		928F1C702B4FC1B2007AD919 /* Neostore-SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Neostore-SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9296FB1D2B4ED3E300104226 /* Frameworks */ = {
+		928F1C532B4FBBE6007AD919 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,51 +35,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9296FB172B4ED3E300104226 = {
+		928F1C4D2B4FBBE6007AD919 = {
 			isa = PBXGroup;
 			children = (
-				9296FB222B4ED3E300104226 /* Neostore_SwiftUI */,
-				9296FB212B4ED3E300104226 /* Products */,
+				928F1C582B4FBBE6007AD919 /* Neostore_SwiftUI */,
+				928F1C572B4FBBE6007AD919 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9296FB212B4ED3E300104226 /* Products */ = {
+		928F1C572B4FBBE6007AD919 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9296FB202B4ED3E300104226 /* Neostore_SwiftUI.app */,
+				928F1C562B4FBBE6007AD919 /* Neostore_SwiftUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9296FB222B4ED3E300104226 /* Neostore_SwiftUI */ = {
+		928F1C582B4FBBE6007AD919 /* Neostore_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				9296FB232B4ED3E300104226 /* Neostore_SwiftUIApp.swift */,
-				9296FB252B4ED3E300104226 /* ContentView.swift */,
-				9296FB272B4ED3E800104226 /* Assets.xcassets */,
-				9296FB292B4ED3E800104226 /* Preview Content */,
+				928F1C702B4FC1B2007AD919 /* Neostore-SwiftUI-Info.plist */,
+				928F1C6B2B4FBD64007AD919 /* Pages */,
+				928F1C6A2B4FBD1F007AD919 /* Resources */,
+				928F1C692B4FBC8C007AD919 /* WebServices */,
+				928F1C672B4FBBF2007AD919 /* Application */,
+				928F1C5F2B4FBBEB007AD919 /* Preview Content */,
 			);
 			path = Neostore_SwiftUI;
 			sourceTree = "<group>";
 		};
-		9296FB292B4ED3E800104226 /* Preview Content */ = {
+		928F1C5F2B4FBBEB007AD919 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				9296FB2A2B4ED3E800104226 /* Preview Assets.xcassets */,
+				928F1C602B4FBBEB007AD919 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		928F1C672B4FBBF2007AD919 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				928F1C592B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		928F1C682B4FBBFD007AD919 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				928F1C5B2B4FBBE6007AD919 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		928F1C692B4FBC8C007AD919 /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		928F1C6A2B4FBD1F007AD919 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				928F1C6E2B4FC135007AD919 /* Gotham-Font */,
+				928F1C5D2B4FBBEB007AD919 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		928F1C6B2B4FBD64007AD919 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				928F1C682B4FBBFD007AD919 /* Login */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9296FB1F2B4ED3E300104226 /* Neostore_SwiftUI */ = {
+		928F1C552B4FBBE6007AD919 /* Neostore_SwiftUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9296FB2E2B4ED3E800104226 /* Build configuration list for PBXNativeTarget "Neostore_SwiftUI" */;
+			buildConfigurationList = 928F1C642B4FBBEB007AD919 /* Build configuration list for PBXNativeTarget "Neostore_SwiftUI" */;
 			buildPhases = (
-				9296FB1C2B4ED3E300104226 /* Sources */,
-				9296FB1D2B4ED3E300104226 /* Frameworks */,
-				9296FB1E2B4ED3E300104226 /* Resources */,
+				928F1C522B4FBBE6007AD919 /* Sources */,
+				928F1C532B4FBBE6007AD919 /* Frameworks */,
+				928F1C542B4FBBE6007AD919 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -84,25 +129,25 @@
 			);
 			name = Neostore_SwiftUI;
 			productName = Neostore_SwiftUI;
-			productReference = 9296FB202B4ED3E300104226 /* Neostore_SwiftUI.app */;
+			productReference = 928F1C562B4FBBE6007AD919 /* Neostore_SwiftUI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9296FB182B4ED3E300104226 /* Project object */ = {
+		928F1C4E2B4FBBE6007AD919 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					9296FB1F2B4ED3E300104226 = {
+					928F1C552B4FBBE6007AD919 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
-			buildConfigurationList = 9296FB1B2B4ED3E300104226 /* Build configuration list for PBXProject "Neostore_SwiftUI" */;
+			buildConfigurationList = 928F1C512B4FBBE6007AD919 /* Build configuration list for PBXProject "Neostore_SwiftUI" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,42 +155,43 @@
 				en,
 				Base,
 			);
-			mainGroup = 9296FB172B4ED3E300104226;
-			productRefGroup = 9296FB212B4ED3E300104226 /* Products */;
+			mainGroup = 928F1C4D2B4FBBE6007AD919;
+			productRefGroup = 928F1C572B4FBBE6007AD919 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9296FB1F2B4ED3E300104226 /* Neostore_SwiftUI */,
+				928F1C552B4FBBE6007AD919 /* Neostore_SwiftUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9296FB1E2B4ED3E300104226 /* Resources */ = {
+		928F1C542B4FBBE6007AD919 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9296FB2B2B4ED3E800104226 /* Preview Assets.xcassets in Resources */,
-				9296FB282B4ED3E800104226 /* Assets.xcassets in Resources */,
+				928F1C612B4FBBEB007AD919 /* Preview Assets.xcassets in Resources */,
+				928F1C5E2B4FBBEB007AD919 /* Assets.xcassets in Resources */,
+				928F1C6F2B4FC135007AD919 /* Gotham-Font in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9296FB1C2B4ED3E300104226 /* Sources */ = {
+		928F1C522B4FBBE6007AD919 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9296FB262B4ED3E300104226 /* ContentView.swift in Sources */,
-				9296FB242B4ED3E300104226 /* Neostore_SwiftUIApp.swift in Sources */,
+				928F1C5C2B4FBBE6007AD919 /* LoginView.swift in Sources */,
+				928F1C5A2B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9296FB2C2B4ED3E800104226 /* Debug */ = {
+		928F1C622B4FBBEB007AD919 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -205,7 +251,7 @@
 			};
 			name = Debug;
 		};
-		9296FB2D2B4ED3E800104226 /* Release */ = {
+		928F1C632B4FBBEB007AD919 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -259,7 +305,7 @@
 			};
 			name = Release;
 		};
-		9296FB2F2B4ED3E800104226 /* Debug */ = {
+		928F1C652B4FBBEB007AD919 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -269,6 +315,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Neostore_SwiftUI/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Neostore-SwiftUI-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -287,7 +334,7 @@
 			};
 			name = Debug;
 		};
-		9296FB302B4ED3E800104226 /* Release */ = {
+		928F1C662B4FBBEB007AD919 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -297,6 +344,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Neostore_SwiftUI/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Neostore-SwiftUI-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -318,25 +366,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9296FB1B2B4ED3E300104226 /* Build configuration list for PBXProject "Neostore_SwiftUI" */ = {
+		928F1C512B4FBBE6007AD919 /* Build configuration list for PBXProject "Neostore_SwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9296FB2C2B4ED3E800104226 /* Debug */,
-				9296FB2D2B4ED3E800104226 /* Release */,
+				928F1C622B4FBBEB007AD919 /* Debug */,
+				928F1C632B4FBBEB007AD919 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9296FB2E2B4ED3E800104226 /* Build configuration list for PBXNativeTarget "Neostore_SwiftUI" */ = {
+		928F1C642B4FBBEB007AD919 /* Build configuration list for PBXNativeTarget "Neostore_SwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9296FB2F2B4ED3E800104226 /* Debug */,
-				9296FB302B4ED3E800104226 /* Release */,
+				928F1C652B4FBBEB007AD919 /* Debug */,
+				928F1C662B4FBBEB007AD919 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9296FB182B4ED3E300104226 /* Project object */;
+	rootObject = 928F1C4E2B4FBBE6007AD919 /* Project object */;
 }
