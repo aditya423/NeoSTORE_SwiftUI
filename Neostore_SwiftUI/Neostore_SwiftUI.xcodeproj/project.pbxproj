@@ -13,6 +13,10 @@
 		928F1C6F2B4FC135007AD919 /* Gotham-Font in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C6E2B4FC135007AD919 /* Gotham-Font */; };
 		F237730F2B51330C000C4AFA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F237730E2B51330C000C4AFA /* LoginView.swift */; };
 		F260DDB72B51517700101095 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDB62B51517700101095 /* CustomTextField.swift */; };
+		F260DDB92B51611700101095 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDB82B51611700101095 /* APIService.swift */; };
+		F260DDBB2B51613600101095 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDBA2B51613600101095 /* APIManager.swift */; };
+		F266CE312B5162DF007EB401 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266CE302B5162DF007EB401 /* Extensions.swift */; };
+		F266CE342B516617007EB401 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266CE332B516617007EB401 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		928F1C702B4FC1B2007AD919 /* Neostore-SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Neostore-SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F237730E2B51330C000C4AFA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F260DDB62B51517700101095 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		F260DDB82B51611700101095 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		F260DDBA2B51613600101095 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		F266CE302B5162DF007EB401 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F266CE332B516617007EB401 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,10 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				928F1C702B4FC1B2007AD919 /* Neostore-SwiftUI-Info.plist */,
-				928F1C6B2B4FBD64007AD919 /* Pages */,
-				F268414A2B51348E001AD02B /* WebServices */,
-				928F1C6A2B4FBD1F007AD919 /* Resources */,
 				928F1C672B4FBBF2007AD919 /* Application */,
+				928F1C6B2B4FBD64007AD919 /* Pages */,
+				F268414A2B51348E001AD02B /* APIService */,
+				F266CE2F2B5162D0007EB401 /* Utility */,
+				928F1C6A2B4FBD1F007AD919 /* Resources */,
 				928F1C5F2B4FBBEB007AD919 /* Preview Content */,
 			);
 			path = Neostore_SwiftUI;
@@ -104,15 +113,34 @@
 			isa = PBXGroup;
 			children = (
 				928F1C682B4FBBFD007AD919 /* Login */,
+				F266CE322B5165FB007EB401 /* Home */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
 		};
-		F268414A2B51348E001AD02B /* WebServices */ = {
+		F266CE2F2B5162D0007EB401 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F266CE302B5162DF007EB401 /* Extensions.swift */,
 			);
-			path = WebServices;
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		F266CE322B5165FB007EB401 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F266CE332B516617007EB401 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F268414A2B51348E001AD02B /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				F260DDB82B51611700101095 /* APIService.swift */,
+				F260DDBA2B51613600101095 /* APIManager.swift */,
+			);
+			path = APIService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,7 +215,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F237730F2B51330C000C4AFA /* LoginView.swift in Sources */,
+				F266CE342B516617007EB401 /* HomeView.swift in Sources */,
+				F266CE312B5162DF007EB401 /* Extensions.swift in Sources */,
 				928F1C5A2B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift in Sources */,
+				F260DDBB2B51613600101095 /* APIManager.swift in Sources */,
+				F260DDB92B51611700101095 /* APIService.swift in Sources */,
 				F260DDB72B51517700101095 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
