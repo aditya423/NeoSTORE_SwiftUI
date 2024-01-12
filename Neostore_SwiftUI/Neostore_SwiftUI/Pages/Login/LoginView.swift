@@ -84,6 +84,7 @@ struct LoginView: View {
                     Spacer()
                     Image(systemName: "plus")
                         .foregroundColor(.white)
+                        .padding(10) 
                         .background(Color(red: 0, green: 0, blue: 0, opacity: 0.3))
                         .clipped()
                 }
