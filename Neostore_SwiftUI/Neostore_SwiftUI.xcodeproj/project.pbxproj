@@ -12,6 +12,7 @@
 		928F1C612B4FBBEB007AD919 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C602B4FBBEB007AD919 /* Preview Assets.xcassets */; };
 		928F1C6F2B4FC135007AD919 /* Gotham-Font in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C6E2B4FC135007AD919 /* Gotham-Font */; };
 		F237730F2B51330C000C4AFA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F237730E2B51330C000C4AFA /* LoginView.swift */; };
+		F260DDB72B51517700101095 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDB62B51517700101095 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		928F1C6E2B4FC135007AD919 /* Gotham-Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Gotham-Font"; sourceTree = "<group>"; };
 		928F1C702B4FC1B2007AD919 /* Neostore-SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Neostore-SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F237730E2B51330C000C4AFA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F260DDB62B51517700101095 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +58,8 @@
 			children = (
 				928F1C702B4FC1B2007AD919 /* Neostore-SwiftUI-Info.plist */,
 				928F1C6B2B4FBD64007AD919 /* Pages */,
+				F268414A2B51348E001AD02B /* WebServices */,
 				928F1C6A2B4FBD1F007AD919 /* Resources */,
-				928F1C692B4FBC8C007AD919 /* WebServices */,
 				928F1C672B4FBBF2007AD919 /* Application */,
 				928F1C5F2B4FBBEB007AD919 /* Preview Content */,
 			);
@@ -84,15 +86,9 @@
 			isa = PBXGroup;
 			children = (
 				F237730E2B51330C000C4AFA /* LoginView.swift */,
+				F260DDB62B51517700101095 /* CustomTextField.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		928F1C692B4FBC8C007AD919 /* WebServices */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = WebServices;
 			sourceTree = "<group>";
 		};
 		928F1C6A2B4FBD1F007AD919 /* Resources */ = {
@@ -110,6 +106,13 @@
 				928F1C682B4FBBFD007AD919 /* Login */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		F268414A2B51348E001AD02B /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WebServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +188,7 @@
 			files = (
 				F237730F2B51330C000C4AFA /* LoginView.swift in Sources */,
 				928F1C5A2B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift in Sources */,
+				F260DDB72B51517700101095 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
