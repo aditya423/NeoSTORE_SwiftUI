@@ -11,7 +11,14 @@ struct LoginView: View {
     
     @State var username = ""
     @State var password = ""
+    @State var isNavigating = false
+    @State var showAlert = false
+    @State var alertMessage = ""
     
+    var loginViewModel: LoginViewModel {
+        LoginViewModel(isNavigating: $isNavigating, showAlert: $showAlert, alertMessage: $alertMessage)
+    }
+
     var body: some View {
         NavigationView {
             VStack {
@@ -53,17 +60,22 @@ struct LoginView: View {
                     .border(.white)
                     .padding([.leading, .trailing], 30)
                     HStack {
-                        NavigationLink(destination: HomeView()) {
-                            Text("LOGIN")
-                                .foregroundColor(.red)
-                                .font(.system(size: 25))
-                                .bold()
-                                .padding(10)
-                                .frame(maxWidth: .infinity)
+                        NavigationLink(destination: HomeView(),isActive: $isNavigating) {
+                            Button {
+                                loginViewModel.validateLoginDetails(userName: username, password: password)
+                            } label: {
+                                Text("LOGIN")
+                                    .foregroundColor(.red)
+                                    .font(.system(size: 25))
+                                    .bold()
+                                    .padding(10)
+                                    .frame(maxWidth: .infinity)
+                            }
                         }
                         .background(.white)
                         .cornerRadius(5)
                         .padding(.top, 30)
+                        
                     }
                     .padding([.leading, .trailing], 30)
                     Text("Forgot Password?")
@@ -95,6 +107,9 @@ struct LoginView: View {
             .background(Color(red: 225/255, green: 28/255, blue: 36/255))
             .edgesIgnoringSafeArea(.all)
         }
+        .alert(alertMessage, isPresented: $showAlert) {
+                    Button("OK", role: .cancel) { }
+                }
     }
 }
 
