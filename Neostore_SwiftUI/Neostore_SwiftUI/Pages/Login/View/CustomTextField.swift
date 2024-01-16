@@ -10,15 +10,31 @@ import SwiftUI
 struct CustomTextField: View {
     
     @Binding var text: String
+    
+    var isImage: Bool
+    var image: String
     var placeholder: String
     
     var body: some View {
-        ZStack(alignment: .leading) {
-            if text.isEmpty {
-                Text(placeholder)
+        HStack {
+            if isImage{
+                Image(image)
+                    .padding(.leading, 15)
+                    .padding([.top, .bottom], 10)
                     .foregroundColor(.white)
             }
-            TextField("", text: $text)
+            ZStack(alignment: .leading) {
+                if text.isEmpty {
+                    Text(placeholder)
+                        .foregroundColor(.white)
+                }
+                TextField("", text: $text)
+            }
+            .font(.system(size: 20))
+            .padding(.leading, 10)
+            .padding([.top, .bottom], 10)
+            .fontWeight(.medium)
+            .foregroundColor(.white)
         }
     }
 }

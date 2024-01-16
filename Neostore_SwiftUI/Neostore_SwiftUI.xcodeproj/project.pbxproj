@@ -18,6 +18,7 @@
 		928550DA2B556DF20024A2A5 /* OrderIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928550D92B556DF20024A2A5 /* OrderIdView.swift */; };
 		928550DC2B556E070024A2A5 /* StoreLocatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928550DB2B556E070024A2A5 /* StoreLocatorView.swift */; };
 		928550DE2B556E180024A2A5 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928550DD2B556E180024A2A5 /* MyAccountView.swift */; };
+		9287A6972B565BE9008CA296 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9287A6962B565BE9008CA296 /* Constants.swift */; };
 		928F1C5A2B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928F1C592B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift */; };
 		928F1C5E2B4FBBEB007AD919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C5D2B4FBBEB007AD919 /* Assets.xcassets */; };
 		928F1C612B4FBBEB007AD919 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C602B4FBBEB007AD919 /* Preview Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		928550D92B556DF20024A2A5 /* OrderIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderIdView.swift; sourceTree = "<group>"; };
 		928550DB2B556E070024A2A5 /* StoreLocatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocatorView.swift; sourceTree = "<group>"; };
 		928550DD2B556E180024A2A5 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
+		9287A6962B565BE9008CA296 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		928F1C562B4FBBE6007AD919 /* Neostore_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neostore_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		928F1C592B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neostore_SwiftUIApp.swift; sourceTree = "<group>"; };
 		928F1C5D2B4FBBEB007AD919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 			children = (
 				F266CE302B5162DF007EB401 /* Extensions.swift */,
 				928550AB2B55604B0024A2A5 /* Validation.swift */,
+				9287A6962B565BE9008CA296 /* Constants.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				928550DA2B556DF20024A2A5 /* OrderIdView.swift in Sources */,
+				9287A6972B565BE9008CA296 /* Constants.swift in Sources */,
 				928550D02B556DA70024A2A5 /* ProductListView.swift in Sources */,
 				928550DC2B556E070024A2A5 /* StoreLocatorView.swift in Sources */,
 				F237730F2B51330C000C4AFA /* LoginView.swift in Sources */,
