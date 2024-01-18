@@ -30,35 +30,16 @@ struct LoginView: View {
                         .bold()
                 }
                 VStack {
-                    HStack {
-                        Image("username_icon")
-                            .padding(.leading, 15)
-                            .padding([.top, .bottom], 10)
-                            .foregroundColor(.white)
-                        CustomTextField(text: $username, placeholder: "Username")
-                            .font(.system(size: 20))
-                            .padding(.leading, 10)
-                            .padding([.top, .bottom], 10)
-                            .fontWeight(.medium)
-                            .foregroundColor(.white)
-                    }
-                    .border(.white)
-                    .padding([.leading, .trailing], 30)
-                    .padding(.bottom, 10)
-                    HStack {
-                        Image("password_icon")
-                            .padding(.leading, 15)
-                            .padding([.top, .bottom], 10)
-                            .foregroundColor(.white)
-                        CustomTextField(text: $password, placeholder: "Password")
-                            .font(.system(size: 20))
-                            .padding(.leading, 10)
-                            .padding([.top, .bottom], 10)
-                            .fontWeight(.medium)
-                            .foregroundColor(.white)
-                    }
-                    .border(.white)
-                    .padding([.leading, .trailing], 30)
+                    CustomTextField(text: $username, isImage: true, image: "username_icon", placeholder: "Username")
+                        .border(.white)
+                        .padding([.leading, .trailing], 30)
+                        .padding(.bottom, 10)
+                    
+                    CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password")
+                        .border(.white)
+                        .padding([.leading, .trailing], 30)
+                    
+                    
                     HStack {
                         NavigationLink(destination: HomeView(),isActive: $isNavigating) {
                             Button {
@@ -104,7 +85,7 @@ struct LoginView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(red: 225/255, green: 28/255, blue: 36/255))
+            .background(AppColors.primaryColor)
             .edgesIgnoringSafeArea(.all)
         }
         .alert(alertMessage, isPresented: $showAlert) {
