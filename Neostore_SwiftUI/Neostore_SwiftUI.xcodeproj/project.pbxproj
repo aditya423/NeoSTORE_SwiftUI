@@ -23,6 +23,10 @@
 		928F1C5E2B4FBBEB007AD919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C5D2B4FBBEB007AD919 /* Assets.xcassets */; };
 		928F1C612B4FBBEB007AD919 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C602B4FBBEB007AD919 /* Preview Assets.xcassets */; };
 		928F1C6F2B4FC135007AD919 /* Gotham-Font in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C6E2B4FC135007AD919 /* Gotham-Font */; };
+		F2310EAC2B59429C00631690 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2310EAB2B59429C00631690 /* RegisterViewModel.swift */; };
+		F2310EAE2B59439F00631690 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2310EAD2B59439F00631690 /* LoginModel.swift */; };
+		F2310EB22B59445100631690 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2310EB12B59445100631690 /* RegisterModel.swift */; };
+		F2310EB52B5947EC00631690 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2310EB42B5947EC00631690 /* RegisterService.swift */; };
 		F237730F2B51330C000C4AFA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F237730E2B51330C000C4AFA /* LoginView.swift */; };
 		F260DDB72B51517700101095 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDB62B51517700101095 /* CustomTextField.swift */; };
 		F260DDB92B51611700101095 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDB82B51611700101095 /* APIService.swift */; };
@@ -50,6 +54,10 @@
 		928F1C602B4FBBEB007AD919 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		928F1C6E2B4FC135007AD919 /* Gotham-Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Gotham-Font"; sourceTree = "<group>"; };
 		928F1C702B4FC1B2007AD919 /* Neostore-SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Neostore-SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F2310EAB2B59429C00631690 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		F2310EAD2B59439F00631690 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		F2310EB12B59445100631690 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
+		F2310EB42B5947EC00631690 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		F237730E2B51330C000C4AFA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F260DDB62B51517700101095 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F260DDB82B51611700101095 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -89,8 +97,10 @@
 		928550B12B556BE90024A2A5 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				928550B32B556C000024A2A5 /* ViewModel */,
+				F2310EB02B59444200631690 /* Model */,
 				928550B22B556BFB0024A2A5 /* View */,
+				F25D2A3B2B593767001B8BED /* ViewModel */,
+				F2310EB32B5947CD00631690 /* WebService */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -101,13 +111,6 @@
 				928550B42B556C530024A2A5 /* RegisterView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		928550B32B556C000024A2A5 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		928550B62B556C780024A2A5 /* Product List */ = {
@@ -351,8 +354,9 @@
 		928F1C682B4FBBFD007AD919 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				928550AE2B5561770024A2A5 /* ViewModel */,
+				F2310EAF2B5943A600631690 /* Model */,
 				928550AD2B5561700024A2A5 /* View */,
+				928550AE2B5561770024A2A5 /* ViewModel */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -382,6 +386,38 @@
 				F266CE322B5165FB007EB401 /* Home */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		F2310EAF2B5943A600631690 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2310EAD2B59439F00631690 /* LoginModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2310EB02B59444200631690 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2310EB12B59445100631690 /* RegisterModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2310EB32B5947CD00631690 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				F2310EB42B5947EC00631690 /* RegisterService.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		F25D2A3B2B593767001B8BED /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F2310EAB2B59429C00631690 /* RegisterViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		F266CE2F2B5162D0007EB401 /* Utility */ = {
@@ -483,16 +519,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				928550DA2B556DF20024A2A5 /* OrderIdView.swift in Sources */,
+				F2310EAE2B59439F00631690 /* LoginModel.swift in Sources */,
 				9287A6972B565BE9008CA296 /* Constants.swift in Sources */,
 				928550D02B556DA70024A2A5 /* ProductListView.swift in Sources */,
 				928550DC2B556E070024A2A5 /* StoreLocatorView.swift in Sources */,
 				F237730F2B51330C000C4AFA /* LoginView.swift in Sources */,
+				F2310EB52B5947EC00631690 /* RegisterService.swift in Sources */,
+				F2310EB22B59445100631690 /* RegisterModel.swift in Sources */,
 				928550DE2B556E180024A2A5 /* MyAccountView.swift in Sources */,
 				928550B52B556C530024A2A5 /* RegisterView.swift in Sources */,
 				928550D42B556DC60024A2A5 /* MyCartView.swift in Sources */,
 				F266CE342B516617007EB401 /* HomeView.swift in Sources */,
 				F266CE312B5162DF007EB401 /* Extensions.swift in Sources */,
 				928550D22B556DB70024A2A5 /* ProductDetailsView.swift in Sources */,
+				F2310EAC2B59429C00631690 /* RegisterViewModel.swift in Sources */,
 				928F1C5A2B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift in Sources */,
 				F260DDBB2B51613600101095 /* APIManager.swift in Sources */,
 				928550D62B556DD50024A2A5 /* AddAddressView.swift in Sources */,
