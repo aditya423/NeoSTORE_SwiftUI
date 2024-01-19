@@ -11,8 +11,13 @@ struct LoginView: View {
     
     @State var username = ""
     @State var password = ""
+    @State var isNavigating = false
+    @State var showAlert = false
+    @State var alertMessage = ""
     
-    @ObservedObject var loginViewModel = LoginViewModel()
+    var loginViewModel: LoginViewModel {
+        LoginViewModel(isNavigating: $isNavigating, showAlert: $showAlert, alertMessage: $alertMessage)
+    }
 
     var body: some View {
         NavigationView {
@@ -36,9 +41,9 @@ struct LoginView: View {
                     
                     
                     HStack {
-                        NavigationLink(destination: HomeView(), isActive: $loginViewModel.vmVars.isNavigating) {
+                        NavigationLink(destination: HomeView(), isActive: $isNavigating) {
                             Button {
-                                loginViewModel.loginUserProfile(email: username, password: password)
+                                loginViewModel.validateLoginDetails(userName: username, password: password)
                             } label: {
                                 Text("LOGIN")
                                     .foregroundColor(.red)
@@ -51,9 +56,7 @@ struct LoginView: View {
                         .background(.white)
                         .cornerRadius(5)
                         .padding(.top, 30)
-                        .alert(isPresented: $loginViewModel.vmVars.showAlert) {
-                            Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(loginViewModel.vmVars.alertMessage))
-                        }
+                        
                     }
                     .padding([.leading, .trailing], 30)
                     Text("Forgot Password?")
@@ -80,14 +83,14 @@ struct LoginView: View {
                         }
                     }
                     .padding([.leading, .trailing], 30)
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 50)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(AppColors.primaryColor)
             .edgesIgnoringSafeArea(.all)
         }
-        .alert(loginViewModel.vmVars.alertMessage, isPresented: $loginViewModel.vmVars.showAlert) {
+        .alert(alertMessage, isPresented: $showAlert) {
                     Button("OK", role: .cancel) { }
                 }
     }

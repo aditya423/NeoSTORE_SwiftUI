@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct RegisterVars {
+struct ViewModelVariables {
     var isNavigating = false
     var showAlert = false
     var alertMessage = ""
@@ -17,7 +17,7 @@ struct RegisterVars {
 
 class RegisterViewModel: ObservableObject {
     
-    @Published var vmVars = RegisterVars()
+    @Published var vmVars = ViewModelVariables()
     let validation = Validation()
     private var cancellables = Set<AnyCancellable>()
 
