@@ -7,21 +7,53 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
-struct LoginViewModel {
+struct ViewModelVariables {
+    var isNavigating = false
+    var showAlert = false
+    var alertMessage = ""
+}
+
+class LoginViewModel: ObservableObject {
     
-    @Binding var isNavigating: Bool
-    @Binding var showAlert: Bool
-    @Binding var alertMessage: String
-    
+    @Published var vmVars = ViewModelVariables()
     let validation = Validation()
+    private var cancellables = Set<AnyCancellable>()
     
-    func validateLoginDetails(userName: String, password: String){
-        if let result = validation.loginValidation(email: userName, password: password){
-            alertMessage = result
-            showAlert = true
-        } else {
-            isNavigating = true
+    func loginUserProfile(email: String, password: String) {
+        guard !email.isEmpty && !password.isEmpty else {
+            vmVars.alertMessage = AlertMessages.fillAllFieldsMsg.rawValue
+            vmVars.showAlert = true
+            return
+        }
+        
+        if let result = validation.loginValidation(email: email, password: password) {
+            if result == "" {
+                LoginService.loginUser(email: email, password: password)
+                    .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            break
+                        case .failure(let error):
+                            self.vmVars.alertMessage = error.localizedDescription
+                            self.vmVars.showAlert = true
+                        }
+                    }, receiveValue: { (success, error) in
+                        if success != nil {
+                            self.vmVars.isNavigating = true
+                        } else if error != nil {
+                            self.vmVars.isNavigating = false
+                            self.vmVars.alertMessage = error?.user_msg ?? ""
+                            self.vmVars.showAlert = true
+                        }
+                    })
+                    .store(in: &cancellables)
+
+            } else {
+                self.vmVars.alertMessage = result
+                self.vmVars.showAlert = true
+            }
         }
     }
 }

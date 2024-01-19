@@ -33,6 +33,7 @@
 		F260DDBB2B51613600101095 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDBA2B51613600101095 /* APIManager.swift */; };
 		F266CE312B5162DF007EB401 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266CE302B5162DF007EB401 /* Extensions.swift */; };
 		F266CE342B516617007EB401 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266CE332B516617007EB401 /* HomeView.swift */; };
+		F2C55AE62B5A7A74007A222A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C55AE52B5A7A74007A222A /* LoginService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		F260DDBA2B51613600101095 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F266CE302B5162DF007EB401 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F266CE332B516617007EB401 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F2C55AE52B5A7A74007A222A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,6 +359,7 @@
 				F2310EAF2B5943A600631690 /* Model */,
 				928550AD2B5561700024A2A5 /* View */,
 				928550AE2B5561770024A2A5 /* ViewModel */,
+				F2C55AE42B5A7A4A007A222A /* WebService */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -447,6 +450,14 @@
 			path = APIService;
 			sourceTree = "<group>";
 		};
+		F2C55AE42B5A7A4A007A222A /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				F2C55AE52B5A7A74007A222A /* LoginService.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -525,6 +536,7 @@
 				928550DC2B556E070024A2A5 /* StoreLocatorView.swift in Sources */,
 				F237730F2B51330C000C4AFA /* LoginView.swift in Sources */,
 				F2310EB52B5947EC00631690 /* RegisterService.swift in Sources */,
+				F2C55AE62B5A7A74007A222A /* LoginService.swift in Sources */,
 				F2310EB22B59445100631690 /* RegisterModel.swift in Sources */,
 				928550DE2B556E180024A2A5 /* MyAccountView.swift in Sources */,
 				928550B52B556C530024A2A5 /* RegisterView.swift in Sources */,
