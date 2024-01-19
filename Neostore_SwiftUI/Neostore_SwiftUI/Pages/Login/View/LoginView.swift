@@ -41,7 +41,7 @@ struct LoginView: View {
                     
                     
                     HStack {
-                        NavigationLink(destination: HomeView(),isActive: $isNavigating) {
+                        NavigationLink(destination: HomeView(), isActive: $isNavigating) {
                             Button {
                                 loginViewModel.validateLoginDetails(userName: username, password: password)
                             } label: {
@@ -74,11 +74,13 @@ struct LoginView: View {
                             .fontWeight(.medium)
                             .foregroundColor(.white)
                         Spacer()
-                        Image(systemName: "plus")
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(Color(red: 0, green: 0, blue: 0, opacity: 0.3))
-                            .clipped()
+                        NavigationLink(destination: RegisterView()) {
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .background(Color(red: 0, green: 0, blue: 0, opacity: 0.3))
+                                .clipped()
+                        }
                     }
                     .padding([.leading, .trailing], 30)
                     .padding(.bottom, 50)

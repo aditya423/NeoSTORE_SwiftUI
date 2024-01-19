@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct LoginViewModel{
+struct LoginViewModel {
     
     @Binding var isNavigating: Bool
     @Binding var showAlert: Bool

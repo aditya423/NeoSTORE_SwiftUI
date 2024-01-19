@@ -8,5 +8,11 @@
 		<string>Gotham-Medium.otf</string>
 		<string>Gotham-Book.otf</string>
 	</array>
+    
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 </dict>
 </plist>

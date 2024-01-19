@@ -12,7 +12,7 @@ import SwiftUI
 class Validation{
     
     //MARK: - Register validation
-    func registerValidation(firstName: String?, lastName: String?, email: String?, password: String?, confirmPassword: String?, mobileNumber: String?) -> String?{
+    func registerValidation(firstName: String?, lastName: String?, email: String?, password: String?, confirmPassword: String?, mobileNumber: String?) -> String? {
         
         guard firstName != "" && lastName != "" && password != "" && confirmPassword != "" && email != "" && mobileNumber != "" else {
             return "Please fill the required fields"
@@ -46,7 +46,7 @@ class Validation{
             }
         }
         
-        return nil
+        return ""
     }
     
     //MARK: - Login validation
@@ -66,7 +66,7 @@ class Validation{
             return "Enter a valid password"
         }
         
-        return nil
+        return ""
     }
     
     //MARK: - Reset Password Validation
@@ -82,7 +82,7 @@ class Validation{
         guard newPass == confirmPass else {
             return "Password does not match Confirm Password"
         }
-        return nil
+        return ""
     }
     
     //MARK: - UpdateUser Validation
@@ -110,7 +110,7 @@ class Validation{
                 return "Enter a valid mobile number"
             }
         }
-        return nil
+        return ""
     }
     
     //MARK: - Functions for validations

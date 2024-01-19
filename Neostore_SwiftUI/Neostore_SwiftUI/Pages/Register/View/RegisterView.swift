@@ -14,17 +14,19 @@ struct RegisterView: View {
     @State var email = ""
     @State var password = ""
     @State var confirmPassword = ""
-    @State var phoneNumber = ""
+    @State var mobileNumber = ""
     @State var genderSelected = ""
-    @State var isNavigating = false
     @State var isTermsAccepted = false
     
+    @ObservedObject var registerViewModel = RegisterViewModel()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack {
                 Spacer().frame(height: UIScreen.main.bounds.height*0.2)
                 VStack {
-                    Text("Register")
+                    Text("NeoSTORE")
                         .foregroundColor(.white)
                         .font(.system(size: 50))
                         .bold()
@@ -40,7 +42,7 @@ struct RegisterView: View {
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
                     
-                    CustomTextField(text: $lastName, isImage: true, image: "email_icon", placeholder: "Email")
+                    CustomTextField(text: $email, isImage: true, image: "email_icon", placeholder: "Email")
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
@@ -98,7 +100,7 @@ struct RegisterView: View {
                           }
                     }
                     
-                    CustomTextField(text: $phoneNumber, isImage: true, image: "cellphone_icon", placeholder: "Phone Number")
+                    CustomTextField(text: $mobileNumber, isImage: true, image: "cellphone_icon", placeholder: "Phone Number")
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
@@ -135,9 +137,9 @@ struct RegisterView: View {
                     }
                     
                     HStack{
-                        NavigationLink(destination: HomeView(),isActive: $isNavigating) {
+                        NavigationLink(destination: HomeView(), isActive: $registerViewModel.vmVars.isNavigating) {
                                 Button {
-                                    isNavigating = true
+                                    registerViewModel.registerUserProfile(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword, mobileNumber: mobileNumber, isTermsAccepted: isTermsAccepted, genderSelected: genderSelected)
                                 } label: {
                                     Text("REGISTER")
                                         .foregroundColor(.red)
@@ -150,6 +152,10 @@ struct RegisterView: View {
                         .background(.white)
                         .cornerRadius(5)
                         .padding(.top, 30)
+                        .padding(.bottom, 50)
+                        .alert(isPresented: $registerViewModel.vmVars.showAlert) {
+                            Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(registerViewModel.vmVars.alertMessage))
+                        }
                     }
                     .padding([.leading, .trailing], 30)
                 }
@@ -158,6 +164,28 @@ struct RegisterView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(AppColors.primaryColor)
         .edgesIgnoringSafeArea(.all)
+        .navigationBarTitleDisplayMode(.automatic)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    self.presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.white)
+                }
+
+            }
+            ToolbarItem(placement: .principal) {
+                Text("Register")
+                    .font(.headline)
+                    .foregroundColor(.white)
+            }
+        }
+        .toolbarBackground(
+            AppColors.primaryColor,
+            for: .navigationBar
+        )
     }
 }
 
