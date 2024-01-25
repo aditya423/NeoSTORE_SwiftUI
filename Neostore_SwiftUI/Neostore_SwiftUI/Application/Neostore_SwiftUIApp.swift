@@ -9,18 +9,19 @@ import SwiftUI
 
 @main
 struct Neostore_SwiftUIApp: App {
+
     @Environment(\.scenePhase) var scenePhase
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
     
     var body: some Scene {
         WindowGroup {
-            if isLoggedIn {
-                HomeView()
-            } else {
-                LoginView()
+            NavigationView {
+                if UserDefaults.standard.isLoggedIn() {
+                    HomeView()
+                } else {
+                    LoginView()
+                }
             }
-        }.onChange(of: scenePhase) { _ in
-            // Handle scene changes here
-        }
+        }.onChange(of: scenePhase) { _ in }
     }
 }
