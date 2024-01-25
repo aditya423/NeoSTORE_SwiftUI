@@ -34,6 +34,7 @@ class LoginViewModel: ObservableObject {
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
+                            UserDefaults.standard.setLoggedIn(value: true)
                             break
                         case .failure(let error):
                             self.vmVars.alertMessage = error.localizedDescription
@@ -49,7 +50,6 @@ class LoginViewModel: ObservableObject {
                         }
                     })
                     .store(in: &cancellables)
-
             } else {
                 self.vmVars.alertMessage = result
                 self.vmVars.showAlert = true

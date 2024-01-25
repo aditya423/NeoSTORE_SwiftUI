@@ -33,6 +33,9 @@
 		F260DDBB2B51613600101095 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDBA2B51613600101095 /* APIManager.swift */; };
 		F266CE312B5162DF007EB401 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266CE302B5162DF007EB401 /* Extensions.swift */; };
 		F266CE342B516617007EB401 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266CE332B516617007EB401 /* HomeView.swift */; };
+		F2A657082B6107030070058F /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A657072B6107030070058F /* SideBarView.swift */; };
+		F2A6570A2B6127C30070058F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A657092B6127C30070058F /* HomeViewModel.swift */; };
+		F2A6570C2B6127E90070058F /* SideBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6570B2B6127E90070058F /* SideBarViewModel.swift */; };
 		F2C55AE62B5A7A74007A222A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C55AE52B5A7A74007A222A /* LoginService.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +68,9 @@
 		F260DDBA2B51613600101095 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F266CE302B5162DF007EB401 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F266CE332B516617007EB401 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F2A657072B6107030070058F /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
+		F2A657092B6127C30070058F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F2A6570B2B6127E90070058F /* SideBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewModel.swift; sourceTree = "<group>"; };
 		F2C55AE52B5A7A74007A222A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -436,7 +442,10 @@
 		F266CE322B5165FB007EB401 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				F266CE332B516617007EB401 /* HomeView.swift */,
+				F2A69C222B5FCD3E0020BFA3 /* Model */,
+				F2A69C212B5FCD300020BFA3 /* View */,
+				F2A69C202B5FCD240020BFA3 /* ViewModel */,
+				F2A69C1F2B5FCD130020BFA3 /* WebService */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -448,6 +457,38 @@
 				F260DDBA2B51613600101095 /* APIManager.swift */,
 			);
 			path = APIService;
+			sourceTree = "<group>";
+		};
+		F2A69C1F2B5FCD130020BFA3 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		F2A69C202B5FCD240020BFA3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F2A657092B6127C30070058F /* HomeViewModel.swift */,
+				F2A6570B2B6127E90070058F /* SideBarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F2A69C212B5FCD300020BFA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F266CE332B516617007EB401 /* HomeView.swift */,
+				F2A657072B6107030070058F /* SideBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F2A69C222B5FCD3E0020BFA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F2C55AE42B5A7A4A007A222A /* WebService */ = {
@@ -547,8 +588,11 @@
 				F2310EAC2B59429C00631690 /* RegisterViewModel.swift in Sources */,
 				928F1C5A2B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift in Sources */,
 				F260DDBB2B51613600101095 /* APIManager.swift in Sources */,
+				F2A657082B6107030070058F /* SideBarView.swift in Sources */,
 				928550D62B556DD50024A2A5 /* AddAddressView.swift in Sources */,
+				F2A6570C2B6127E90070058F /* SideBarViewModel.swift in Sources */,
 				F260DDB92B51611700101095 /* APIService.swift in Sources */,
+				F2A6570A2B6127C30070058F /* HomeViewModel.swift in Sources */,
 				928550AC2B55604B0024A2A5 /* Validation.swift in Sources */,
 				928550D82B556DE10024A2A5 /* MyOrdersView.swift in Sources */,
 				F260DDB72B51517700101095 /* CustomTextField.swift in Sources */,
