@@ -10,18 +10,40 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var isSidebarOpened = false
+    @State private var selection = 0
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.8
+    var viewModel = HomeViewModel()
+    
+    init() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.red
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.darkGray
+    }
     
     var body: some View {
         ZStack {
             NavigationView {
                 ScrollView {
                     VStack {
-                        // main content
+                        TabView(selection: $selection) {
+                            ForEach(0..<viewModel.productsImages.count) { index in
+                                Image(viewModel.productsImages[index])
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .tag(index)
+                                    .onTapGesture {
+                                        withAnimation {
+                                            isSidebarOpened = false
+                                        }
+                                    }
+                            }
+                        }
+                        .tabViewStyle(PageTabViewStyle())
+                        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.3)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(AppColors.primaryColor)
-                    .navigationBarTitleDisplayMode(.automatic)
+                    .background(Color.red)
+                    .navigationBarTitleDisplayMode(.inline)
                     .navigationBarBackButtonHidden()
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -46,13 +68,15 @@ struct HomeView: View {
                         }
                     }
                     .toolbarBackground(
-                        AppColors.primaryColor,
+                        Color.red,
                         for: .navigationBar
                     )
                 }
                 .background(.red)
                 .onTapGesture {
-                    isSidebarOpened = false
+                    withAnimation {
+                        isSidebarOpened = false
+                    }
                 }
             }
             .offset(x: isSidebarOpened ? sideBarWidth : 0)
