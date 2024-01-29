@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct LoginPublishVariables {
+struct NavPublishVars {
     var isNavigating = false
     var showAlert = false
     var alertMessage = ""
@@ -17,7 +17,7 @@ struct LoginPublishVariables {
 
 class LoginViewModel: ObservableObject {
     
-    @Published var vmVars = LoginPublishVariables()
+    @Published var vmVars = NavPublishVars()
     let validation = Validation()
     private var cancellables = Set<AnyCancellable>()
     

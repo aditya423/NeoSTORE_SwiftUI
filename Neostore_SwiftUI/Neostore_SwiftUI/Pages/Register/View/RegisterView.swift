@@ -58,7 +58,7 @@ struct RegisterView: View {
                         .padding(.bottom, 10)
                     
                     HStack{
-                      Text("Gender")
+                        Text("Gender")
                             .font(.system(size: 20))
                             .padding(.leading, 10)
                             .padding([.top, .bottom], 10)
@@ -70,9 +70,9 @@ struct RegisterView: View {
                         } label: {
                             HStack{
                                 if genderSelected == "M"{
-                                        Image("chky")
-                                    } else {
-                                        Image("chkn")
+                                    Image("chky")
+                                } else {
+                                    Image("chkn")
                                 }
                                 Text("Male")
                                     .font(.system(size: 20))
@@ -82,22 +82,22 @@ struct RegisterView: View {
                             }
                         }
                         Spacer().frame(width: 20)
-                          Button {
-                              genderSelected = "F"
-                          } label: {
-                              HStack{
-                                  if genderSelected == "F"{
-                                      Image("chky")
-                                  } else {
-                                      Image("chkn")
-                                  }
-                                  Text("Female")
-                                      .font(.system(size: 20))
-                                      .padding([.top, .bottom], 10)
-                                      .fontWeight(.medium)
-                                      .foregroundColor(.white)
-                              }
-                          }
+                        Button {
+                            genderSelected = "F"
+                        } label: {
+                            HStack{
+                                if genderSelected == "F"{
+                                    Image("chky")
+                                } else {
+                                    Image("chkn")
+                                }
+                                Text("Female")
+                                    .font(.system(size: 20))
+                                    .padding([.top, .bottom], 10)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.white)
+                            }
+                        }
                     }
                     
                     CustomTextField(text: $mobileNumber, isImage: true, image: "cellphone_icon", placeholder: "Phone Number")
@@ -137,16 +137,20 @@ struct RegisterView: View {
                     }
                     
                     HStack{
-                        NavigationLink(destination: HomeView(), isActive: $registerViewModel.vmVars.isNavigating) {
-                                Button {
-                                    registerViewModel.registerUserProfile(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword, mobileNumber: mobileNumber, isTermsAccepted: isTermsAccepted, genderSelected: genderSelected)
-                                } label: {
-                                    Text("REGISTER")
-                                        .foregroundColor(.red)
-                                        .font(.system(size: 25))
-                                        .bold()
-                                        .padding(10)
-                                        .frame(maxWidth: .infinity)
+                        
+                        Button {
+                            registerViewModel.registerUserProfile(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword, mobileNumber: mobileNumber, isTermsAccepted: isTermsAccepted, genderSelected: genderSelected)
+                        } label: {
+                            Text("REGISTER")
+                                .foregroundColor(.red)
+                                .font(.system(size: 25))
+                                .bold()
+                                .padding(10)
+                                .frame(maxWidth: .infinity)
+                                .onChange(of: registerViewModel.vmVars.isNavigating) { newValue in
+                                    if newValue {
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }
                                 }
                         }
                         .background(.white)
@@ -156,6 +160,7 @@ struct RegisterView: View {
                         .alert(isPresented: $registerViewModel.vmVars.showAlert) {
                             Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(registerViewModel.vmVars.alertMessage))
                         }
+                        
                     }
                     .padding([.leading, .trailing], 30)
                 }

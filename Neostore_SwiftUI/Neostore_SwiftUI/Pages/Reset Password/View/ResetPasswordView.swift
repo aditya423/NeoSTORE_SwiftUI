@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ResetPasswordView: View {
-    @State var username = ""
-    @State var password = ""
+    @State var oldPassword = ""
+    @State var newPassword = ""
+    @State var confirmPassword = ""
     
-    @ObservedObject var loginViewModel = LoginViewModel()
-
+    @ObservedObject var resetPasswordVM = ResetPasswordViewModel()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
         VStack {
             Spacer().frame(height: UIScreen.main.bounds.height*0.2)
@@ -23,68 +25,76 @@ struct ResetPasswordView: View {
                     .bold()
             }
             VStack {
-                CustomTextField(text: $username, isImage: true, image: "username_icon", placeholder: "Username")
+                
+                CustomTextField(text: $oldPassword, isImage: true, image: "password_icon", placeholder: "Current Password")
                     .border(.white)
                     .padding([.leading, .trailing], 30)
                     .padding(.bottom, 10)
                 
-                CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password")
+                CustomTextField(text: $newPassword, isImage: true, image: "password_icon", placeholder: "New Password")
+                    .border(.white)
+                    .padding([.leading, .trailing], 30)
+                    .padding(.bottom, 10)
+                
+                CustomTextField(text: $confirmPassword, isImage: true, image: "password_icon", placeholder: "Confirm Password")
                     .border(.white)
                     .padding([.leading, .trailing], 30)
                 
-                
                 HStack {
-                    NavigationLink(destination: HomeView(), isActive: $loginViewModel.vmVars.isNavigating) {
                         Button {
-                            loginViewModel.loginUserProfile(email: username, password: password)
+                            resetPasswordVM.resetUserPassword(oldPassword: oldPassword, newPassword: newPassword, confirmPassword: confirmPassword)
                         } label: {
-                            Text("LOGIN")
+                            Text("RESET PASSWORD")
                                 .foregroundColor(.red)
                                 .font(.system(size: 25))
                                 .bold()
                                 .padding(10)
                                 .frame(maxWidth: .infinity)
+                                .onChange(of: resetPasswordVM.vmVars.isNavigating) { newValue in
+                                    if newValue {
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }
+                                }
                         }
-                    }
                     .background(.white)
                     .cornerRadius(5)
                     .padding(.top, 30)
-                    .alert(isPresented: $loginViewModel.vmVars.showAlert) {
-                        Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(loginViewModel.vmVars.alertMessage))
+                    .alert(isPresented: $resetPasswordVM.vmVars.showAlert) {
+                        Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(resetPasswordVM.vmVars.alertMessage))
                     }
                 }
                 .padding([.leading, .trailing], 30)
-                Text("Forgot Password?")
-                    .font(.system(size: 20))
-                    .fontWeight(.medium)
-                    .foregroundColor(.white)
-                    .padding(.top, 15)
+               
             }
             .padding(.top, 30)
             Spacer()
-            VStack {
-                HStack {
-                    Text("DON'T HAVE AN ACCOUNT?")
-                        .font(.system(size: 18))
-                        .fontWeight(.medium)
-                        .foregroundColor(.white)
-                    Spacer()
-                    NavigationLink(destination: RegisterView()) {
-                        Image(systemName: "plus")
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(Color(red: 0, green: 0, blue: 0, opacity: 0.3))
-                            .clipped()
-                    }
-                }
-                .padding([.leading, .trailing], 30)
-                .padding(.bottom, 30)
-            }
+           
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(AppColors.primaryColor)
         .edgesIgnoringSafeArea(.all)
-        .alert(loginViewModel.vmVars.alertMessage, isPresented: $loginViewModel.vmVars.showAlert) {
+        .navigationBarTitleDisplayMode(.automatic)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    self.presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.white)
+                }
+            }
+            ToolbarItem(placement: .principal) {
+                Text("Reset Password")
+                    .font(.headline)
+                    .foregroundColor(.white)
+            }
+        }
+        .toolbarBackground(
+            AppColors.primaryColor,
+            for: .navigationBar
+        )
+        .alert(resetPasswordVM.vmVars.alertMessage, isPresented: $resetPasswordVM.vmVars.showAlert) {
             Button("OK", role: .cancel) { }
         }
     }
