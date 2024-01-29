@@ -15,15 +15,6 @@ struct SideBarView: View {
     
     var body: some View {
         VStack {
-//            GeometryReader { _ in
-//                EmptyView()
-//            }
-//            .background(.black.opacity(0.1))
-//            .animation(.easeInOut.delay(0.2), value: isSidebarVisible)
-//            .onTapGesture {
-//                isSidebarVisible.toggle()
-//            }
-            
             HStack(alignment: .top) {
                 ZStack(alignment: .top) {
                     Color.black.edgesIgnoringSafeArea(.all)
