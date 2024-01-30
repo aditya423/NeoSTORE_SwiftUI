@@ -134,9 +134,7 @@ struct HomeView: View {
                                 }
                             } label: {
                                 Image(systemName: isSidebarOpened ? ImageNames.backArrow.rawValue : ImageNames.threeLines.rawValue)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .font(.title2)
+                                    .font(.title3)
                                     .foregroundColor(.white)
                                     .bold()
                             }
@@ -165,6 +163,7 @@ struct HomeView: View {
             
             SideBarView(isSidebarVisible: $isSidebarOpened)
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
