@@ -39,7 +39,14 @@ struct SideBarView: View {
                                     if i == 0 {
                                         ProfileView()
                                     } else if i == 1 {
-                                        FirstMenuItemView(menuImage: Image(viewModel.menuImages[i-1]), menuData: viewModel.menuData[i-1])
+                                        ZStack {
+                                            FirstMenuItemView(menuImage: Image(viewModel.menuImages[i-1]), menuData: viewModel.menuData[i-1])
+                                            NavigationLink(destination: MyCartView()) {
+                                                EmptyView()
+                                            }
+                                            .opacity(0)
+                                        }
+                                        .listRowBackground(Color.black)
                                     } else {
                                         MenuItemView(menuImage: Image(viewModel.menuImages[i-1]), menuData: viewModel.menuData[i-1])
                                     }
