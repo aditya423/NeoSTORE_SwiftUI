@@ -23,7 +23,7 @@ struct FirstMenuItemView: View {
                 Text(menuData)
                     .foregroundColor(.white)
                 Spacer()
-                Text(String(viewModel.total_carts ?? "0"))
+                Text(SideBarViewModel.total_carts ?? "")
                     .frame(width: 25, height: 25)
                     .background(Color.red)
                     .foregroundColor(Color.white)

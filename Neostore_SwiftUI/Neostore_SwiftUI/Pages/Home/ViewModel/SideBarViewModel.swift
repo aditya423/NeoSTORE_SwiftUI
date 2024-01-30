@@ -17,7 +17,7 @@ struct SideBarPublishedVars {
 class SideBarViewModel: ObservableObject {
     
     static var user_data: UserDetails?
-    var total_carts: String?
+    static var total_carts: String?
     var total_orders: String?
     private var cancellables = Set<AnyCancellable>()
     @Published var vmVars = SideBarPublishedVars()
@@ -38,7 +38,7 @@ class SideBarViewModel: ObservableObject {
             }, receiveValue: { (accountDetails, invalidToken, error) in
                 if accountDetails != nil {
                     SideBarViewModel.user_data = accountDetails?.data?.user_data
-                    self.total_carts = String(accountDetails?.data?.total_carts ?? 0)
+                    SideBarViewModel.total_carts = String(accountDetails?.data?.total_carts ?? 0)
                     self.total_orders = String(accountDetails?.data?.total_orders ?? 0)
                     self.vmVars.isLoading = false
                 } else if invalidToken != nil {
