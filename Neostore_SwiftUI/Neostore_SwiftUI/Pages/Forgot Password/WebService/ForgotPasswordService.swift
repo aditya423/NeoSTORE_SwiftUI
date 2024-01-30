@@ -1,21 +1,20 @@
-
 //
-//  ResetPasswordService.swift
+//  ForgotPasswordService.swift
 //  Neostore_SwiftUI
 //
-//  Created by Neosoft on 29/01/24.
+//  Created by Neosoft on 30/01/24.
 //
 
 import Foundation
 import Combine
 
-class ResetPasswordService {
+class ForgotPasswordService {
     
-    static func resetUserPassword(oldPassword:String, newPassword: String, confirmPassword: String) -> (AnyPublisher<(ResetPasswordResponse?,ResetPasswordResponse?), Error>) {
+    static func forgotPassword(email:String) -> (AnyPublisher<(ResetPasswordResponse?,ResetPasswordResponse?), Error>) {
         
-        let params = ["old_password": oldPassword, "password": newPassword, "confirm_password": confirmPassword] as [String: Any]
+        let params = ["email": email] as [String: Any]
         
-        return APIManager.sharedInstance.makeApiCall(serviceType: .changePassword(parameters: params))
+        return APIManager.sharedInstance.makeApiCall(serviceType: .forgotPassword(parameters: params))
         // operator which receives data, make changes and publishes that data
             .tryMap { data in
                 do {
