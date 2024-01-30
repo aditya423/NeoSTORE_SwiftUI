@@ -7,16 +7,6 @@
 
 import Foundation
 
-struct ResetPasswordRequest: Codable {
-    let oldPassword, password, confirmPassword: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case oldPassword = "old_password"
-        case password
-        case confirmPassword = "confirm_password"
-    }
-}
-
 struct ResetPasswordResponse: Codable {
     let status: Int?
     let message, userMsg: String?

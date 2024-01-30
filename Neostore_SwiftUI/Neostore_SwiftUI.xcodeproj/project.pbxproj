@@ -17,6 +17,9 @@
 		928550DC2B556E070024A2A5 /* StoreLocatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928550DB2B556E070024A2A5 /* StoreLocatorView.swift */; };
 		928550DE2B556E180024A2A5 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928550DD2B556E180024A2A5 /* MyAccountView.swift */; };
 		9287A6972B565BE9008CA296 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9287A6962B565BE9008CA296 /* Constants.swift */; };
+		928D77F12B69280100D47F36 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D77F02B69280100D47F36 /* ForgotPasswordView.swift */; };
+		928D77F32B69287700D47F36 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D77F22B69287600D47F36 /* ForgotPasswordViewModel.swift */; };
+		928D77F52B692F9B00D47F36 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D77F42B692F9B00D47F36 /* ForgotPasswordService.swift */; };
 		928F1C5A2B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928F1C592B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift */; };
 		928F1C5E2B4FBBEB007AD919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C5D2B4FBBEB007AD919 /* Assets.xcassets */; };
 		928F1C612B4FBBEB007AD919 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C602B4FBBEB007AD919 /* Preview Assets.xcassets */; };
@@ -70,6 +73,9 @@
 		928550DB2B556E070024A2A5 /* StoreLocatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocatorView.swift; sourceTree = "<group>"; };
 		928550DD2B556E180024A2A5 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
 		9287A6962B565BE9008CA296 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		928D77F02B69280100D47F36 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		928D77F22B69287600D47F36 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		928D77F42B692F9B00D47F36 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		928F1C562B4FBBE6007AD919 /* Neostore_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neostore_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		928F1C592B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neostore_SwiftUIApp.swift; sourceTree = "<group>"; };
 		928F1C5D2B4FBBEB007AD919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -335,6 +341,40 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
+		928D77EC2B6927B200D47F36 /* Forgot Password */ = {
+			isa = PBXGroup;
+			children = (
+				928D77EF2B6927C900D47F36 /* WebService */,
+				928D77EE2B6927C300D47F36 /* ViewModel */,
+				928D77ED2B6927BD00D47F36 /* View  */,
+			);
+			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
+		928D77ED2B6927BD00D47F36 /* View  */ = {
+			isa = PBXGroup;
+			children = (
+				928D77F02B69280100D47F36 /* ForgotPasswordView.swift */,
+			);
+			path = "View ";
+			sourceTree = "<group>";
+		};
+		928D77EE2B6927C300D47F36 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				928D77F22B69287600D47F36 /* ForgotPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		928D77EF2B6927C900D47F36 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				928D77F42B692F9B00D47F36 /* ForgotPasswordService.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
 		928F1C4D2B4FBBE6007AD919 = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +444,7 @@
 		928F1C6B2B4FBD64007AD919 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				928D77EC2B6927B200D47F36 /* Forgot Password */,
 				92E3791D2B678366004F0FD6 /* Reset Password */,
 				928550BD2B556D070024A2A5 /* My Account */,
 				928550BC2B556CEA0024A2A5 /* Store Locator */,
@@ -702,6 +743,8 @@
 				F2B60DED2B68E2310071204C /* MenuItemView.swift in Sources */,
 				F2B60DC92B68C41B0071204C /* OrderDetails.swift in Sources */,
 				F266CE342B516617007EB401 /* HomeView.swift in Sources */,
+				928D77F32B69287700D47F36 /* ForgotPasswordViewModel.swift in Sources */,
+				928D77F52B692F9B00D47F36 /* ForgotPasswordService.swift in Sources */,
 				F2B60DDE2B68C6820071204C /* ProductRating.swift in Sources */,
 				F2B60DD22B68C5D40071204C /* OrderDetailsView.swift in Sources */,
 				F266CE312B5162DF007EB401 /* Extensions.swift in Sources */,
@@ -712,6 +755,7 @@
 				F2B60DD92B68C63E0071204C /* DeleteCartItems.swift in Sources */,
 				928F1C5A2B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift in Sources */,
 				F260DDBB2B51613600101095 /* APIManager.swift in Sources */,
+				928D77F12B69280100D47F36 /* ForgotPasswordView.swift in Sources */,
 				F2B60DE52B68C7080071204C /* AccountDetails.swift in Sources */,
 				F2A657082B6107030070058F /* SideBarView.swift in Sources */,
 				928550D62B556DD50024A2A5 /* AddAddressView.swift in Sources */,
