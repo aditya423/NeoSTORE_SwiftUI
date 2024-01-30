@@ -52,6 +52,10 @@
 		F2B60DE02B68C69B0071204C /* AddToCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DDF2B68C69B0071204C /* AddToCart.swift */; };
 		F2B60DE32B68C6D80071204C /* ProductListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DE22B68C6D80071204C /* ProductListing.swift */; };
 		F2B60DE52B68C7080071204C /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DE42B68C7080071204C /* AccountDetails.swift */; };
+		F2B60DE72B68DA2F0071204C /* AccountDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DE62B68DA2F0071204C /* AccountDetailsService.swift */; };
+		F2B60DE92B68E1F20071204C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DE82B68E1F20071204C /* ProfileView.swift */; };
+		F2B60DEB2B68E2150071204C /* FirstMenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DEA2B68E2150071204C /* FirstMenuItemView.swift */; };
+		F2B60DED2B68E2310071204C /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DEC2B68E2310071204C /* MenuItemView.swift */; };
 		F2C55AE62B5A7A74007A222A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C55AE52B5A7A74007A222A /* LoginService.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +107,10 @@
 		F2B60DDF2B68C69B0071204C /* AddToCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCart.swift; sourceTree = "<group>"; };
 		F2B60DE22B68C6D80071204C /* ProductListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListing.swift; sourceTree = "<group>"; };
 		F2B60DE42B68C7080071204C /* AccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetails.swift; sourceTree = "<group>"; };
+		F2B60DE62B68DA2F0071204C /* AccountDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsService.swift; sourceTree = "<group>"; };
+		F2B60DE82B68E1F20071204C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F2B60DEA2B68E2150071204C /* FirstMenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMenuItemView.swift; sourceTree = "<group>"; };
+		F2B60DEC2B68E2310071204C /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		F2C55AE52B5A7A74007A222A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -511,6 +519,7 @@
 		F2A69C1F2B5FCD130020BFA3 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				F2B60DE62B68DA2F0071204C /* AccountDetailsService.swift */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -529,6 +538,9 @@
 			children = (
 				F266CE332B516617007EB401 /* HomeView.swift */,
 				F2A657072B6107030070058F /* SideBarView.swift */,
+				F2B60DE82B68E1F20071204C /* ProfileView.swift */,
+				F2B60DEA2B68E2150071204C /* FirstMenuItemView.swift */,
+				F2B60DEC2B68E2310071204C /* MenuItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -683,9 +695,11 @@
 				F2B60DDC2B68C66A0071204C /* ProductDetails.swift in Sources */,
 				928550DE2B556E180024A2A5 /* MyAccountView.swift in Sources */,
 				92E379232B6784B5004F0FD6 /* ResetPasswordViewModel.swift in Sources */,
+				F2B60DEB2B68E2150071204C /* FirstMenuItemView.swift in Sources */,
 				928550B52B556C530024A2A5 /* RegisterView.swift in Sources */,
 				F2B60DE32B68C6D80071204C /* ProductListing.swift in Sources */,
 				928550D42B556DC60024A2A5 /* MyCartView.swift in Sources */,
+				F2B60DED2B68E2310071204C /* MenuItemView.swift in Sources */,
 				F2B60DC92B68C41B0071204C /* OrderDetails.swift in Sources */,
 				F266CE342B516617007EB401 /* HomeView.swift in Sources */,
 				F2B60DDE2B68C6820071204C /* ProductRating.swift in Sources */,
@@ -703,7 +717,9 @@
 				928550D62B556DD50024A2A5 /* AddAddressView.swift in Sources */,
 				F2A6570C2B6127E90070058F /* SideBarViewModel.swift in Sources */,
 				F2B60DD52B68C6100071204C /* ListCartItems.swift in Sources */,
+				F2B60DE92B68E1F20071204C /* ProfileView.swift in Sources */,
 				F260DDB92B51611700101095 /* APIService.swift in Sources */,
+				F2B60DE72B68DA2F0071204C /* AccountDetailsService.swift in Sources */,
 				F2B60DD72B68C6280071204C /* EditCartItems.swift in Sources */,
 				F2A6570A2B6127C30070058F /* HomeViewModel.swift in Sources */,
 				928550AC2B55604B0024A2A5 /* Validation.swift in Sources */,
