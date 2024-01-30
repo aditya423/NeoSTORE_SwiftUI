@@ -116,12 +116,14 @@ struct HomeView: View {
                                     }
                                 }
                             }
-                            .padding([.top, .bottom], 10)
+                            .padding([.top, .bottom], 15)
                             .padding([.leading, .trailing], 20)
+                            
+                            Spacer()
+                                .frame(height: UIScreen.main.bounds.height*0.15)
                         }
                     }
-                    .frame(width: .infinity, height: UIScreen.main.bounds.height*0.9)
-                    .background(Color.white)
+                    .background(.white)
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationBarBackButtonHidden()
                     .toolbar {
@@ -151,17 +153,15 @@ struct HomeView: View {
                         for: .navigationBar
                     )
                 }
-                .background(.red)
                 .onTapGesture {
                     withAnimation {
                         isSidebarOpened = false
                     }
                 }
+                .background(.red)
             }
             .offset(x: isSidebarOpened ? sideBarWidth : 0)
-            .padding(.top, isSidebarOpened ? 20 : 0)
-            .padding(.bottom, isSidebarOpened ? 40 : 0)
-            .background(Color.black)
+            .scrollDisabled(isSidebarOpened ? true : false)
             
             SideBarView(isSidebarVisible: $isSidebarOpened)
         }
