@@ -7,16 +7,6 @@
 
 import Foundation
 
-// MARK: REQUEST
-
-struct RequestProductDetails : Codable {
-    let product_id : Int?
-    
-    enum CodingKeys: String, CodingKey {
-        case product_id = "product_id"
-    }
-}
-
 // MARK: RESPONSE
 
 struct ProductDetailsResponse : Codable {

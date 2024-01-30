@@ -7,19 +7,6 @@
 
 import Foundation
 
-// MARK: REQUEST
-
-struct RequestProductList : Codable {
-    let product_category_id : Int?
-    let limit : Int?
-    let page : Int?
-    
-    enum CodingKeys: String, CodingKey {
-        case product_category_id = "product_category_id"
-        case limit = "limit"
-        case page = "page"
-    }
-}
 
 // MARK: RESPONSE
 

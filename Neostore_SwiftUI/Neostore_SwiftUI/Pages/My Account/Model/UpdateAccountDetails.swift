@@ -7,18 +7,6 @@
 
 import Foundation
 
-struct UpdateAccountRequest: Codable {
-    let firstName, lastName, email, dob, profilePic, phoneNo: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case email, dob
-        case profilePic = "profile_pic"
-        case phoneNo = "phone_no"
-    }
-}
-
 struct UpdateAccountSuccessResponse: Codable {
     let status: Int?
     let data: UserDetails?
