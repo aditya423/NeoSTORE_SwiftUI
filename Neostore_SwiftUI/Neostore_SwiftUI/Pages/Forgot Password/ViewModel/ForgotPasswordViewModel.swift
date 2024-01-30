@@ -34,6 +34,8 @@ class ForgotPasswordViewModel: ObservableObject{
             }, receiveValue: { (success , error) in
                 if success != nil {
                     self.vmVars.isNavigating = true
+                    self.vmVars.alertMessage = success?.userMsg ?? ""
+                    self.vmVars.showAlert = true
                 } else if error != nil {
                     self.vmVars.isNavigating = false
                     self.vmVars.alertMessage = error?.userMsg ?? ""
