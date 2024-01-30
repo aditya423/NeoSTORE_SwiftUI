@@ -55,11 +55,13 @@ struct LoginView: View {
                     }
                 }
                 .padding([.leading, .trailing], 30)
-                Text("Forgot Password?")
-                    .font(.system(size: 20))
-                    .fontWeight(.medium)
-                    .foregroundColor(.white)
-                    .padding(.top, 15)
+                NavigationLink(destination: ResetPasswordView()) {
+                    Text("Forgot Password?")
+                        .font(.system(size: 20))
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+                        .padding(.top, 15)
+                }
             }
             .padding(.top, 30)
             Spacer()
