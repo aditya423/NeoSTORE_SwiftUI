@@ -55,7 +55,7 @@ struct LoginView: View {
                     }
                 }
                 .padding([.leading, .trailing], 30)
-                NavigationLink(destination: ResetPasswordView()) {
+                NavigationLink(destination: ForgotPasswordView()) {
                     Text("Forgot Password?")
                         .font(.system(size: 20))
                         .fontWeight(.medium)
