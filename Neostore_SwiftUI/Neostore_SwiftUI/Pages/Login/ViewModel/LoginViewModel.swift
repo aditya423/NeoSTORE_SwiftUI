@@ -34,7 +34,6 @@ class LoginViewModel: ObservableObject {
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
-                            UserDefaults.standard.setLoggedIn(value: true)
                             break
                         case .failure(let error):
                             self.vmVars.alertMessage = error.localizedDescription
@@ -42,6 +41,9 @@ class LoginViewModel: ObservableObject {
                         }
                     }, receiveValue: { (success, error) in
                         if success != nil {
+                            UserDefaults.standard.setLoggedIn(value: true)
+                            UserDefaults.standard.setUserToken(value: success?.data?.accessToken)
+                            UserDefaults.standard.setPassword(value: password)
                             self.vmVars.isNavigating = true
                         } else if error != nil {
                             self.vmVars.isNavigating = false

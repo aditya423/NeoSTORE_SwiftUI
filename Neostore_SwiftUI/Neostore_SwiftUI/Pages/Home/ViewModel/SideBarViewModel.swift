@@ -11,6 +11,7 @@ import Combine
 struct SideBarPublishedVars {
     var showAlert = false
     var alertMessage = ""
+    var isLoading = false
 }
 
 class SideBarViewModel: ObservableObject {
@@ -31,20 +32,21 @@ class SideBarViewModel: ObservableObject {
                 case .finished:
                     break
                 case .failure(let error):
-                    self.vmVars.showAlert = true
                     self.vmVars.alertMessage = error.localizedDescription
+                    self.vmVars.showAlert = true
                 }
             }, receiveValue: { (accountDetails, invalidToken, error) in
                 if accountDetails != nil {
                     SideBarViewModel.user_data = accountDetails?.data?.user_data
                     self.total_carts = String(accountDetails?.data?.total_carts ?? 0)
                     self.total_orders = String(accountDetails?.data?.total_orders ?? 0)
+                    self.vmVars.isLoading = false
                 } else if invalidToken != nil {
-                    self.vmVars.showAlert = true
                     self.vmVars.alertMessage = invalidToken?.user_msg ?? ""
-                } else {
                     self.vmVars.showAlert = true
+                } else {
                     self.vmVars.alertMessage = error?.user_msg ?? error.debugDescription
+                    self.vmVars.showAlert = true
                 }
             })
             .store(in: &cancellables)

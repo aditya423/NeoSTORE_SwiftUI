@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
     var body: some View {
         VStack(alignment: .center) {
             Image("profile_image")
@@ -16,11 +17,11 @@ struct ProfileView: View {
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color.white, lineWidth: 3))
-            Text("Aditya Ghadge")
+            Text("\(SideBarViewModel.user_data?.first_name ?? "") \(SideBarViewModel.user_data?.last_name ?? "")")
                 .bold()
                 .font(.title2)
                 .foregroundColor(.white)
-            Text(verbatim: "adityasghadge@gmail.com")
+            Text(verbatim: "\(SideBarViewModel.user_data?.email ?? "")")
                 .font(.subheadline)
                 .foregroundColor(.white)
         }
