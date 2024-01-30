@@ -7,16 +7,6 @@
 
 import Foundation
 
-struct LoginRequest : Codable {
-    let email : String?
-    let password : String?
-    
-    enum CodingKeys: String, CodingKey {
-        case email = "email"
-        case password = "password"
-    }
-}
-
 struct LoginSuccessResponse: Codable {
     let status: Int?
     let data: LoginDetails?
@@ -52,18 +42,6 @@ struct LoginDetails: Codable {
         case isActive = "is_active"
         case created, modified
         case accessToken = "access_token"
-    }
-}
-
-struct ForgotPasswordResponse: Codable {
-    let status : Int?
-    let message : String?
-    let user_msg : String?
-    
-    enum CodingKeys: String, CodingKey {
-        case status = "status"
-        case message = "message"
-        case user_msg = "user_msg"
     }
 }
 

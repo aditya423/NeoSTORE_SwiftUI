@@ -7,15 +7,6 @@
 
 import Foundation
 
-struct EditCartRequest : Codable {
-    let product_id : Int?
-    let quantity : Int?
-    
-    enum CodingKeys: String, CodingKey {
-        case product_id = "product_id"
-        case quantity = "quantity"
-    }
-}
 
 struct EditCartSuccessResponse : Codable {
     let status : Int?
