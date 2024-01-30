@@ -25,29 +25,47 @@ class ResetPasswordViewModel: ObservableObject{
         if let result = validation.resetPassValidation(oldPass: oldPassword, newPass: newPassword, confirmPass: confirmPassword) {
             if result == "" {
                 if newPassword == confirmPassword {
-//                    RegisterService.registerUser(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword, gender: genderSelected, number: Int(mobileNumber) ?? 0)
-//                        .sink(receiveCompletion: { completion in
-//                            switch completion {
-//                            case .finished:
-//                                break
-//                            case .failure(let error):
-//                                self.vmVars.alertMessage = error.localizedDescription
-//                                self.vmVars.showAlert = true
-//                            }
-//                        }, receiveValue: { (success, alreadyExists, error) in
-//                            if success != nil {
-//                                self.vmVars.isNavigating = true
-//                            } else if alreadyExists != nil {
-//                                self.vmVars.isNavigating = false
-//                                self.vmVars.alertMessage = AlertMessages.userAlreadyExists.rawValue
-//                                self.vmVars.showAlert = true
-//                            } else if error != nil {
-//                                self.vmVars.isNavigating = false
-//                                self.vmVars.alertMessage = error.debugDescription
-//                                self.vmVars.showAlert = true
-//                            }
-//                        })
-//                        .store(in: &cancellables)
+                    ResetPasswordService.resetUserPassword(oldPassword: oldPassword, newPassword: newPassword, confirmPassword: confirmPassword)
+                        .sink { completion in
+                            switch completion {
+                            case .finished:
+                                break
+                            case .failure(let error):
+                                self.vmVars.alertMessage = error.localizedDescription
+                                self.vmVars.showAlert = true
+                            }
+                        } receiveValue: { (success , error) in
+                            if success != nil {
+                                self.vmVars.isNavigating = true
+                            } else if error != nil {
+                                self.vmVars.isNavigating = false
+                                self.vmVars.alertMessage = error.debugDescription
+                                self.vmVars.showAlert = true
+                            }
+                        }.store(in: &cancellables)
+                    //                    RegisterService.registerUser(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword, gender: genderSelected, number: Int(mobileNumber) ?? 0)
+                    //                        .sink(receiveCompletion: { completion in
+                    //                            switch completion {
+                    //                            case .finished:
+                    //                                break
+                    //                            case .failure(let error):
+                    //                                self.vmVars.alertMessage = error.localizedDescription
+                    //                                self.vmVars.showAlert = true
+                    //                            }
+                    //                        }, receiveValue: { (success, alreadyExists, error) in
+                    //                            if success != nil {
+                    //                                self.vmVars.isNavigating = true
+                    //                            } else if alreadyExists != nil {
+                    //                                self.vmVars.isNavigating = false
+                    //                                self.vmVars.alertMessage = AlertMessages.userAlreadyExists.rawValue
+                    //                                self.vmVars.showAlert = true
+                    //                            } else if error != nil {
+                    //                                self.vmVars.isNavigating = false
+                    //                                self.vmVars.alertMessage = error.debugDescription
+                    //                                self.vmVars.showAlert = true
+                    //                            }
+                    //                        })
+                    //                        .store(in: &cancellables)
                 } else {
                     vmVars.alertMessage = AlertMessages.passwordDidntMatched.rawValue
                     vmVars.showAlert = true
