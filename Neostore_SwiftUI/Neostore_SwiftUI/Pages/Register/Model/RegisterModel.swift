@@ -8,26 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct RegisterRequest: Codable {
-    let first_name : String?
-    let last_name : String?
-    let email : String?
-    let password : String?
-    let confirm_password : String?
-    let gender : String?
-    let phone_no : Int?
-    
-    enum CodingKeys: String, CodingKey {
-        case first_name = "first_name"
-        case last_name = "last_name"
-        case email = "email"
-        case password = "password"
-        case confirm_password = "confirm_password"
-        case gender = "gender"
-        case phone_no = "phone_no"
-    }
-}
-
 struct RegisterSuccessResponse: Codable {
     let status: Int?
     let data: RegisterDetails?
