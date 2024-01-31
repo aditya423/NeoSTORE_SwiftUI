@@ -14,6 +14,7 @@ struct HomeView: View {
     var viewModel = HomeViewModel()
     var screenWidth = UIScreen.main.bounds.width
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.8
+    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     
     init() {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.red
@@ -41,6 +42,15 @@ struct HomeView: View {
                         .tabViewStyle(PageTabViewStyle())
                         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.3)
+                        .onReceive(timer) { _ in
+                            withAnimation {
+                                if selection < viewModel.productsImages.count-1 {
+                                    selection += 1
+                                } else {
+                                    selection = 0
+                                }
+                            }
+                        }
                         
                         ScrollView(.vertical) {
                             LazyVGrid(columns: [
