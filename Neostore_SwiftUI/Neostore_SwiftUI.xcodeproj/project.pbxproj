@@ -29,6 +29,7 @@
 		928F1C612B4FBBEB007AD919 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C602B4FBBEB007AD919 /* Preview Assets.xcassets */; };
 		928F1C6F2B4FC135007AD919 /* Gotham-Font in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C6E2B4FC135007AD919 /* Gotham-Font */; };
 		92961C692B679DDB008C9DC1 /* ResetPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92961C682B679DDB008C9DC1 /* ResetPasswordService.swift */; };
+		929ED64D2B6A707200EE1E29 /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929ED64C2B6A707200EE1E29 /* ProductListCell.swift */; };
 		92E379212B6783FF004F0FD6 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E379202B6783FF004F0FD6 /* ResetPasswordView.swift */; };
 		92E379232B6784B5004F0FD6 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E379222B6784B5004F0FD6 /* ResetPasswordViewModel.swift */; };
 		F2310EAC2B59429C00631690 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2310EAB2B59429C00631690 /* RegisterViewModel.swift */; };
@@ -90,6 +91,7 @@
 		928F1C6E2B4FC135007AD919 /* Gotham-Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Gotham-Font"; sourceTree = "<group>"; };
 		928F1C702B4FC1B2007AD919 /* Neostore-SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Neostore-SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
 		92961C682B679DDB008C9DC1 /* ResetPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordService.swift; sourceTree = "<group>"; };
+		929ED64C2B6A707200EE1E29 /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
 		92E379202B6783FF004F0FD6 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		92E379222B6784B5004F0FD6 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		F2310EAB2B59429C00631690 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				928550CF2B556DA70024A2A5 /* ProductListView.swift */,
+				929ED64C2B6A707200EE1E29 /* ProductListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				F2B60DC72B68C3FD0071204C /* OrderList.swift in Sources */,
 				F2B60DCC2B68C4520071204C /* UpdateAccountDetails.swift in Sources */,
 				9287A6972B565BE9008CA296 /* Constants.swift in Sources */,
+				929ED64D2B6A707200EE1E29 /* ProductListCell.swift in Sources */,
 				928BEB312B6A61DC00CB2822 /* LabelTextFieldView.swift in Sources */,
 				92E379212B6783FF004F0FD6 /* ResetPasswordView.swift in Sources */,
 				928550D02B556DA70024A2A5 /* ProductListView.swift in Sources */,
