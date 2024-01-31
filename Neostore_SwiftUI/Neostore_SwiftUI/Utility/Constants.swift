@@ -14,6 +14,7 @@ enum Constants{
 
 class AppColors{
     static var primaryColor = Color(red: 225/255, green: 28/255, blue: 36/255)
+    static var grayColor = Color(red: 237/255, green: 237/255, blue: 237/255)
 }
 
 enum FileNames: String {
@@ -121,6 +122,7 @@ enum ImageNames: String {
     case checkYes = "chky"
     case checkNo = "chkn"
     case backArrow = "chevron.backward"
+    case downArrow = "chevron.down"
     case threeLines = "line.3.horizontal"
     case profileImage = "profile_picture.jpg"
     case emptyStar = "star_check"
