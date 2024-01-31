@@ -16,13 +16,8 @@ struct MyCartView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            //            if viewModel.vmVars.isLoading {
-            //                ProgressView()
-            //                    .padding(20)
-            //                    .background(.white)
-            //                    .cornerRadius(5)
-            //            } else {
             VStack(spacing: 0) {
+                
                 Color.red.edgesIgnoringSafeArea(.all)
                     .frame(maxWidth: .infinity, maxHeight: 1)
                 
@@ -32,7 +27,7 @@ struct MyCartView: View {
                             // ITEM ROWS
                             ForEach(0..<viewModel.total_items) { index in
                                 HStack {
-                                    AsyncImage(url: URL(string: viewModel.productList?[index].product?.product_images ?? "")) { phase in
+                                    AsyncImage(url: URL(string: viewModel.productList?[0].product?.product_images ?? "")) { phase in
                                         switch phase {
                                         case .success(let image):
                                             image
@@ -52,8 +47,8 @@ struct MyCartView: View {
                                     VStack {
                                         HStack {
                                             VStack(alignment: .leading) {
-                                                Text(viewModel.productList?[index].product?.name ?? "")
-                                                Text("(\(viewModel.productList?[index].product?.product_category ?? ""))")
+                                                Text(viewModel.productList?[0].product?.name ?? "")
+                                                Text("(\(viewModel.productList?[0].product?.product_category ?? ""))")
                                                     .foregroundColor(.gray)
                                             }
                                             Spacer()
@@ -64,7 +59,7 @@ struct MyCartView: View {
                                                 showPicker.toggle()
                                             } label: {
                                                 HStack {
-                                                    Text(viewModel.productList[index].quantity)
+                                                    Text("\(viewModel.productList?[0].quantity ?? 0)")
                                                     Image(systemName: ImageNames.downArrow.rawValue)
                                                 }
                                             }
@@ -73,7 +68,7 @@ struct MyCartView: View {
                                             .foregroundColor(.black)
                                             .cornerRadius(5)
                                             Spacer()
-                                            Text("₹\(viewModel.productList[index].product.sub_total).00")
+                                            Text("₹45.00")
                                                 .padding(.trailing, 20)
                                         }
                                     }
@@ -81,38 +76,39 @@ struct MyCartView: View {
                                 }
                                 .padding([.top, .bottom], 15)
                                 .background(.white)
-                            }
-                            
-                            // TOTAL ROW
-                            HStack {
-                                Text("TOTAL")
-                                    .padding(.leading, 20)
-                                Spacer()
-                                Text("₹\(viewModel.productList[index].total)")
-                                    .padding(.trailing, 20)
-                            }
-                            .padding(.top, 20)
-                            .padding(.bottom, 10)
-                            
-                            // BUTTON
-                            NavigationLink(destination: HomeView()) {
-                                Button {
-                                    // navigate to add address
-                                } label: {
-                                    Text("ORDER NOW")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 25))
-                                        .bold()
-                                        .padding(10)
-                                        .frame(maxWidth: .infinity)
+                                //}
+                                
+                                // TOTAL ROW
+                                HStack {
+                                    Text("TOTAL")
+                                        .padding(.leading, 20)
+                                    Spacer()
+                                    Text("₹180.00")
+                                        .padding(.trailing, 20)
                                 }
-                            }
-                            .background(.red)
-                            .cornerRadius(5)
-                            .padding(.top, 30)
-                            .padding([.leading, .trailing], 20)
-                            .alert(isPresented: $viewModel.vmVars.showAlert) {
-                                Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
+                                .padding(.top, 20)
+                                .padding(.bottom, 10)
+                                
+                                // BUTTON
+                                NavigationLink(destination: HomeView()) {
+                                    Button {
+                                        // navigate to add address
+                                    } label: {
+                                        Text("ORDER NOW")
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 25))
+                                            .bold()
+                                            .padding(10)
+                                            .frame(maxWidth: .infinity)
+                                    }
+                                }
+                                .background(.red)
+                                .cornerRadius(5)
+                                .padding(.top, 30)
+                                .padding([.leading, .trailing], 20)
+                                .alert(isPresented: $viewModel.vmVars.showAlert) {
+                                    Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
+                                }
                             }
                         }
                     }
@@ -169,7 +165,6 @@ struct MyCartView: View {
                 Color.red,
                 for: .navigationBar
             )
-            //}
         }
         .onAppear {
             viewModel.vmVars.isLoading = true
