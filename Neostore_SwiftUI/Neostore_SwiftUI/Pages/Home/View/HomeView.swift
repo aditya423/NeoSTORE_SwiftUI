@@ -22,10 +22,18 @@ struct HomeView: View {
     }
     
     var body: some View {
+        
         ZStack {
+            // HOME
             NavigationView {
-                ScrollView {
-                    VStack {
+                VStack(spacing: 0) {
+                    // RED NAVIGATION
+                    VStack(spacing: 0) {
+                        Color.red.edgesIgnoringSafeArea(.all)
+                            .frame(maxWidth: .infinity, maxHeight: 1)
+                    }
+                    ScrollView {
+                        // IMAGES CV
                         TabView(selection: $selection) {
                             ForEach(0..<viewModel.productsImages.count) { index in
                                 Image(viewModel.productsImages[index])
@@ -51,7 +59,7 @@ struct HomeView: View {
                                 }
                             }
                         }
-                        
+                        // BLOCKS CV
                         ScrollView(.vertical) {
                             LazyVGrid(columns: [
                                 GridItem(.flexible(), spacing: 20),
@@ -128,52 +136,47 @@ struct HomeView: View {
                             }
                             .padding([.top, .bottom], 15)
                             .padding([.leading, .trailing], 20)
-                            
-                            Spacer()
-                                .frame(height: UIScreen.main.bounds.height*0.15)
                         }
                     }
-                    .background(.white)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .navigationBarBackButtonHidden()
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button {
-                                withAnimation {
-                                    isSidebarOpened.toggle()
-                                }
-                            } label: {
-                                Image(systemName: isSidebarOpened ? ImageNames.backArrow.rawValue : ImageNames.threeLines.rawValue)
-                                    .font(.title3)
-                                    .foregroundColor(.white)
-                                    .bold()
-                            }
-                        }
-                        ToolbarItem(placement: .principal) {
-                            Text("NeoSTORE")
-                                .bold()
-                                .font(.title)
-                                .foregroundColor(.white)
-                        }
-                    }
-                    .toolbarBackground(
-                        Color.red,
-                        for: .navigationBar
-                    )
                 }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden()
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            withAnimation {
+                                isSidebarOpened.toggle()
+                            }
+                        } label: {
+                            Image(systemName: isSidebarOpened ? ImageNames.backArrow.rawValue : ImageNames.threeLines.rawValue)
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .bold()
+                        }
+                    }
+                    ToolbarItem(placement: .principal) {
+                        Text("NeoSTORE")
+                            .bold()
+                            .font(.title)
+                            .foregroundColor(.white)
+                    }
+                }
+                .toolbarBackground(
+                    Color.red,
+                    for: .navigationBar
+                )
                 .onTapGesture {
                     withAnimation {
                         isSidebarOpened = false
                     }
                 }
-                .background(.red)
             }
             .offset(x: isSidebarOpened ? sideBarWidth : 0)
             .scrollDisabled(isSidebarOpened ? true : false)
             
+            // SIDEBAR
             SideBarView(isSidebarVisible: $isSidebarOpened)
         }
-        .navigationBarBackButtonHidden()
     }
 }
 
