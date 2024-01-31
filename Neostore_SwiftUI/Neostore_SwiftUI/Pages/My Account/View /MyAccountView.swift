@@ -18,7 +18,6 @@ struct MyAccountView: View {
     @ObservedObject var myAccountVM = MyAccountViewModel()
     
     var body: some View {
-        NavigationView{
             ZStack{
                 ScrollView {
                     VStack {
@@ -131,7 +130,6 @@ struct MyAccountView: View {
                 for: .navigationBar
             )
         }
-    }
 }
 
 struct MyAccountView_Previews: PreviewProvider {

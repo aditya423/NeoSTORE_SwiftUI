@@ -17,6 +17,10 @@
 		928550DC2B556E070024A2A5 /* StoreLocatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928550DB2B556E070024A2A5 /* StoreLocatorView.swift */; };
 		928550DE2B556E180024A2A5 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928550DD2B556E180024A2A5 /* MyAccountView.swift */; };
 		9287A6972B565BE9008CA296 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9287A6962B565BE9008CA296 /* Constants.swift */; };
+		928BEB2A2B6A242600CB2822 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BEB292B6A242600CB2822 /* MyAccountViewModel.swift */; };
+		928BEB2C2B6A249D00CB2822 /* AddAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BEB2B2B6A249D00CB2822 /* AddAddressViewModel.swift */; };
+		928BEB2F2B6A4B2E00CB2822 /* ScrollOverFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BEB2E2B6A4B2E00CB2822 /* ScrollOverFlow.swift */; };
+		928BEB312B6A61DC00CB2822 /* LabelTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BEB302B6A61DC00CB2822 /* LabelTextFieldView.swift */; };
 		928D77F12B69280100D47F36 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D77F02B69280100D47F36 /* ForgotPasswordView.swift */; };
 		928D77F32B69287700D47F36 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D77F22B69287600D47F36 /* ForgotPasswordViewModel.swift */; };
 		928D77F52B692F9B00D47F36 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D77F42B692F9B00D47F36 /* ForgotPasswordService.swift */; };
@@ -25,7 +29,6 @@
 		928F1C612B4FBBEB007AD919 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C602B4FBBEB007AD919 /* Preview Assets.xcassets */; };
 		928F1C6F2B4FC135007AD919 /* Gotham-Font in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C6E2B4FC135007AD919 /* Gotham-Font */; };
 		92961C692B679DDB008C9DC1 /* ResetPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92961C682B679DDB008C9DC1 /* ResetPasswordService.swift */; };
-		92961C6B2B67BC23008C9DC1 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92961C6A2B67BC23008C9DC1 /* MyAccountViewModel.swift */; };
 		92E379212B6783FF004F0FD6 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E379202B6783FF004F0FD6 /* ResetPasswordView.swift */; };
 		92E379232B6784B5004F0FD6 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E379222B6784B5004F0FD6 /* ResetPasswordViewModel.swift */; };
 		F2310EAC2B59429C00631690 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2310EAB2B59429C00631690 /* RegisterViewModel.swift */; };
@@ -73,6 +76,10 @@
 		928550DB2B556E070024A2A5 /* StoreLocatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocatorView.swift; sourceTree = "<group>"; };
 		928550DD2B556E180024A2A5 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
 		9287A6962B565BE9008CA296 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		928BEB292B6A242600CB2822 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
+		928BEB2B2B6A249D00CB2822 /* AddAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddAddressViewModel.swift; path = "Neostore_SwiftUI/Pages/Add Address/View Model/AddAddressViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		928BEB2E2B6A4B2E00CB2822 /* ScrollOverFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOverFlow.swift; sourceTree = "<group>"; };
+		928BEB302B6A61DC00CB2822 /* LabelTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextFieldView.swift; sourceTree = "<group>"; };
 		928D77F02B69280100D47F36 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		928D77F22B69287600D47F36 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		928D77F42B692F9B00D47F36 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
@@ -83,7 +90,6 @@
 		928F1C6E2B4FC135007AD919 /* Gotham-Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Gotham-Font"; sourceTree = "<group>"; };
 		928F1C702B4FC1B2007AD919 /* Neostore-SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Neostore-SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
 		92961C682B679DDB008C9DC1 /* ResetPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordService.swift; sourceTree = "<group>"; };
-		92961C6A2B67BC23008C9DC1 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAccountViewModel.swift; path = "Neostore_SwiftUI/Pages/Reset Password/WebService/MyAccountViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		92E379202B6783FF004F0FD6 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		92E379222B6784B5004F0FD6 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		F2310EAB2B59429C00631690 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -199,8 +205,8 @@
 		928550B92B556CAF0024A2A5 /* Add Address */ = {
 			isa = PBXGroup;
 			children = (
+				928BEB2D2B6A24AE00CB2822 /* View Model */,
 				928550C52B556D590024A2A5 /* View */,
-				928550C42B556D4A0024A2A5 /* View Model */,
 			);
 			path = "Add Address";
 			sourceTree = "<group>";
@@ -227,8 +233,8 @@
 		928550BD2B556D070024A2A5 /* My Account */ = {
 			isa = PBXGroup;
 			children = (
+				928BEB262B6A23CA00CB2822 /* View Model */,
 				F2B60DCA2B68C4380071204C /* Model */,
-				928550CE2B556D940024A2A5 /* View Model */,
 				928550CD2B556D8F0024A2A5 /* View  */,
 			);
 			path = "My Account";
@@ -279,17 +285,11 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		928550C42B556D4A0024A2A5 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Model";
-			sourceTree = "<group>";
-		};
 		928550C52B556D590024A2A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				928550D52B556DD50024A2A5 /* AddAddressView.swift */,
+				928BEB302B6A61DC00CB2822 /* LabelTextFieldView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -333,10 +333,18 @@
 			path = "View ";
 			sourceTree = "<group>";
 		};
-		928550CE2B556D940024A2A5 /* View Model */ = {
+		928BEB262B6A23CA00CB2822 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				92961C6A2B67BC23008C9DC1 /* MyAccountViewModel.swift */,
+				928BEB292B6A242600CB2822 /* MyAccountViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		928BEB2D2B6A24AE00CB2822 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				928BEB2B2B6A249D00CB2822 /* AddAddressViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -533,6 +541,7 @@
 				F266CE302B5162DF007EB401 /* Extensions.swift */,
 				928550AB2B55604B0024A2A5 /* Validation.swift */,
 				9287A6962B565BE9008CA296 /* Constants.swift */,
+				928BEB2E2B6A4B2E00CB2822 /* ScrollOverFlow.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -724,12 +733,13 @@
 				F2B60DC72B68C3FD0071204C /* OrderList.swift in Sources */,
 				F2B60DCC2B68C4520071204C /* UpdateAccountDetails.swift in Sources */,
 				9287A6972B565BE9008CA296 /* Constants.swift in Sources */,
+				928BEB312B6A61DC00CB2822 /* LabelTextFieldView.swift in Sources */,
 				92E379212B6783FF004F0FD6 /* ResetPasswordView.swift in Sources */,
 				928550D02B556DA70024A2A5 /* ProductListView.swift in Sources */,
 				F2B60DE02B68C69B0071204C /* AddToCart.swift in Sources */,
+				928BEB2A2B6A242600CB2822 /* MyAccountViewModel.swift in Sources */,
 				928550DC2B556E070024A2A5 /* StoreLocatorView.swift in Sources */,
 				F237730F2B51330C000C4AFA /* LoginView.swift in Sources */,
-				92961C6B2B67BC23008C9DC1 /* MyAccountViewModel.swift in Sources */,
 				F2310EB52B5947EC00631690 /* RegisterService.swift in Sources */,
 				F2C55AE62B5A7A74007A222A /* LoginService.swift in Sources */,
 				F2310EB22B59445100631690 /* RegisterModel.swift in Sources */,
@@ -766,8 +776,10 @@
 				F2B60DE72B68DA2F0071204C /* AccountDetailsService.swift in Sources */,
 				F2B60DD72B68C6280071204C /* EditCartItems.swift in Sources */,
 				F2A6570A2B6127C30070058F /* HomeViewModel.swift in Sources */,
+				928BEB2C2B6A249D00CB2822 /* AddAddressViewModel.swift in Sources */,
 				928550AC2B55604B0024A2A5 /* Validation.swift in Sources */,
 				F260DDB72B51517700101095 /* CustomTextField.swift in Sources */,
+				928BEB2F2B6A4B2E00CB2822 /* ScrollOverFlow.swift in Sources */,
 				928550B02B5561CC0024A2A5 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
