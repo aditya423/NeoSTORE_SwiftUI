@@ -133,6 +133,7 @@ struct HomeView: View {
                                             .frame(width: (screenWidth/2)-30, height: (screenWidth/2)-30)
                                             .background(.red)
                                         }
+                                        .buttonStyle(PlainButtonStyle())
                                     }
                                 }
                             }
