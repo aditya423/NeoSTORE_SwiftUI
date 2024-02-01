@@ -30,6 +30,8 @@
 		928F1C6F2B4FC135007AD919 /* Gotham-Font in Resources */ = {isa = PBXBuildFile; fileRef = 928F1C6E2B4FC135007AD919 /* Gotham-Font */; };
 		929272E12B6B6A6300014D5E /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929272E02B6B6A6300014D5E /* ProductListViewModel.swift */; };
 		929272E42B6B6ABA00014D5E /* ProductListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929272E32B6B6ABA00014D5E /* ProductListService.swift */; };
+		929272E62B6BD6E700014D5E /* ProductDetailTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929272E52B6BD6E700014D5E /* ProductDetailTitleView.swift */; };
+		929272E82B6BD70B00014D5E /* ProductDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929272E72B6BD70B00014D5E /* ProductDetailDescriptionView.swift */; };
 		92961C692B679DDB008C9DC1 /* ResetPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92961C682B679DDB008C9DC1 /* ResetPasswordService.swift */; };
 		929ED64D2B6A707200EE1E29 /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929ED64C2B6A707200EE1E29 /* ProductListCell.swift */; };
 		92E379212B6783FF004F0FD6 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E379202B6783FF004F0FD6 /* ResetPasswordView.swift */; };
@@ -96,6 +98,8 @@
 		928F1C702B4FC1B2007AD919 /* Neostore-SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Neostore-SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
 		929272E02B6B6A6300014D5E /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductListViewModel.swift; path = "Neostore_SwiftUI/Pages/Product List/View/ProductListViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		929272E32B6B6ABA00014D5E /* ProductListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListService.swift; sourceTree = "<group>"; };
+		929272E52B6BD6E700014D5E /* ProductDetailTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailTitleView.swift; sourceTree = "<group>"; };
+		929272E72B6BD70B00014D5E /* ProductDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDescriptionView.swift; sourceTree = "<group>"; };
 		92961C682B679DDB008C9DC1 /* ResetPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordService.swift; sourceTree = "<group>"; };
 		929ED64C2B6A707200EE1E29 /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
 		92E379202B6783FF004F0FD6 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				928550D12B556DB70024A2A5 /* ProductDetailsView.swift */,
+				929272E52B6BD6E700014D5E /* ProductDetailTitleView.swift */,
+				929272E72B6BD70B00014D5E /* ProductDetailDescriptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -803,6 +809,7 @@
 				F260DDBB2B51613600101095 /* APIManager.swift in Sources */,
 				928D77F12B69280100D47F36 /* ForgotPasswordView.swift in Sources */,
 				F2B60DE52B68C7080071204C /* AccountDetails.swift in Sources */,
+				929272E82B6BD70B00014D5E /* ProductDetailDescriptionView.swift in Sources */,
 				F2A657082B6107030070058F /* SideBarView.swift in Sources */,
 				928550D62B556DD50024A2A5 /* AddAddressView.swift in Sources */,
 				F2A6570C2B6127E90070058F /* SideBarViewModel.swift in Sources */,
@@ -817,6 +824,7 @@
 				F260DDB72B51517700101095 /* CustomTextField.swift in Sources */,
 				928BEB2F2B6A4B2E00CB2822 /* ScrollOverFlow.swift in Sources */,
 				928550B02B5561CC0024A2A5 /* LoginViewModel.swift in Sources */,
+				929272E62B6BD6E700014D5E /* ProductDetailTitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
