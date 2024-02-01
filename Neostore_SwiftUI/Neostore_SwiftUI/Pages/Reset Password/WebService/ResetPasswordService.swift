@@ -11,7 +11,7 @@ import Combine
 
 class ResetPasswordService {
     
-    static func resetUserPassword(oldPassword:String, newPassword: String, confirmPassword: String) -> (AnyPublisher<(ResetPasswordResponse?,ResetPasswordResponse?), Error>) {
+    static func resetUserPassword(oldPassword:String, newPassword: String, confirmPassword: String) -> (AnyPublisher<(ResetPasswordResponse?,String?), Error>) {
         
         let params = ["old_password": oldPassword, "password": newPassword, "confirm_password": confirmPassword] as [String: Any]
         
@@ -23,16 +23,10 @@ class ResetPasswordService {
                     if responseData.status == 200{
                         return (responseData, nil)
                     }
-                    return (nil, responseData)
+                    return (nil, responseData.userMsg)
                 }
                 catch {
-                    do {
-                        let responseData = try JSONDecoder().decode(ResetPasswordResponse.self, from: data)
-                        return (nil, responseData)
-                    }
-                    catch {
                         throw error
-                    }
                 }
             }
             .eraseToAnyPublisher()

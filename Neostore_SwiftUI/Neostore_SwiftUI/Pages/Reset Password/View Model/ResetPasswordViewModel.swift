@@ -34,12 +34,12 @@ class ResetPasswordViewModel: ObservableObject{
                                 self.vmVars.alertMessage = error.localizedDescription
                                 self.vmVars.showAlert = true
                             }
-                        }, receiveValue: { (success , error) in
+                        }, receiveValue: { (success , errorMsg) in
                             if success != nil {
                                 self.vmVars.isNavigating = true
-                            } else if error != nil {
+                            } else if errorMsg != nil {
                                 self.vmVars.isNavigating = false
-                                self.vmVars.alertMessage = error?.userMsg ?? ""
+                                self.vmVars.alertMessage = errorMsg ?? ""
                                 self.vmVars.showAlert = true
                             }
                         })

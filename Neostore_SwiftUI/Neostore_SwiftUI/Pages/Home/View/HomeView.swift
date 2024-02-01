@@ -71,66 +71,68 @@ struct HomeView: View {
                                         let titlePosition = data["lblPosition"] as? Position
                                         let imgName = data["imgName"] as? String ?? ""
                                         let imgPosition = data["imgPosition"] as? Position ?? Position.topLeft
-                                        ZStack {
-                                            VStack {
-                                                switch titlePosition {
-                                                case .topLeft:
-                                                    Text(title)
-                                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                                                        .padding([.top, .leading], 15)
-                                                        .font(.title3)
-                                                        .bold()
-                                                        .foregroundColor(.white)
-                                                case .topRight:
-                                                    Text(title)
-                                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                                                        .padding([.top, .trailing], 15)
-                                                        .font(.title3)
-                                                        .bold()
-                                                        .foregroundColor(.white)
-                                                case .bottomLeft:
-                                                    Text(title)
-                                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
-                                                        .padding([.bottom, .leading], 15)
-                                                        .font(.title3)
-                                                        .bold()
-                                                        .foregroundColor(.white)
-                                                case .bottomRight:
-                                                    Text(title)
-                                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                                                        .padding([.bottom, .trailing], 15)
-                                                        .font(.title3)
-                                                        .bold()
-                                                        .foregroundColor(.white)
-                                                default:
-                                                    Text("")
+                                        NavigationLink(destination: ProductListView(categoryId: index)) {
+                                            ZStack {
+                                                VStack {
+                                                    switch titlePosition {
+                                                    case .topLeft:
+                                                        Text(title)
+                                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                                                            .padding([.top, .leading], 15)
+                                                            .font(.title3)
+                                                            .bold()
+                                                            .foregroundColor(.white)
+                                                    case .topRight:
+                                                        Text(title)
+                                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                                                            .padding([.top, .trailing], 15)
+                                                            .font(.title3)
+                                                            .bold()
+                                                            .foregroundColor(.white)
+                                                    case .bottomLeft:
+                                                        Text(title)
+                                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+                                                            .padding([.bottom, .leading], 15)
+                                                            .font(.title3)
+                                                            .bold()
+                                                            .foregroundColor(.white)
+                                                    case .bottomRight:
+                                                        Text(title)
+                                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                                                            .padding([.bottom, .trailing], 15)
+                                                            .font(.title3)
+                                                            .bold()
+                                                            .foregroundColor(.white)
+                                                    default:
+                                                        Text("")
+                                                    }
+                                                }
+                                                VStack {
+                                                    switch imgPosition {
+                                                    case .topLeft:
+                                                        Image(imgName)
+                                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                                                            .padding([.top, .leading], 15)
+                                                    case .topRight:
+                                                        Image(imgName)
+                                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                                                            .padding(.top, -10)
+                                                            .padding(.trailing, 15)
+                                                    case .bottomLeft:
+                                                        Image(imgName)
+                                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+                                                            .padding([.bottom, .leading], 15)
+                                                    case .bottomRight:
+                                                        Image(imgName)
+                                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                                                            .padding(.bottom, 10)
+                                                            .padding(.trailing, 0)
+                                                    }
                                                 }
                                             }
-                                            VStack {
-                                                switch imgPosition {
-                                                case .topLeft:
-                                                    Image(imgName)
-                                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                                                        .padding([.top, .leading], 15)
-                                                case .topRight:
-                                                    Image(imgName)
-                                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                                                        .padding(.top, -10)
-                                                        .padding(.trailing, 15)
-                                                case .bottomLeft:
-                                                    Image(imgName)
-                                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
-                                                        .padding([.bottom, .leading], 15)
-                                                case .bottomRight:
-                                                    Image(imgName)
-                                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                                                        .padding(.bottom, 10)
-                                                        .padding(.trailing, 0)
-                                                }
-                                            }
+                                            .frame(width: (screenWidth/2)-30, height: (screenWidth/2)-30)
+                                            .background(.red)
                                         }
-                                        .frame(width: (screenWidth/2)-30, height: (screenWidth/2)-30)
-                                        .background(.red)
                                     }
                                 }
                             }
