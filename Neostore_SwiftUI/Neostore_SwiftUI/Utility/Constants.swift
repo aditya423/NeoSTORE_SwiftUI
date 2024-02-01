@@ -14,7 +14,7 @@ enum Constants{
 
 class AppColors{
     static var primaryColor = Color(red: 225/255, green: 28/255, blue: 36/255)
-    static var grayColor = Color(red: 237/255, green: 237/255, blue: 237/255)
+    static var grayColor = Color(red: 230/255, green: 230/255, blue: 230/255)
 }
 
 enum FileNames: String {

@@ -8,13 +8,106 @@
 import SwiftUI
 
 struct ProductListView: View {
+    
+    @State var searchText = ""
+    @State var isSearchTextFieldHidden = true
+    @State private var timer: Timer? = nil
+    
+    @ObservedObject var viewModel = ProductListViewModel()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    init(categoryId: Int?) {
+           self.categoryId = categoryId
+           viewModel.getProductList(categoryId: String((categoryId ?? 0) + 1))
+       }
+    
+    var homeVM = HomeViewModel()
+    var categoryId: Int?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 0){
+            Color.red.edgesIgnoringSafeArea(.all)
+                    .frame(maxWidth: .infinity, maxHeight: 1)
+            VStack{
+                if !isSearchTextFieldHidden{
+                    TextField("Search",text: $searchText)
+                        .onChange(of: searchText) { newValue in
+                                       timer?.invalidate()
+                                       timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { _ in
+                                           viewModel.filterProducts(text:searchText)
+                                       }
+                                   }
+                    .frame(maxWidth: .infinity,maxHeight: 50)
+                    .padding(.leading)
+                    .background(.white)
+                    .cornerRadius(5)
+                    .padding([.leading,.trailing,.top])
+                }
+                if viewModel.dataReceived{
+                    List{
+                        ForEach(0..<(viewModel.filterProductList.count ), id: \.self) { index in
+                            ProductListCell(productData: viewModel.filterProductList[index])
+                                .onAppear {
+                                    if index == ((viewModel.filterProductList.count ) - 1) {
+                                        viewModel.page += 1
+                                        viewModel.getProductList(categoryId: String((categoryId ?? 0) + 1))
+                                    }
+                                }
+                                .listRowInsets(EdgeInsets(top: (index == 0 ? 20 : 0), leading: 10, bottom: 0, trailing: 0))
+                                .padding(0)
+                            Rectangle()
+                                .frame(maxWidth: .infinity,maxHeight: 1)
+                                .foregroundColor(AppColors.grayColor)
+                                  .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                  .padding(0)
+                        }
+                        .listRowSeparator(.hidden)
+                    }
+                } else {
+                    ProgressView()
+                }
+            }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 242/255, green: 242/255, blue: 247/255))
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarTitleDisplayMode(.automatic)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    self.presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.white)
+                }
+                
+            }
+            ToolbarItem(placement: .principal) {
+                Text((homeVM.furnitureData[categoryId ?? 0]?["name"] as? String ?? ""))
+                    .font(.title3)
+                    .foregroundColor(.white)
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    self.isSearchTextFieldHidden.toggle()
+                } label: {
+                    Image(ImageNames.search.rawValue)
+                        .foregroundColor(.white)
+                }
+                
+            }
+        }
+        .toolbarBackground(
+            AppColors.primaryColor,
+            for: .navigationBar
+        )
+                }
     }
+    
 }
 
 struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductListView()
+        ProductListView(categoryId: 2)
     }
 }
