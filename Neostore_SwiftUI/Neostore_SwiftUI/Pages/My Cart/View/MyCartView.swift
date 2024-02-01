@@ -11,10 +11,12 @@ struct MyCartView: View {
     
     @State private var showPicker = false
     @State private var selectedQuantity = 1
+    @State private var isLoading = true
     @StateObject var viewModel = MyCartViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
+        
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 
@@ -22,122 +24,168 @@ struct MyCartView: View {
                     .frame(maxWidth: .infinity, maxHeight: 1)
                 
                 ZStack {
-                    ScrollView {
-                        VStack(alignment: .leading) {
+                    if viewModel.vmVars.isLoading {
+                        LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
+                    } else {
+                        List {
                             // ITEM ROWS
-                            ForEach(0..<viewModel.total_items) { index in
-                                HStack {
-                                    AsyncImage(url: URL(string: viewModel.productList?[0].product?.product_images ?? "")) { phase in
-                                        switch phase {
-                                        case .success(let image):
-                                            image
-                                                .resizable()
-                                                .scaledToFill()
-                                        case .failure(_):
-                                            Image(systemName: "person.fill")
-                                                .resizable()
-                                                .scaledToFill()
-                                        @unknown default:
-                                            ProgressView()
-                                        }
-                                    }
-                                    .frame(width: 50, height: 30)
-                                    .padding(.leading, 20)
-                                    
-                                    VStack {
-                                        HStack {
-                                            VStack(alignment: .leading) {
-                                                Text(viewModel.productList?[0].product?.name ?? "")
-                                                Text("(\(viewModel.productList?[0].product?.product_category ?? ""))")
-                                                    .foregroundColor(.gray)
+                            ForEach(0..<(viewModel.productList?.count ?? 0), id: \.self) { index in
+                                VStack(alignment: .leading) {
+                                    HStack {
+                                        AsyncImage(url: URL(string: viewModel.productList?[index].product?.product_images ?? "")) { phase in
+                                            switch phase {
+                                            case .success(let image):
+                                                image
+                                                    .resizable()
+                                                    .scaledToFill()
+                                            case .failure(_):
+                                                Image(systemName: "person.fill")
+                                                    .resizable()
+                                                    .scaledToFill()
+                                            default:
+                                                ProgressView()
                                             }
-                                            Spacer()
                                         }
-                                        HStack {
-                                            Button {
-                                                // open pickerview
-                                                showPicker.toggle()
-                                            } label: {
+                                        .frame(width: 130, height: 85)
+                                        .background(AppColors.grayColor)
+                                        .padding(.leading, 20)
+                                        
+                                        VStack {
+                                            HStack {
+                                                VStack(alignment: .leading) {
+                                                    Text(viewModel.productList?[index].product?.name ?? "")
+                                                    Text("(\(viewModel.productList?[index].product?.product_category ?? ""))")
+                                                        .foregroundColor(.gray)
+                                                }
+                                                Spacer()
+                                            }
+                                            VStack {
                                                 HStack {
-                                                    Text("\(viewModel.productList?[0].quantity ?? 0)")
-                                                    Image(systemName: ImageNames.downArrow.rawValue)
+                                                    HStack {
+                                                        Text("\(viewModel.productList?[index].quantity ?? 0)")
+                                                        Image(systemName: ImageNames.downArrow.rawValue)
+                                                    }
+                                                    .padding(10)
+                                                    .background(AppColors.grayColor)
+                                                    .foregroundColor(.black)
+                                                    .cornerRadius(5)
+                                                    .onTapGesture(perform: {
+                                                        selectedQuantity = (viewModel.productList?[index].quantity ?? 0) - 1
+                                                        showPicker = true
+                                                    })
+                                                    Spacer()
+                                                    Text("₹\(viewModel.productList?[index].product?.sub_total ?? 0)")
+                                                        .padding(.trailing, 20)
+                                                        .fontWeight(.light)
                                                 }
                                             }
-                                            .padding(10)
-                                            .background(AppColors.grayColor)
-                                            .foregroundColor(.black)
-                                            .cornerRadius(5)
-                                            Spacer()
-                                            Text("₹45.00")
-                                                .padding(.trailing, 20)
                                         }
-                                    }
-                                    .padding(.leading, 20)
-                                }
-                                .padding([.top, .bottom], 15)
-                                .background(.white)
-                                //}
-                                
-                                // TOTAL ROW
-                                HStack {
-                                    Text("TOTAL")
                                         .padding(.leading, 20)
+                                    }
+                                    .padding([.top, .bottom], 15)
+                                    .background(.white)
+                                    
                                     Spacer()
-                                    Text("₹180.00")
-                                        .padding(.trailing, 20)
+                                        .frame(maxWidth: .infinity, maxHeight: 1)
+                                        .background(AppColors.grayColor)
                                 }
-                                .padding(.top, 20)
-                                .padding(.bottom, 10)
-                                
-                                // BUTTON
-                                NavigationLink(destination: HomeView()) {
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.white)
+                                .swipeActions {
                                     Button {
-                                        // navigate to add address
+                                        // ADD ALERT AND ON OK API CALL FOR DELETE
+                                        print("Message deleted")
                                     } label: {
+                                        // CHECK IMAGE
+                                        Image(ImageNames.delete.rawValue)
+                                            .resizable()
+                                            .sizeToFit()
+                                    }
+                                    .tint(.red)
+                                }
+                            }
+                            
+                            if viewModel.productList?.count != 0 {
+                                // TOTAL ROW
+                                VStack {
+                                    HStack {
+                                        Text("TOTAL")
+                                            .padding(.leading, 20)
+                                            .bold()
+                                        Spacer()
+                                        Text("₹\(viewModel.total_price)")
+                                            .padding(.trailing, 20)
+                                            .bold()
+                                    }
+                                    .padding([.top, .bottom], 20)
+                                    
+                                    Spacer()
+                                        .frame(maxWidth: .infinity, maxHeight: 1)
+                                        .background(AppColors.grayColor)
+                                }
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.white)
+                                    
+                                // BUTTON
+                                VStack {
+                                    ZStack {
                                         Text("ORDER NOW")
                                             .foregroundColor(.white)
                                             .font(.system(size: 25))
                                             .bold()
                                             .padding(10)
                                             .frame(maxWidth: .infinity)
+                                            .background(.red)
+                                            .cornerRadius(5)
+                                            .padding(20)
+                                            .alert(isPresented: $viewModel.vmVars.showAlert) {
+                                                Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
+                                            }
+                                        NavigationLink(destination: EmptyView()) {
+                                            EmptyView()
+                                        }
+                                        .opacity(0)
+                                        .padding(10)
+                                        .frame(maxWidth: .infinity)
+                                        .cornerRadius(5)
+                                        .padding(20)
                                     }
                                 }
-                                .background(.red)
-                                .cornerRadius(5)
-                                .padding(.top, 30)
-                                .padding([.leading, .trailing], 20)
-                                .alert(isPresented: $viewModel.vmVars.showAlert) {
-                                    Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
-                                }
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                             }
                         }
-                    }
-                    .frame(maxWidth: .infinity)
-                    
-                    if showPicker {
-                        VStack(spacing: 0) {
-                            Spacer()
-                            HStack {
+                        .frame(maxWidth: .infinity)
+
+                        if showPicker {
+                            VStack(spacing: 0) {
                                 Spacer()
-                                Button(action: {
-                                    showPicker = false
-                                }) {
-                                    Text("Done")
-                                        .foregroundColor(.blue)
-                                        .padding(.horizontal)
+                                HStack {
+                                    Spacer()
+                                    Button(action: {
+                                        // EDIT API CALL
+                                        // viewModel.productList[index].product_id
+                                        // selectedQuantity + 1
+                                        showPicker = false
+                                    }) {
+                                        Text("Done")
+                                            .foregroundColor(.blue)
+                                            .padding(.horizontal)
+                                    }
                                 }
-                            }
-                            .frame(height: 30)
-                            .background(Color.yellow)
-                            
-                            Picker(selection: $selectedQuantity, label: Text("Select Quantity")) {
-                                ForEach(1..<11) { number in
-                                    Text("\(number)")
+                                .frame(height: 50)
+                                .background(AppColors.grayColor)
+                                
+                                Picker(selection: $selectedQuantity, label: Text("Select Quantity")) {
+                                    ForEach(0..<viewModel.pickerData.count, id: \.self) { index in
+                                        Text("\(viewModel.pickerData[index])")
+                                    }
                                 }
+                                .pickerStyle(WheelPickerStyle())
+                                .background(Color.white)
+                                .frame(width: geometry.size.width, height: 200, alignment: .bottom)
                             }
-                            .pickerStyle(WheelPickerStyle())
-                            .background(Color.white)
-                            .frame(width: geometry.size.width, height: 200, alignment: .bottom)
                         }
                     }
                 }
@@ -165,10 +213,10 @@ struct MyCartView: View {
                 Color.red,
                 for: .navigationBar
             )
-        }
-        .onAppear {
-            viewModel.vmVars.isLoading = true
-            viewModel.getCartItemsList()
+            .onAppear {
+                viewModel.vmVars.isLoading = true
+                viewModel.getCartItemsList()
+            }
         }
     }
 }
