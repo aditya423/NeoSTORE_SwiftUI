@@ -21,10 +21,7 @@ struct SideBarView: View {
                         ZStack {
                             Color.black.edgesIgnoringSafeArea(.all)
                             VStack {
-                                ProgressView()
-                                    .padding(20)
-                                    .background(.white)
-                                    .cornerRadius(5)
+                                LoaderView(bgColor: .white, tintColor: nil)
                             }
                         }
                         .frame(width: sideBarWidth)
