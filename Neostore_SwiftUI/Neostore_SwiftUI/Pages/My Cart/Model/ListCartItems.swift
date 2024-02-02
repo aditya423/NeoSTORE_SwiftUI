@@ -28,7 +28,7 @@ struct ListCartItemsData : Codable, Equatable {
     
     let id : Int?
     let product_id : Int?
-    let quantity : Int?
+    var quantity : Int?
     let product : ListCartItemsProduct?
     
     enum CodingKeys: String, CodingKey {

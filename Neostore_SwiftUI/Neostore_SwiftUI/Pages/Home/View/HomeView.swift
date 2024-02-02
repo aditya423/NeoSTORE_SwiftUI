@@ -179,7 +179,18 @@ struct HomeView: View {
             .scrollDisabled(isSidebarOpened ? true : false)
             
             // SIDEBAR
-            SideBarView(isSidebarVisible: $isSidebarOpened)
+            ZStack {
+                if isSidebarOpened {
+                    Color.black.opacity(0.001)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            withAnimation {
+                                isSidebarOpened = false
+                            }
+                        }
+                }
+                SideBarView(isSidebarVisible: $isSidebarOpened)
+            }
         }
     }
 }

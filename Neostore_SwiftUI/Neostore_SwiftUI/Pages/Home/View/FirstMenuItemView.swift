@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct FirstMenuItemView: View {
+    
     var menuImage: Image
     var menuData: String
-    var viewModel = SideBarViewModel()
+    @ObservedObject var viewModel: SideBarViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -23,7 +24,7 @@ struct FirstMenuItemView: View {
                 Text(menuData)
                     .foregroundColor(.white)
                 Spacer()
-                Text(SideBarViewModel.total_carts ?? "")
+                Text(SideBarViewModel.shared.total_carts ?? "")
                     .frame(width: 25, height: 25)
                     .background(Color.red)
                     .foregroundColor(Color.white)

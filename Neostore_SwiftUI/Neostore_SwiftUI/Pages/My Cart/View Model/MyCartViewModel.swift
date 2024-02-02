@@ -68,7 +68,7 @@ class MyCartViewModel: ObservableObject {
                 }
             }, receiveValue: { (success, invalidId, invalidToken, wrongMethod) in
                 if success != nil {
-                    SideBarViewModel.total_carts = String(success?.total_carts ?? 0)
+                    SideBarViewModel.shared.total_carts = String(success?.total_carts ?? 0)
                     self.vmVars.total_items = success?.total_carts ?? 0
                     self.vmVars.isLoading = false
                 } else if invalidId != nil {
@@ -81,6 +81,33 @@ class MyCartViewModel: ObservableObject {
                     self.vmVars.isLoading = false
                 } else {
                     self.vmVars.alertMessage = wrongMethod?.user_msg ?? AlertMessages.wrongMethod.rawValue
+                    self.vmVars.showAlert = true
+                    self.vmVars.isLoading = false
+                }
+            })
+            .store(in: &cancellables)
+    }
+    
+    func editItemQuantity(id: Int, qty: Int) {
+        EditCartItemService.editCartItemQuantity(id: id, qty: qty)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.vmVars.alertMessage = error.localizedDescription
+                    self.vmVars.showAlert = true
+                }
+            }, receiveValue: { (success, invalidId, invalidQty) in
+                if success != nil {
+                    self.vmVars.total_items = success?.total_carts ?? 0
+                    self.vmVars.isLoading = false
+                } else if invalidId != nil {
+                    self.vmVars.alertMessage = invalidId?.user_msg ?? AlertMessages.invalidId.rawValue
+                    self.vmVars.showAlert = true
+                    self.vmVars.isLoading = false
+                } else {
+                    self.vmVars.alertMessage = invalidQty?.user_msg ?? AlertMessages.invalidQuantity.rawValue
                     self.vmVars.showAlert = true
                     self.vmVars.isLoading = false
                 }

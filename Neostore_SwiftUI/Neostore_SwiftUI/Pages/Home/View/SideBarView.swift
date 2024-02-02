@@ -37,7 +37,7 @@ struct SideBarView: View {
                                         ProfileView()
                                     } else if i == 1 {
                                         ZStack {
-                                            FirstMenuItemView(menuImage: Image(viewModel.menuImages[i-1]), menuData: viewModel.menuData[i-1])
+                                            FirstMenuItemView(menuImage: Image(viewModel.menuImages[i-1]), menuData: viewModel.menuData[i-1], viewModel: viewModel)
                                             NavigationLink(destination: MyCartView()) {
                                                 EmptyView()
                                             }
@@ -64,6 +64,9 @@ struct SideBarView: View {
                 viewModel.vmVars.isLoading = true
                 viewModel.getAccountDetails()
             }
+        }
+        .onAppear {
+            viewModel.vmVars.isLoading = false
         }
         .alert(viewModel.vmVars.alertMessage, isPresented: $viewModel.vmVars.showAlert) {
             Button("OK", role: .cancel) {

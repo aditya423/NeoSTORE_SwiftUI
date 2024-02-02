@@ -13,9 +13,10 @@ struct MyCartView: View {
     @State private var selectedQuantity = 1
     @State private var isLoading = true
     @State private var isPresentingAlert = false
+    @State private var deleteIndex = 0
+    @State private var editIndex = 0
     @StateObject var viewModel = MyCartViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var capturedIndexRow = 0
     
     var body: some View {
         
@@ -74,6 +75,7 @@ struct MyCartView: View {
                                                     .onTapGesture(perform: {
                                                         selectedQuantity = (viewModel.vmVars.productList?[indexRow].quantity ?? 0) - 1
                                                         showPicker = true
+                                                        editIndex = indexRow
                                                     })
                                                     Spacer()
                                                     Text("₹\(viewModel.vmVars.productList?[indexRow].product?.sub_total ?? 0)")
@@ -95,27 +97,13 @@ struct MyCartView: View {
                                 .listRowSeparator(.hidden)
                                 .listRowBackground(Color.white)
                                 .swipeActions {
-                                    capturedIndexRow = indexRow
                                     Button {
                                         isPresentingAlert = true
+                                        deleteIndex = indexRow
                                     } label: {
                                         Label("Delete", image: ImageNames.delete.rawValue)
                                     }
                                     .tint(.white)
-                                }
-                                .alert(AlertMessages.doYouWantDelete.rawValue, isPresented: $isPresentingAlert) {
-                                    Button("OK", role: .destructive) {
-                                        isPresentingAlert = false
-                                        viewModel.vmVars.isLoading = true
-                                        //viewModel.deleteCartItem(id: viewModel.vmVars.productList?[capturedIndexRow].product_id ?? 1)
-                                        //viewModel.getCartItemsList()
-                                        //                                        guard let product = viewModel.vmVars.productList?[indexRow] else { return }
-                                        //                                        guard let elementIndex = viewModel.vmVars.productList?.firstIndex(of: product) else { return }
-                                        //                                        viewModel.vmVars.productList?.remove(at: elementIndex)
-                                    }
-                                    Button("Cancel", role: .cancel) {
-                                        isPresentingAlert = false
-                                    }
                                 }
                             }
                             
@@ -170,6 +158,17 @@ struct MyCartView: View {
                             }
                         }
                         .frame(maxWidth: .infinity)
+                        .alert(AlertMessages.doYouWantDelete.rawValue, isPresented: $isPresentingAlert) {
+                            Button("OK", role: .destructive) {
+                                isPresentingAlert = false
+                                viewModel.vmVars.isLoading = true
+                                viewModel.deleteCartItem(id: viewModel.vmVars.productList?[deleteIndex].product_id ?? 1)
+                                viewModel.vmVars.productList?.remove(at: deleteIndex)
+                            }
+                            Button("Cancel", role: .cancel) {
+                                isPresentingAlert = false
+                            }
+                        }
 
                         if showPicker {
                             VStack(spacing: 0) {
@@ -177,10 +176,10 @@ struct MyCartView: View {
                                 HStack {
                                     Spacer()
                                     Button(action: {
-                                        // EDIT API CALL
-                                        // viewModel.vmVars.productList[indexRow].product_id
-                                        // selectedQuantity + 1
                                         showPicker = false
+                                        viewModel.vmVars.isLoading = true
+                                        viewModel.editItemQuantity(id: viewModel.vmVars.productList?[editIndex].product_id ?? 1, qty: selectedQuantity+1)
+                                        viewModel.vmVars.productList?[editIndex].quantity = selectedQuantity+1
                                     }) {
                                         Text("Done")
                                             .foregroundColor(.blue)

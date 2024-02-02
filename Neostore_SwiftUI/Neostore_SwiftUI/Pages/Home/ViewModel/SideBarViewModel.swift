@@ -15,12 +15,13 @@ struct SideBarPublishedVars {
 }
 
 class SideBarViewModel: ObservableObject {
+    static let shared = SideBarViewModel()
     
     static var user_data: UserDetails?
-    static var total_carts: String?
     var total_orders: String?
     private var cancellables = Set<AnyCancellable>()
     @Published var vmVars = SideBarPublishedVars()
+    @Published var total_carts: String?
     
     let menuData = ["My Cart", "Tables", "Sofas", "Chairs", "Cupboards", "My Account", "Store Locator", "My Orders", "Logout"]
     let menuImages = ["my-cart-icon", "table", "sofa_icon", "chair", "cupboard-icon", "username_icon", "storelocator_icon", "my-orders-icon", "logout_icon"]
@@ -38,7 +39,7 @@ class SideBarViewModel: ObservableObject {
             }, receiveValue: { (accountDetails, invalidToken, error) in
                 if accountDetails != nil {
                     SideBarViewModel.user_data = accountDetails?.data?.user_data
-                    SideBarViewModel.total_carts = String(accountDetails?.data?.total_carts ?? 0)
+                    SideBarViewModel.shared.total_carts = String(accountDetails?.data?.total_carts ?? 0)
                     self.total_orders = String(accountDetails?.data?.total_orders ?? 0)
                     self.vmVars.isLoading = false
                 } else if invalidToken != nil {
