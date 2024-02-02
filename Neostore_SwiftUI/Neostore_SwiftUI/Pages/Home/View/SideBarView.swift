@@ -32,7 +32,7 @@ struct SideBarView: View {
                         ZStack(alignment: .top) {
                             Color.black.edgesIgnoringSafeArea(.all)
                             List {
-                                ForEach(0..<viewModel.menuData.count+1) { i in
+                                ForEach(0..<viewModel.menuData.count+1, id: \.self) { i in
                                     if i == 0 {
                                         ProfileView()
                                     } else if i == 1 {

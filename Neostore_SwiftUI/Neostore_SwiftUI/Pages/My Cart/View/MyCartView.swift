@@ -12,8 +12,10 @@ struct MyCartView: View {
     @State private var showPicker = false
     @State private var selectedQuantity = 1
     @State private var isLoading = true
+    @State private var isPresentingAlert = false
     @StateObject var viewModel = MyCartViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var capturedIndexRow = 0
     
     var body: some View {
         
@@ -29,17 +31,17 @@ struct MyCartView: View {
                     } else {
                         List {
                             // ITEM ROWS
-                            ForEach(0..<(viewModel.productList?.count ?? 0), id: \.self) { index in
+                            ForEach(0..<(viewModel.vmVars.productList?.count ?? 0), id: \.self) { indexRow in
                                 VStack(alignment: .leading) {
                                     HStack {
-                                        AsyncImage(url: URL(string: viewModel.productList?[index].product?.product_images ?? "")) { phase in
+                                        AsyncImage(url: URL(string: viewModel.vmVars.productList?[indexRow].product?.product_images ?? "")) { phase in
                                             switch phase {
                                             case .success(let image):
                                                 image
                                                     .resizable()
                                                     .scaledToFill()
                                             case .failure(_):
-                                                Image(systemName: "person.fill")
+                                                Image("")
                                                     .resizable()
                                                     .scaledToFill()
                                             default:
@@ -53,8 +55,8 @@ struct MyCartView: View {
                                         VStack {
                                             HStack {
                                                 VStack(alignment: .leading) {
-                                                    Text(viewModel.productList?[index].product?.name ?? "")
-                                                    Text("(\(viewModel.productList?[index].product?.product_category ?? ""))")
+                                                    Text(viewModel.vmVars.productList?[indexRow].product?.name ?? "")
+                                                    Text("(\(viewModel.vmVars.productList?[indexRow].product?.product_category ?? ""))")
                                                         .foregroundColor(.gray)
                                                 }
                                                 Spacer()
@@ -62,7 +64,7 @@ struct MyCartView: View {
                                             VStack {
                                                 HStack {
                                                     HStack {
-                                                        Text("\(viewModel.productList?[index].quantity ?? 0)")
+                                                        Text("\(viewModel.vmVars.productList?[indexRow].quantity ?? 0)")
                                                         Image(systemName: ImageNames.downArrow.rawValue)
                                                     }
                                                     .padding(10)
@@ -70,11 +72,11 @@ struct MyCartView: View {
                                                     .foregroundColor(.black)
                                                     .cornerRadius(5)
                                                     .onTapGesture(perform: {
-                                                        selectedQuantity = (viewModel.productList?[index].quantity ?? 0) - 1
+                                                        selectedQuantity = (viewModel.vmVars.productList?[indexRow].quantity ?? 0) - 1
                                                         showPicker = true
                                                     })
                                                     Spacer()
-                                                    Text("₹\(viewModel.productList?[index].product?.sub_total ?? 0)")
+                                                    Text("₹\(viewModel.vmVars.productList?[indexRow].product?.sub_total ?? 0)")
                                                         .padding(.trailing, 20)
                                                         .fontWeight(.light)
                                                 }
@@ -93,20 +95,31 @@ struct MyCartView: View {
                                 .listRowSeparator(.hidden)
                                 .listRowBackground(Color.white)
                                 .swipeActions {
+                                    capturedIndexRow = indexRow
                                     Button {
-                                        // ADD ALERT AND ON OK API CALL FOR DELETE
-                                        print("Message deleted")
+                                        isPresentingAlert = true
                                     } label: {
-                                        // CHECK IMAGE
-                                        Image(ImageNames.delete.rawValue)
-                                            .resizable()
-                                            .sizeToFit()
+                                        Label("Delete", image: ImageNames.delete.rawValue)
                                     }
-                                    .tint(.red)
+                                    .tint(.white)
+                                }
+                                .alert(AlertMessages.doYouWantDelete.rawValue, isPresented: $isPresentingAlert) {
+                                    Button("OK", role: .destructive) {
+                                        isPresentingAlert = false
+                                        viewModel.vmVars.isLoading = true
+                                        //viewModel.deleteCartItem(id: viewModel.vmVars.productList?[capturedIndexRow].product_id ?? 1)
+                                        //viewModel.getCartItemsList()
+                                        //                                        guard let product = viewModel.vmVars.productList?[indexRow] else { return }
+                                        //                                        guard let elementIndex = viewModel.vmVars.productList?.firstIndex(of: product) else { return }
+                                        //                                        viewModel.vmVars.productList?.remove(at: elementIndex)
+                                    }
+                                    Button("Cancel", role: .cancel) {
+                                        isPresentingAlert = false
+                                    }
                                 }
                             }
                             
-                            if viewModel.productList?.count != 0 {
+                            if viewModel.vmVars.productList?.count != 0 {
                                 // TOTAL ROW
                                 VStack {
                                     HStack {
@@ -114,7 +127,7 @@ struct MyCartView: View {
                                             .padding(.leading, 20)
                                             .bold()
                                         Spacer()
-                                        Text("₹\(viewModel.total_price)")
+                                        Text("₹\(viewModel.vmVars.total_price)")
                                             .padding(.trailing, 20)
                                             .bold()
                                     }
@@ -165,7 +178,7 @@ struct MyCartView: View {
                                     Spacer()
                                     Button(action: {
                                         // EDIT API CALL
-                                        // viewModel.productList[index].product_id
+                                        // viewModel.vmVars.productList[indexRow].product_id
                                         // selectedQuantity + 1
                                         showPicker = false
                                     }) {
@@ -178,8 +191,8 @@ struct MyCartView: View {
                                 .background(AppColors.grayColor)
                                 
                                 Picker(selection: $selectedQuantity, label: Text("Select Quantity")) {
-                                    ForEach(0..<viewModel.pickerData.count, id: \.self) { index in
-                                        Text("\(viewModel.pickerData[index])")
+                                    ForEach(0..<viewModel.pickerData.count, id: \.self) { indexRow in
+                                        Text("\(viewModel.pickerData[indexRow])")
                                     }
                                 }
                                 .pickerStyle(WheelPickerStyle())

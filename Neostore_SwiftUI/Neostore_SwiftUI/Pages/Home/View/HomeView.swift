@@ -35,7 +35,7 @@ struct HomeView: View {
                     ScrollView {
                         // IMAGES CV
                         TabView(selection: $selection) {
-                            ForEach(0..<viewModel.productsImages.count) { index in
+                            ForEach(0..<viewModel.productsImages.count, id: \.self) { index in
                                 Image(viewModel.productsImages[index])
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
