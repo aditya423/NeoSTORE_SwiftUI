@@ -21,10 +21,14 @@ struct ListCartItemsSuccessResponse : Codable {
     }
 }
 
-struct ListCartItemsData : Codable {
+struct ListCartItemsData : Codable, Equatable {
+    static func == (lhs: ListCartItemsData, rhs: ListCartItemsData) -> Bool {
+        return true
+    }
+    
     let id : Int?
     let product_id : Int?
-    let quantity : Int?
+    var quantity : Int?
     let product : ListCartItemsProduct?
     
     enum CodingKeys: String, CodingKey {
