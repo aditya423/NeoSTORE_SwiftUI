@@ -131,6 +131,7 @@ enum ImageNames: String {
     case dob = "dob_icon"
     case search = "search_icon"
     case delete = "delete"
+    case systemCart = "cart.fill"
 }
 
 enum PageHeadings: String {
