@@ -163,6 +163,16 @@ struct HomeView: View {
                             .font(.title)
                             .foregroundColor(.white)
                     }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            // navigate to mycart view
+                        } label: {
+//                            Image(systemName: isSidebarOpened ? ImageNames.backArrow.rawValue : ImageNames.threeLines.rawValue)
+//                                .font(.title3)
+//                                .foregroundColor(.white)
+//                                .bold()
+                        }
+                    }
                 }
                 .toolbarBackground(
                     Color.red,

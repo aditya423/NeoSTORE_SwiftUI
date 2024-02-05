@@ -68,9 +68,9 @@ class MyCartViewModel: ObservableObject {
                 }
             }, receiveValue: { (success, invalidId, invalidToken, wrongMethod) in
                 if success != nil {
-                    SideBarViewModel.shared.total_carts = String(success?.total_carts ?? 0)
+                    CommonViewModel.shared.total_carts = String(success?.total_carts ?? 0)
                     self.vmVars.total_items = success?.total_carts ?? 0
-                    self.vmVars.isLoading = false
+                    self.getCartItemsList()
                 } else if invalidId != nil {
                     self.vmVars.alertMessage = invalidId?.user_msg ?? AlertMessages.invalidId.rawValue
                     self.vmVars.showAlert = true
@@ -101,7 +101,7 @@ class MyCartViewModel: ObservableObject {
             }, receiveValue: { (success, invalidId, invalidQty) in
                 if success != nil {
                     self.vmVars.total_items = success?.total_carts ?? 0
-                    self.vmVars.isLoading = false
+                    self.getCartItemsList()
                 } else if invalidId != nil {
                     self.vmVars.alertMessage = invalidId?.user_msg ?? AlertMessages.invalidId.rawValue
                     self.vmVars.showAlert = true
