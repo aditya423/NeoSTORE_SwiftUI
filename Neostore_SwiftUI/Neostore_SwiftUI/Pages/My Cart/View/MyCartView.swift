@@ -149,6 +149,44 @@ struct MyCartView: View {
                                                 EmptyView()
                                             }
                                             .opacity(0)
+                                .padding([.top, .bottom], 15)
+                                .background(.white)
+                                //}
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.white)
+                                .swipeActions {
+                                    Button {
+                                        // ADD ALERT AND ON OK API CALL FOR DELETE
+                                        print("Message deleted")
+                                    } label: {
+                                        Label("Delete", image: ImageNames.delete.rawValue)
+                                    }
+                                    .tint(.white)
+                                }
+                            }
+                            
+                            if viewModel.productList?.count != 0 {
+                                // TOTAL ROW
+                                HStack {
+                                    Text("TOTAL")
+                                        .padding(.leading, 20)
+                                    Spacer()
+                                    Text("₹180.00")
+                                        .padding(.trailing, 20)
+                                }
+                                .padding(.top, 20)
+                                .padding(.bottom, 10)
+                                
+                                // BUTTON
+                                NavigationLink(destination: HomeView()) {
+                                    Button {
+                                        // navigate to add address
+                                    } label: {
+                                        Text("ORDER NOW")
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 25))
+                                            .bold()
                                             .padding(10)
                                             .frame(maxWidth: .infinity)
                                             .cornerRadius(5)
