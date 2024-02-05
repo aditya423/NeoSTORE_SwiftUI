@@ -41,9 +41,9 @@ struct ProductListView: View {
                     .padding(.leading)
                     .background(.white)
                     .cornerRadius(5)
-                    .padding([.leading,.trailing,.top])
+                    .padding([.leading,.trailing,.top], 20)
                 }
-                if viewModel.dataReceived{
+                if viewModel.dataReceived {
                     List{
                         ForEach(0..<(viewModel.filterProductList.count ), id: \.self) { index in
                             ProductListCell(productData: viewModel.filterProductList[index])
@@ -77,14 +77,15 @@ struct ProductListView: View {
                 Button {
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Image(systemName: "chevron.left")
+                    Image(systemName: ImageNames.backArrow.rawValue)
+                        .font(.title3)
                         .foregroundColor(.white)
+                        .bold()
                 }
-                
             }
             ToolbarItem(placement: .principal) {
                 Text((homeVM.furnitureData[categoryId ?? 0]?["name"] as? String ?? ""))
-                    .font(.title3)
+                    .font(.title2)
                     .foregroundColor(.white)
             }
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -92,7 +93,9 @@ struct ProductListView: View {
                     self.isSearchTextFieldHidden.toggle()
                 } label: {
                     Image(ImageNames.search.rawValue)
+                        .font(.title3)
                         .foregroundColor(.white)
+                        .bold()
                 }
                 
             }
@@ -103,7 +106,6 @@ struct ProductListView: View {
         )
                 }
     }
-    
 }
 
 struct ProductListView_Previews: PreviewProvider {

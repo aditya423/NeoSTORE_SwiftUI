@@ -9,8 +9,21 @@ import Foundation
 import SwiftUI
 import Combine
 
+struct AddAddressPublishers {
+    var showAlert = false
+    var alertMessage = ""
+}
+
 class AddAddressViewModel: ObservableObject{
     
-    @Published var vmVars = NavPublishVars()
+    @Published var vmVars = AddAddressPublishers()
     
+    func validateTextFields(address: String, landmark: String, city: String, state: String, zipcode: String, country: String) -> Bool {
+        if address.isEmpty || landmark.isEmpty || city.isEmpty || state.isEmpty || zipcode.isEmpty || country.isEmpty {
+            vmVars.showAlert = true
+            vmVars.alertMessage = AlertMessages.fillAllFieldsMsg.rawValue
+            return false
+        }
+        return true
+    }
 }

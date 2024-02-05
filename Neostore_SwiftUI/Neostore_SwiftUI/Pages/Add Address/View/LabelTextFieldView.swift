@@ -26,7 +26,11 @@ struct LabelTextFieldView: View {
             HStack{
                 TextField(textFieldPlaceHolder, text: $textFieldString)
                     .padding(10)
-                    .background(.white)
+                    .background(
+                        RoundedRectangle(cornerRadius: 2)
+                            .fill(Color.white)
+                    )
+                    .font(.system(size: 15))
             }
             .padding(.horizontal)
         }
