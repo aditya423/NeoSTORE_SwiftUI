@@ -32,129 +32,131 @@ struct MyCartView: View {
                     } else {
                         List {
                             // ITEM ROWS
-                            ForEach(0..<(viewModel.vmVars.productList?.count ?? 0), id: \.self) { indexRow in
-                                VStack(alignment: .leading) {
-                                    HStack {
-                                        AsyncImage(url: URL(string: viewModel.vmVars.productList?[indexRow].product?.product_images ?? "")) { phase in
-                                            switch phase {
-                                            case .success(let image):
-                                                image
-                                                    .resizable()
-                                                    .scaledToFill()
-                                            case .failure(_):
-                                                Image("")
-                                                    .resizable()
-                                                    .scaledToFill()
-                                            default:
-                                                ProgressView()
-                                            }
-                                        }
-                                        .frame(width: 130, height: 85)
-                                        .background(AppColors.grayColor)
-                                        .padding(.leading, 20)
-                                        
-                                        VStack {
-                                            HStack {
-                                                VStack(alignment: .leading) {
-                                                    Text(viewModel.vmVars.productList?[indexRow].product?.name ?? "")
-                                                    Text("(\(viewModel.vmVars.productList?[indexRow].product?.product_category ?? ""))")
-                                                        .foregroundColor(.gray)
+                            if let productList = viewModel.vmVars.productList {
+                                ForEach(0..<(viewModel.vmVars.productList?.count ?? 0), id: \.self) { indexRow in
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            AsyncImage(url: URL(string: viewModel.vmVars.productList?[indexRow].product?.product_images ?? "")) { phase in
+                                                switch phase {
+                                                case .success(let image):
+                                                    image
+                                                        .resizable()
+                                                        .scaledToFill()
+                                                case .failure(_):
+                                                    Image("")
+                                                        .resizable()
+                                                        .scaledToFill()
+                                                default:
+                                                    ProgressView()
                                                 }
-                                                Spacer()
                                             }
+                                            .frame(width: 130, height: 85)
+                                            .background(AppColors.grayColor)
+                                            .padding(.leading, 20)
+                                            
                                             VStack {
                                                 HStack {
-                                                    HStack {
-                                                        Text("\(viewModel.vmVars.productList?[indexRow].quantity ?? 0)")
-                                                        Image(systemName: ImageNames.downArrow.rawValue)
+                                                    VStack(alignment: .leading) {
+                                                        Text(viewModel.vmVars.productList?[indexRow].product?.name ?? "")
+                                                        Text("(\(viewModel.vmVars.productList?[indexRow].product?.product_category ?? ""))")
+                                                            .foregroundColor(.gray)
                                                     }
-                                                    .padding(10)
-                                                    .background(AppColors.grayColor)
-                                                    .foregroundColor(.black)
-                                                    .cornerRadius(5)
-                                                    .onTapGesture(perform: {
-                                                        selectedQuantity = (viewModel.vmVars.productList?[indexRow].quantity ?? 0) - 1
-                                                        showPicker = true
-                                                        editIndex = indexRow
-                                                    })
                                                     Spacer()
-                                                    Text("₹\(viewModel.vmVars.productList?[indexRow].product?.sub_total ?? 0)")
-                                                        .padding(.trailing, 20)
-                                                        .fontWeight(.light)
+                                                }
+                                                VStack {
+                                                    HStack {
+                                                        HStack {
+                                                            Text("\(viewModel.vmVars.productList?[indexRow].quantity ?? 0)")
+                                                            Image(systemName: ImageNames.downArrow.rawValue)
+                                                        }
+                                                        .padding(10)
+                                                        .background(AppColors.grayColor)
+                                                        .foregroundColor(.black)
+                                                        .cornerRadius(5)
+                                                        .onTapGesture(perform: {
+                                                            selectedQuantity = (viewModel.vmVars.productList?[indexRow].quantity ?? 0) - 1
+                                                            showPicker = true
+                                                            editIndex = indexRow
+                                                        })
+                                                        Spacer()
+                                                        Text("₹\(viewModel.vmVars.productList?[indexRow].product?.sub_total ?? 0)")
+                                                            .padding(.trailing, 20)
+                                                            .fontWeight(.light)
+                                                    }
                                                 }
                                             }
-                                        }
-                                        .padding(.leading, 20)
-                                    }
-                                    .padding([.top, .bottom], 15)
-                                    .background(.white)
-                                    
-                                    Spacer()
-                                        .frame(maxWidth: .infinity, maxHeight: 1)
-                                        .background(AppColors.grayColor)
-                                }
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                .listRowSeparator(.hidden)
-                                .listRowBackground(Color.white)
-                                .swipeActions {
-                                    Button {
-                                        isPresentingAlert = true
-                                        deleteIndex = indexRow
-                                    } label: {
-                                        Label("Delete", image: ImageNames.delete.rawValue)
-                                    }
-                                    .tint(.white)
-                                }
-                            }
-                            
-                            if viewModel.vmVars.productList?.count != 0 {
-                                // TOTAL ROW
-                                VStack {
-                                    HStack {
-                                        Text("TOTAL")
                                             .padding(.leading, 20)
-                                            .bold()
+                                        }
+                                        .padding([.top, .bottom], 15)
+                                        .background(.white)
+                                        
                                         Spacer()
-                                        Text("₹\(viewModel.vmVars.total_price)")
-                                            .padding(.trailing, 20)
-                                            .bold()
+                                            .frame(maxWidth: .infinity, maxHeight: 1)
+                                            .background(AppColors.grayColor)
                                     }
-                                    .padding([.top, .bottom], 20)
-                                    
-                                    Spacer()
-                                        .frame(maxWidth: .infinity, maxHeight: 1)
-                                        .background(AppColors.grayColor)
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                    .listRowSeparator(.hidden)
+                                    .listRowBackground(Color.white)
+                                    .swipeActions {
+                                        Button {
+                                            isPresentingAlert = true
+                                            deleteIndex = indexRow
+                                        } label: {
+                                            Label("Delete", image: ImageNames.delete.rawValue)
+                                        }
+                                        .tint(.white)
+                                    }
                                 }
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                .listRowSeparator(.hidden)
-                                .listRowBackground(Color.white)
+                                
+                                if productList.count != 0 {
+                                    // TOTAL ROW
+                                    VStack {
+                                        HStack {
+                                            Text("TOTAL")
+                                                .padding(.leading, 20)
+                                                .bold()
+                                            Spacer()
+                                            Text("₹\(viewModel.vmVars.total_price)")
+                                                .padding(.trailing, 20)
+                                                .bold()
+                                        }
+                                        .padding([.top, .bottom], 20)
+                                        
+                                        Spacer()
+                                            .frame(maxWidth: .infinity, maxHeight: 1)
+                                            .background(AppColors.grayColor)
+                                    }
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                    .listRowSeparator(.hidden)
+                                    .listRowBackground(Color.white)
                                     
-                                // BUTTON
-                                VStack {
-                                    ZStack {
-                                        Text("ORDER NOW")
-                                            .foregroundColor(.white)
-                                            .font(.system(size: 25))
-                                            .bold()
+                                    // BUTTON
+                                    VStack {
+                                        ZStack {
+                                            Text("ORDER NOW")
+                                                .foregroundColor(.white)
+                                                .font(.system(size: 25))
+                                                .bold()
+                                                .padding(10)
+                                                .frame(maxWidth: .infinity)
+                                                .background(.red)
+                                                .cornerRadius(5)
+                                                .padding(20)
+                                                .alert(isPresented: $viewModel.vmVars.showAlert) {
+                                                    Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
+                                                }
+                                            NavigationLink(destination: EmptyView()) {
+                                                EmptyView()
+                                            }
+                                            .opacity(0)
                                             .padding(10)
                                             .frame(maxWidth: .infinity)
-                                            .background(.red)
                                             .cornerRadius(5)
                                             .padding(20)
-                                            .alert(isPresented: $viewModel.vmVars.showAlert) {
-                                                Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
-                                            }
-                                        NavigationLink(destination: EmptyView()) {
-                                            EmptyView()
                                         }
-                                        .opacity(0)
-                                        .padding(10)
-                                        .frame(maxWidth: .infinity)
-                                        .cornerRadius(5)
-                                        .padding(20)
                                     }
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 }
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                             }
                         }
                         .frame(maxWidth: .infinity)

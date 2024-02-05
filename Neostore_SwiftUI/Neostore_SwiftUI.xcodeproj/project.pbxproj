@@ -72,6 +72,7 @@
 		F2B60DEB2B68E2150071204C /* FirstMenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DEA2B68E2150071204C /* FirstMenuItemView.swift */; };
 		F2B60DED2B68E2310071204C /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DEC2B68E2310071204C /* MenuItemView.swift */; };
 		F2C55AE62B5A7A74007A222A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C55AE52B5A7A74007A222A /* LoginService.swift */; };
+		F2D6B3332B70BB180081E3E3 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6B3322B70BB180081E3E3 /* CommonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +143,7 @@
 		F2B60DEA2B68E2150071204C /* FirstMenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMenuItemView.swift; sourceTree = "<group>"; };
 		F2B60DEC2B68E2310071204C /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		F2C55AE52B5A7A74007A222A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		F2D6B3322B70BB180081E3E3 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -604,6 +606,7 @@
 			children = (
 				F2A657092B6127C30070058F /* HomeViewModel.swift */,
 				F2A6570B2B6127E90070058F /* SideBarViewModel.swift */,
+				F2D6B3322B70BB180081E3E3 /* CommonViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				F2B273B82B6CF49A008A515B /* EditCartItemService.swift in Sources */,
 				F2B60DE02B68C69B0071204C /* AddToCart.swift in Sources */,
 				928BEB2A2B6A242600CB2822 /* MyAccountViewModel.swift in Sources */,
+				F2D6B3332B70BB180081E3E3 /* CommonViewModel.swift in Sources */,
 				928550DC2B556E070024A2A5 /* StoreLocatorView.swift in Sources */,
 				929272E42B6B6ABA00014D5E /* ProductListService.swift in Sources */,
 				F237730F2B51330C000C4AFA /* LoginView.swift in Sources */,
