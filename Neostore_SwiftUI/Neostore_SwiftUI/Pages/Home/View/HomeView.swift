@@ -182,7 +182,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationBarBackButtonHidden()
+            .navigationBarHidden(true)
             .offset(x: isSidebarOpened ? sideBarWidth : 0)
             .scrollDisabled(isSidebarOpened ? true : false)
             

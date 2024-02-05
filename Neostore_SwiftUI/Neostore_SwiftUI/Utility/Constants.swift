@@ -132,6 +132,7 @@ enum ImageNames: String {
     case search = "search_icon"
     case delete = "delete"
     case systemCart = "cart.fill"
+    case cancel = "remove_button"
 }
 
 enum PageHeadings: String {

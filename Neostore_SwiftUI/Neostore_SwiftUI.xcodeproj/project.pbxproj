@@ -73,6 +73,8 @@
 		F2B60DED2B68E2310071204C /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DEC2B68E2310071204C /* MenuItemView.swift */; };
 		F2C55AE62B5A7A74007A222A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C55AE52B5A7A74007A222A /* LoginService.swift */; };
 		F2D6B3332B70BB180081E3E3 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6B3322B70BB180081E3E3 /* CommonViewModel.swift */; };
+		F2D6B3382B71085A0081E3E3 /* AddressListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6B3372B71085A0081E3E3 /* AddressListViewModel.swift */; };
+		F2D6B33A2B710B6E0081E3E3 /* AddressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6B3392B710B6E0081E3E3 /* AddressListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +146,8 @@
 		F2B60DEC2B68E2310071204C /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		F2C55AE52B5A7A74007A222A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		F2D6B3322B70BB180081E3E3 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
+		F2D6B3372B71085A0081E3E3 /* AddressListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListViewModel.swift; sourceTree = "<group>"; };
+		F2D6B3392B710B6E0081E3E3 /* AddressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -471,6 +475,7 @@
 		928F1C6B2B4FBD64007AD919 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				F2D6B3342B7108230081E3E3 /* Address List */,
 				928D77EC2B6927B200D47F36 /* Forgot Password */,
 				92E3791D2B678366004F0FD6 /* Reset Password */,
 				928550BD2B556D070024A2A5 /* My Account */,
@@ -703,6 +708,31 @@
 			path = WebService;
 			sourceTree = "<group>";
 		};
+		F2D6B3342B7108230081E3E3 /* Address List */ = {
+			isa = PBXGroup;
+			children = (
+				F2D6B3352B7108310081E3E3 /* View */,
+				F2D6B3362B7108380081E3E3 /* ViewModel */,
+			);
+			path = "Address List";
+			sourceTree = "<group>";
+		};
+		F2D6B3352B7108310081E3E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2D6B3392B710B6E0081E3E3 /* AddressListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F2D6B3362B7108380081E3E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F2D6B3372B71085A0081E3E3 /* AddressListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -809,6 +839,7 @@
 				F266CE342B516617007EB401 /* HomeView.swift in Sources */,
 				928D77F32B69287700D47F36 /* ForgotPasswordViewModel.swift in Sources */,
 				928D77F52B692F9B00D47F36 /* ForgotPasswordService.swift in Sources */,
+				F2D6B3382B71085A0081E3E3 /* AddressListViewModel.swift in Sources */,
 				F2B60DDE2B68C6820071204C /* ProductRating.swift in Sources */,
 				F2B60DD22B68C5D40071204C /* OrderDetailsView.swift in Sources */,
 				F266CE312B5162DF007EB401 /* Extensions.swift in Sources */,
@@ -818,6 +849,7 @@
 				F2310EAC2B59429C00631690 /* RegisterViewModel.swift in Sources */,
 				F2B60DD92B68C63E0071204C /* DeleteCartItems.swift in Sources */,
 				928F1C5A2B4FBBE6007AD919 /* Neostore_SwiftUIApp.swift in Sources */,
+				F2D6B33A2B710B6E0081E3E3 /* AddressListView.swift in Sources */,
 				F260DDBB2B51613600101095 /* APIManager.swift in Sources */,
 				928D77F12B69280100D47F36 /* ForgotPasswordView.swift in Sources */,
 				F2B60DE52B68C7080071204C /* AccountDetails.swift in Sources */,
