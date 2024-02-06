@@ -19,43 +19,47 @@ struct AddressListView: View {
                 .frame(maxWidth: .infinity, maxHeight: 1)
             
             VStack {
-                if viewModel.address.count != 0 {
-                    HStack {
-                        Group {
-                            if checked {
-                                ZStack{
-                                    Circle()
-                                        .fill(Color.gray)
-                                        .frame(width: 25, height: 25)
-                                    Circle()
-                                        .fill(AppColors.grayColor)
-                                        .frame(width: 15, height: 15)
+                if let fulladdress = viewModel.address {
+                    if fulladdress.count != 0 {
+                        if let address = fulladdress[0] {
+                            HStack {
+                                Group {
+                                    if checked {
+                                        ZStack{
+                                            Circle()
+                                                .fill(Color.gray)
+                                                .frame(width: 25, height: 25)
+                                            Circle()
+                                                .fill(AppColors.grayColor)
+                                                .frame(width: 15, height: 15)
+                                        }
+                                        .onTapGesture {
+                                            self.checked = false
+                                        }
+                                    } else {
+                                        ZStack{
+                                            Circle()
+                                                .fill(Color.gray)
+                                                .frame(width: 25, height: 25)
+                                            Circle()
+                                                .fill(Color.white)
+                                                .frame(width: 15, height: 15)
+                                        }
+                                        .onTapGesture {
+                                            self.checked = true
+                                        }
+                                    }
                                 }
-                                .onTapGesture {
-                                    self.checked = false
-                                }
-                            } else {
-                                ZStack{
-                                    Circle()
-                                        .fill(Color.gray)
-                                        .frame(width: 25, height: 25)
-                                    Circle()
-                                        .fill(Color.white)
-                                        .frame(width: 15, height: 15)
-                                }
-                                .onTapGesture {
-                                    self.checked = true
-                                }
+                                
+                                Text(address)
+                                    .padding(.horizontal, 10)
+                                
+                                Image(ImageNames.cancel.rawValue)
+                                    .onTapGesture {
+                                        viewModel.removeAddress()
+                                    }
                             }
                         }
-                        
-                        Text(UserDefaults.standard.string(forKey: Keys.fullAddress.rawValue) ?? "")
-                            .padding(.horizontal, 10)
-                        
-                        Image(ImageNames.cancel.rawValue)
-                            .onTapGesture {
-                                viewModel.removeAddress()
-                            }
                     }
                 }
             }
