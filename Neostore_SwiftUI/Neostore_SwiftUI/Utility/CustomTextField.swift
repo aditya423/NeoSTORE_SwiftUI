@@ -31,6 +31,7 @@ struct CustomTextField: View {
                 }
                 if isSecureTextField{
                     SecureField("", text: $text)
+                        .textContentType(.oneTimeCode)
                 } else{
                     TextField("", text: $text)
                 }

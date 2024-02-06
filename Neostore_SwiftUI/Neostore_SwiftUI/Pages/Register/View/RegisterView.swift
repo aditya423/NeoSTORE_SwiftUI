@@ -120,9 +120,11 @@ struct RegisterView: View {
                     }
                     
                     CustomTextField(text: $mobileNumber, isImage: true, image: "cellphone_icon", placeholder: "Phone Number")
+                        .keyboardType(.numberPad)
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
+                        .focused($focusedField, equals: 6)
                     
                     HStack(spacing: 5){
                         Button {
@@ -204,6 +206,12 @@ struct RegisterView: View {
                 Text("Register")
                     .font(.headline)
                     .foregroundColor(.white)
+            }
+            ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                    focusedField = nil
+                }
             }
         }
         .toolbarBackground(
