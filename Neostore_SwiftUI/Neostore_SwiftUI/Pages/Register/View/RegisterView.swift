@@ -17,6 +17,7 @@ struct RegisterView: View {
     @State var mobileNumber = ""
     @State var genderSelected = ""
     @State var isTermsAccepted = false
+    @FocusState private var focusedField: Int?
     
     @ObservedObject var registerViewModel = RegisterViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -36,26 +37,44 @@ struct RegisterView: View {
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
+                        .focused($focusedField, equals: 1)
+                        .onSubmit{
+                            focusedField = 2
+                        }
                     
                     CustomTextField(text: $lastName, isImage: true, image: "username_icon", placeholder: "Last Name")
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
+                        .focused($focusedField, equals: 2)
+                        .onSubmit{
+                            focusedField = 3
+                        }
                     
                     CustomTextField(text: $email, isImage: true, image: "email_icon", placeholder: "Email")
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
+                        .focused($focusedField, equals: 3)
+                        .onSubmit{
+                            focusedField = 4
+                        }
                     
-                    CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password")
+                    CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password", isSecureTextField: true)
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
+                        .focused($focusedField, equals: 4)
+                        .onSubmit{
+                            focusedField = 5
+                        }
                     
-                    CustomTextField(text: $confirmPassword, isImage: true, image: "password_icon", placeholder: "Confirm Password")
+                    CustomTextField(text: $confirmPassword, isImage: true, image: "password_icon", placeholder: "Confirm Password", isSecureTextField: true)
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
+                        .focused($focusedField, equals: 5)
+                
                     
                     HStack{
                         Text("Gender")
@@ -101,9 +120,11 @@ struct RegisterView: View {
                     }
                     
                     CustomTextField(text: $mobileNumber, isImage: true, image: "cellphone_icon", placeholder: "Phone Number")
+                        .keyboardType(.numberPad)
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
+                        .focused($focusedField, equals: 6)
                     
                     HStack(spacing: 5){
                         Button {
@@ -185,6 +206,12 @@ struct RegisterView: View {
                 Text("Register")
                     .font(.headline)
                     .foregroundColor(.white)
+            }
+            ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                    focusedField = nil
+                }
             }
         }
         .toolbarBackground(
