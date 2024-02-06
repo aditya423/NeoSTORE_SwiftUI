@@ -16,8 +16,8 @@ struct AddAddressView: View {
     @State var zipCode: String = ""
     @State var country: String = ""
     @State var validated: Bool = false
-    @State var navigate = false
     @StateObject var viewModel = AddAddressViewModel()
+    @ObservedObject var addressListVM: AddressListViewModel
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -55,7 +55,8 @@ struct AddAddressView: View {
                                 if validated {
                                     let fullAddress = "\(address), \(landmark), \(city), \(state), \(zipCode), \(country)"
                                     UserDefaults.standard.set(fullAddress, forKey: Keys.fullAddress.rawValue)
-                                    navigate = true
+                                    addressListVM.setAddress()
+                                    self.presentationMode.wrappedValue.dismiss()
                                 }
                             } label: {
                                 Text("SAVE ADDRESS")
@@ -107,7 +108,8 @@ struct AddAddressView: View {
                         .foregroundColor(.white)
                         .bold()
                 }
-                ToolbarItem(placement: .keyboard) {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
                     Button("Done") {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     }
@@ -120,16 +122,11 @@ struct AddAddressView: View {
             .alert(viewModel.vmVars.alertMessage, isPresented: $viewModel.vmVars.showAlert) {
                 Button("OK", role: .cancel) {}
             }
-        
-        NavigationLink(destination: AddressListView(), isActive: $navigate) {
-            EmptyView()
-        }
     }
 }
 
-struct AddAddressView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddAddressView()
-    }
-}
-
+//struct AddAddressView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddAddressView()
+//    }
+//}

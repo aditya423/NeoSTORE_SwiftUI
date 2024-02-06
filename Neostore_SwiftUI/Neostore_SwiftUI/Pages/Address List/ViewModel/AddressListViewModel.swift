@@ -12,7 +12,7 @@ class AddressListViewModel: ObservableObject {
     @Published var address: [String?] = []
     
     func setAddress() {
-        address += [UserDefaults.standard.string(forKey: Keys.fullAddress.rawValue)]
+        address = [UserDefaults.standard.string(forKey: Keys.fullAddress.rawValue)]
     }
     
     func removeAddress() {
