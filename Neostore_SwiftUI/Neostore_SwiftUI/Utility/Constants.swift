@@ -133,6 +133,7 @@ enum ImageNames: String {
     case delete = "delete"
     case systemCart = "cart.fill"
     case cancel = "remove_button"
+    case share = "share"
 }
 
 enum PageHeadings: String {

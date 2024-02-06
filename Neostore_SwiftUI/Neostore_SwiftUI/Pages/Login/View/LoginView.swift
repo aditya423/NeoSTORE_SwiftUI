@@ -11,6 +11,7 @@ struct LoginView: View {
     
     @State var username = ""
     @State var password = ""
+    @FocusState private var focusedField: Bool?
     
     @ObservedObject var loginViewModel = LoginViewModel()
 
@@ -28,10 +29,14 @@ struct LoginView: View {
                     .border(.white)
                     .padding([.leading, .trailing], 30)
                     .padding(.bottom, 10)
+                    .onSubmit {
+                        focusedField = true
+                    }
                 
-                CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password")
+                CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password", isSecureTextField: true)
                     .border(.white)
                     .padding([.leading, .trailing], 30)
+                    .focused($focusedField,equals: true)
                 
                 
                 HStack {
@@ -87,6 +92,7 @@ struct LoginView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(AppColors.primaryColor)
         .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea(.keyboard)
         .alert(loginViewModel.vmVars.alertMessage, isPresented: $loginViewModel.vmVars.showAlert) {
             Button("OK", role: .cancel) { }
         }

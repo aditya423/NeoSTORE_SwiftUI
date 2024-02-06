@@ -14,6 +14,7 @@ struct CustomTextField: View {
     var isImage: Bool
     var image: String
     var placeholder: String
+    var isSecureTextField: Bool = false
     
     var body: some View {
         HStack {
@@ -28,7 +29,12 @@ struct CustomTextField: View {
                     Text(placeholder)
                         .foregroundColor(.white)
                 }
-                TextField("", text: $text)
+                if isSecureTextField{
+                    SecureField("", text: $text)
+                        .textContentType(.oneTimeCode)
+                } else{
+                    TextField("", text: $text)
+                }
             }
             .font(.system(size: 20))
             .padding(.leading, 10)

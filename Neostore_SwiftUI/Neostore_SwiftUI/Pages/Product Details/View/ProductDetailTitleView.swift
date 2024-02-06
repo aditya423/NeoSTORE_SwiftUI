@@ -10,7 +10,6 @@ import SwiftUI
 struct ProductDetailTitleView: View {
     
     var productDetails: ProductDetails? = ProductDetails(id: 2, product_category_id: 2, name: "Aditya", producer: "Ghadge", description: "venliooiljoib4; oiomixjoj4moijtoixoilt hbhxoij,oi4joixj4oithg oihxojoijoij4t ", cost: 50000, rating: 3, view_count: 3, created: "12345", modified: "2134", product_images: [])
-    var productImages: ProductImages?
     
     var body: some View {
         HStack{
