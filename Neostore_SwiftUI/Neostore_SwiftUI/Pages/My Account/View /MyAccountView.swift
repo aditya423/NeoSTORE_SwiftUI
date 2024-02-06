@@ -29,27 +29,27 @@ struct MyAccountView: View {
                             .cornerRadius(150)
                             .padding(.bottom, 10)
                         
-                        CustomTextField(text: $firstName, isImage: true, image: "user", placeholder: "First Name")
+                        CustomTextField(text: $firstName, isImage: true, image: "username_icon", placeholder: "First Name")
                             .border(.white)
                             .padding([.leading, .trailing], 30)
                             .padding(.bottom, 10)
                         
-                        CustomTextField(text: $firstName, isImage: true, image: "password_icon", placeholder: "Last Name")
+                        CustomTextField(text: $firstName, isImage: true, image: "username_icon", placeholder: "Last Name")
                             .border(.white)
                             .padding([.leading, .trailing], 30)
                             .padding(.bottom, 10)
                         
-                        CustomTextField(text: $firstName, isImage: true, image: "password_icon", placeholder: "Email")
+                        CustomTextField(text: $firstName, isImage: true, image: "email_icon", placeholder: "Email")
                             .border(.white)
                             .padding([.leading, .trailing], 30)
                             .padding(.bottom, 10)
                         
-                        CustomTextField(text: $firstName, isImage: true, image: "password_icon", placeholder: "Phone Number")
+                        CustomTextField(text: $firstName, isImage: true, image: "cellphone_icon", placeholder: "Phone Number")
                             .border(.white)
                             .padding([.leading, .trailing], 30)
                             .padding(.bottom, 10)
                         
-                        CustomTextField(text: $firstName, isImage: true, image: "password_icon", placeholder: "DOB")
+                        CustomTextField(text: $firstName, isImage: true, image: "dob_icon", placeholder: "DOB")
                             .border(.white)
                             .padding([.leading, .trailing], 30)
                             .padding(.bottom, 10)

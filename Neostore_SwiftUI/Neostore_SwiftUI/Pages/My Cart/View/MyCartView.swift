@@ -149,125 +149,127 @@ struct MyCartView: View {
                                                 EmptyView()
                                             }
                                             .opacity(0)
-                                .padding([.top, .bottom], 15)
-                                .background(.white)
-                                //}
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                .listRowSeparator(.hidden)
-                                .listRowBackground(Color.white)
-                                .swipeActions {
-                                    Button {
-                                        // ADD ALERT AND ON OK API CALL FOR DELETE
-                                        print("Message deleted")
-                                    } label: {
-                                        Label("Delete", image: ImageNames.delete.rawValue)
-                                    }
-                                    .tint(.white)
-                                }
-                            }
-                            
-                            if viewModel.productList?.count != 0 {
-                                // TOTAL ROW
-                                HStack {
-                                    Text("TOTAL")
-                                        .padding(.leading, 20)
-                                    Spacer()
-                                    Text("₹180.00")
-                                        .padding(.trailing, 20)
-                                }
-                                .padding(.top, 20)
-                                .padding(.bottom, 10)
-                                
-                                // BUTTON
-                                NavigationLink(destination: HomeView()) {
-                                    Button {
-                                        // navigate to add address
-                                    } label: {
-                                        Text("ORDER NOW")
-                                            .foregroundColor(.white)
-                                            .font(.system(size: 25))
-                                            .bold()
-                                            .padding(10)
-                                            .frame(maxWidth: .infinity)
-                                            .cornerRadius(5)
-                                            .padding(20)
+                                            .padding([.top, .bottom], 15)
+                                            .background(.white)
+                                            //}
+                                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                            .listRowSeparator(.hidden)
+                                            .listRowBackground(Color.white)
+                                            .swipeActions {
+                                                Button {
+                                                    // ADD ALERT AND ON OK API CALL FOR DELETE
+                                                    print("Message deleted")
+                                                } label: {
+                                                    Label("Delete", image: ImageNames.delete.rawValue)
+                                                }
+                                                .tint(.white)
+                                            }
+                                        }
+                                        
+                                        if viewModel.productList?.count != 0 {
+                                            // TOTAL ROW
+                                            HStack {
+                                                Text("TOTAL")
+                                                    .padding(.leading, 20)
+                                                Spacer()
+                                                Text("₹180.00")
+                                                    .padding(.trailing, 20)
+                                            }
+                                            .padding(.top, 20)
+                                            .padding(.bottom, 10)
+                                            
+                                            // BUTTON
+                                            NavigationLink(destination: HomeView()) {
+                                                Button {
+                                                    // navigate to add address
+                                                } label: {
+                                                    Text("ORDER NOW")
+                                                        .foregroundColor(.white)
+                                                        .font(.system(size: 25))
+                                                        .bold()
+                                                        .padding(10)
+                                                        .frame(maxWidth: .infinity)
+                                                        .cornerRadius(5)
+                                                        .padding(20)
+                                                }
+                                            }
+                                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                         }
                                     }
-                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 }
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
-                        .alert(AlertMessages.doYouWantDelete.rawValue, isPresented: $isPresentingAlert) {
-                            Button("OK", role: .destructive) {
-                                isPresentingAlert = false
-                                viewModel.vmVars.isLoading = true
-                                viewModel.deleteCartItem(id: viewModel.vmVars.productList?[deleteIndex].product_id ?? 1)
-                                viewModel.vmVars.productList?.remove(at: deleteIndex)
-                            }
-                            Button("Cancel", role: .cancel) {
-                                isPresentingAlert = false
-                            }
-                        }
-
-                        if showPicker {
-                            VStack(spacing: 0) {
-                                Spacer()
-                                HStack {
-                                    Spacer()
-                                    Button(action: {
-                                        showPicker = false
-                                        viewModel.vmVars.isLoading = true
-                                        viewModel.editItemQuantity(id: viewModel.vmVars.productList?[editIndex].product_id ?? 1, qty: selectedQuantity+1)
-                                        viewModel.vmVars.productList?[editIndex].quantity = selectedQuantity+1
-                                    }) {
-                                        Text("Done")
-                                            .foregroundColor(.blue)
-                                            .padding(.horizontal)
+                                    .frame(maxWidth: .infinity)
+                                    .alert(AlertMessages.doYouWantDelete.rawValue, isPresented: $isPresentingAlert) {
+                                        Button("OK", role: .destructive) {
+                                            isPresentingAlert = false
+                                            viewModel.vmVars.isLoading = true
+                                            viewModel.deleteCartItem(id: viewModel.vmVars.productList?[deleteIndex].product_id ?? 1)
+                                            viewModel.vmVars.productList?.remove(at: deleteIndex)
+                                        }
+                                        Button("Cancel", role: .cancel) {
+                                            isPresentingAlert = false
+                                        }
                                     }
-                                }
-                                .frame(height: 50)
-                                .background(AppColors.grayColor)
                                 
-                                Picker(selection: $selectedQuantity, label: Text("Select Quantity")) {
-                                    ForEach(0..<viewModel.pickerData.count, id: \.self) { indexRow in
-                                        Text("\(viewModel.pickerData[indexRow])")
+                                if showPicker {
+                                    VStack(spacing: 0) {
+                                        Spacer()
+                                        HStack {
+                                            Spacer()
+                                            Button(action: {
+                                                showPicker = false
+                                                viewModel.vmVars.isLoading = true
+                                                viewModel.editItemQuantity(id: viewModel.vmVars.productList?[editIndex].product_id ?? 1, qty: selectedQuantity+1)
+                                                viewModel.vmVars.productList?[editIndex].quantity = selectedQuantity+1
+                                            }) {
+                                                Text("Done")
+                                                    .foregroundColor(.blue)
+                                                    .padding(.horizontal)
+                                            }
+                                        }
+                                        .frame(height: 50)
+                                        .background(AppColors.grayColor)
+                                        
+                                        Picker(selection: $selectedQuantity, label: Text("Select Quantity")) {
+                                            ForEach(0..<viewModel.pickerData.count, id: \.self) { indexRow in
+                                                Text("\(viewModel.pickerData[indexRow])")
+                                            }
+                                        }
+                                        .pickerStyle(WheelPickerStyle())
+                                        .background(Color.white)
+                                        .frame(width: geometry.size.width, height: 200, alignment: .bottom)
                                     }
                                 }
-                                .pickerStyle(WheelPickerStyle())
-                                .background(Color.white)
-                                .frame(width: geometry.size.width, height: 200, alignment: .bottom)
                             }
                         }
                     }
-                }
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden()
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Image(systemName: ImageNames.backArrow.rawValue)
-                        .font(.title3)
-                        .foregroundColor(.white)
-                        .bold()
-                        .onTapGesture {
-                            presentationMode.wrappedValue.dismiss()
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationBarBackButtonHidden()
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Image(systemName: ImageNames.backArrow.rawValue)
+                                    .font(.title3)
+                                    .foregroundColor(.white)
+                                    .bold()
+                                    .onTapGesture {
+                                        presentationMode.wrappedValue.dismiss()
+                                    }
+                            }
+                            ToolbarItem(placement: .principal) {
+                                Text("My Cart")
+                                    .font(.title2)
+                                    .foregroundColor(.white)
+                                    .bold()
+                            }
+                        }
+                        .toolbarBackground(
+                            Color.red,
+                            for: .navigationBar
+                        )
+                        .onAppear {
+                            viewModel.vmVars.isLoading = true
+                            viewModel.getCartItemsList()
                         }
                 }
-                ToolbarItem(placement: .principal) {
-                    Text("My Cart")
-                        .font(.title2)
-                        .foregroundColor(.white)
-                        .bold()
-                }
-            }
-            .toolbarBackground(
-                Color.red,
-                for: .navigationBar
-            )
-            .onAppear {
-                viewModel.vmVars.isLoading = true
-                viewModel.getCartItemsList()
             }
         }
     }

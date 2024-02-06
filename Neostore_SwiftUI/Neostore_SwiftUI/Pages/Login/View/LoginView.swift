@@ -29,7 +29,7 @@ struct LoginView: View {
                     .padding([.leading, .trailing], 30)
                     .padding(.bottom, 10)
                 
-                CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password")
+                CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password", isSecureTextField: true)
                     .border(.white)
                     .padding([.leading, .trailing], 30)
                 
