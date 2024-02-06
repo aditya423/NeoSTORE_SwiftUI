@@ -46,7 +46,11 @@ struct ProductListView: View {
                 if viewModel.dataReceived {
                     List{
                         ForEach(0..<(viewModel.filterProductList.count ), id: \.self) { index in
-                            ProductListCell(productData: viewModel.filterProductList[index])
+                            ZStack{
+                                NavigationLink(destination: ProductDetailsView(productId: viewModel.filterProductList[index].id)) {
+                                    ProductListCell(productData: viewModel.filterProductList[index])
+                                }
+                            }
                                 .onAppear {
                                     if index == ((viewModel.filterProductList.count ) - 1) {
                                         viewModel.page += 1
