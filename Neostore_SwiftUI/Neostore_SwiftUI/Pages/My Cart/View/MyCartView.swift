@@ -145,7 +145,7 @@ struct MyCartView: View {
                                                 .alert(isPresented: $viewModel.vmVars.showAlert) {
                                                     Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
                                                 }
-                                            NavigationLink(destination: AddAddressView()) {
+                                            NavigationLink(destination: AddressListView()) {
                                                 EmptyView()
                                             }
                                             .opacity(0)
