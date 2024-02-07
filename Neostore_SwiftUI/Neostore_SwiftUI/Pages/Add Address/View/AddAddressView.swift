@@ -18,6 +18,7 @@ struct AddAddressView: View {
     @State var validated: Bool = false
     @StateObject var viewModel = AddAddressViewModel()
     @ObservedObject var addressListVM: AddressListViewModel
+    @FocusState var focusedField: Int?
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -29,13 +30,25 @@ struct AddAddressView: View {
                     ScrollViewReader { proxy in
                         VStack(alignment: .leading) {
                             LabelTextFieldView(textFieldString: $address, textFieldPlaceHolder: "NeoSOFT Technologies, 6th Floor, The Business Arcade, Prabhadevi (West)", textString: "ADDRESS")
+                                .onSubmit {
+                                    focusedField = 2
+                                }
                             LabelTextFieldView(textFieldString: $landmark, textFieldPlaceHolder: "OPPOSITE TO MOTILAL OSWAL", textString: "LANDMARK")
+                                .focused($focusedField, equals: 2)
+                                .onSubmit {
+                                    focusedField = 3
+                                }
                             
                             HStack{
                                 VStack{
                                     LabelTextFieldView(textFieldString: $city, textFieldPlaceHolder: "MUMBAI", textString: "CITY")
+                                        .focused($focusedField, equals: 3)
+                                        .onSubmit {
+                                            focusedField = 4
+                                        }
                                     LabelTextFieldView(textFieldString: $zipCode, textFieldPlaceHolder: "400012", textString: "ZIPCODE")
                                         .id("zipcode")
+                                        .focused($focusedField, equals: 5)
                                         .keyboardType(.numberPad)
                                         .onChange(of: zipCode) { newValue in
                                             if newValue.count > 6 {
@@ -45,6 +58,10 @@ struct AddAddressView: View {
                                 }
                                 VStack{
                                     LabelTextFieldView(textFieldString: $state, textFieldPlaceHolder: "MAHARASHTRA", textString: "STATE")
+                                        .focused($focusedField, equals: 4)
+                                        .onSubmit {
+                                            focusedField = 5
+                                        }
                                     LabelTextFieldView(textFieldString: $country, textFieldPlaceHolder: "INDIA", textString: "COUNTRY")
                                         .id("country")
                                 }

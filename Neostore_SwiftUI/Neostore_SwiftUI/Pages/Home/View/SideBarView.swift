@@ -87,15 +87,12 @@ struct SideBarView: View {
                                         }
                                         .listRowBackground(Color.black)
                                     case 9:
-                                        // LOGOUT
-                                        ZStack {
-                                            MenuItemView(imageName: imageName, title: title)
-                                            NavigationLink(destination: MyAccountView()) {
-                                                EmptyView()
+                                        MenuItemView(imageName: imageName, title: title)
+                                            .onTapGesture {
+                                                UserDefaults.standard.setLoggedIn(value: false)
+                                                UserDefaults.standard.setUserToken(value: nil)
+                                                NotificationCenter.default.post(name: Notification.Name("popToLogin"), object: nil)
                                             }
-                                            .opacity(0)
-                                        }
-                                        .listRowBackground(Color.black)
                                     default:
                                         EmptyView()
                                     }

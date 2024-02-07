@@ -11,7 +11,7 @@ struct HomeView: View {
     
     @State private var isSidebarOpened = false
     @State private var selection = 0
-    @State private var navigationId = UUID()
+    @State var navigationId = UUID()
     var viewModel = HomeViewModel()
     var screenWidth = UIScreen.main.bounds.width
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.8
