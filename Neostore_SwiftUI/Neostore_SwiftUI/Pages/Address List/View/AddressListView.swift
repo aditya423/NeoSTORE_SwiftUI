@@ -107,38 +107,6 @@ struct AddressListView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(.white)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .navigationBarBackButtonHidden()
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button {
-                                self.presentationMode.wrappedValue.dismiss()
-                            } label: {
-                                Image(systemName: ImageNames.backArrow.rawValue)
-                                    .font(.title3)
-                                    .foregroundColor(.white)
-                                    .bold()
-                            }
-                        }
-                        ToolbarItem(placement: .principal) {
-                            Text("Address List")
-                                .bold()
-                                .font(.title2)
-                                .foregroundColor(.white)
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            NavigationLink(destination: AddAddressView(addressListVM: viewModel)) {
-                                Image(systemName: ImageNames.plusImage.rawValue)
-                                    .font(.title3)
-                                    .foregroundColor(.white)
-                                    .bold()
-                            }
-                        }
-                    }
-                    .toolbarBackground(
-                        Color.red,
-                        for: .navigationBar
-                    )
                     .alert(isPresented: $placeOrderViewModel.vmVars.showAlert) {
                         Alert(title: Text(AlertMessages.errorMsg.rawValue), message: Text(placeOrderViewModel.vmVars.alertMessage))
                     }
@@ -147,6 +115,38 @@ struct AddressListView: View {
                     }
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        self.presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: ImageNames.backArrow.rawValue)
+                            .font(.title3)
+                            .foregroundColor(.white)
+                            .bold()
+                    }
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("Address List")
+                        .bold()
+                        .font(.title2)
+                        .foregroundColor(.white)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: AddAddressView(addressListVM: viewModel)) {
+                        Image(systemName: ImageNames.plusImage.rawValue)
+                            .font(.title3)
+                            .foregroundColor(.white)
+                            .bold()
+                    }
+                }
+            }
+            .toolbarBackground(
+                Color.red,
+                for: .navigationBar
+            )
         }
     }
 }
