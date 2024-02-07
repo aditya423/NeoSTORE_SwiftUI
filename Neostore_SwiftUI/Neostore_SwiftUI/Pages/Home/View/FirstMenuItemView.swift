@@ -9,19 +9,19 @@ import SwiftUI
 
 struct FirstMenuItemView: View {
     
-    var menuImage: Image
-    var menuData: String
+    var imageName: String
+    var title: String
     @ObservedObject var viewModel: SideBarViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                menuImage
+                Image(imageName)
                     .resizable()
                     .frame(width: 25, height: 25)
                     .aspectRatio(contentMode: .fill)
                 Spacer().frame(width: 15)
-                Text(menuData)
+                Text(title)
                     .foregroundColor(.white)
                 Spacer()
                 Text(CommonViewModel.shared.total_carts ?? "")
