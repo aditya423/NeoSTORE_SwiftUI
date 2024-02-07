@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct MenuItemView: View {
-    var menuImage: Image
-    var menuData: String
+    
+    var imageName: String
+    var title: String
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                menuImage
+                Image(imageName)
                     .resizable()
                     .frame(width: 25, height: 25)
                     .aspectRatio(contentMode: .fill)
                 Spacer().frame(width: 15)
-                Text(menuData)
+                Text(title)
                     .foregroundColor(.white)
+                Spacer()
             }
         }
         .listRowBackground(Color.black)
