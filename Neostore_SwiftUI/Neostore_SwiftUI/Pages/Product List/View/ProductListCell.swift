@@ -19,16 +19,16 @@ struct ProductListCell: View {
                 case .success(let image):
                     image
                         .resizable()
-                        .frame(maxWidth: 80,maxHeight: 80,alignment: .center)
+                        
                 case .failure(_):
-                    Image(systemName: "person.fill")
+                    Image("")
                         .resizable()
                         .scaledToFill()
-                        .frame(maxWidth: 80,maxHeight: 80,alignment: .center)
                 default:
                     ProgressView()
                 }
             }
+            .frame(maxWidth: 80,maxHeight: 80,alignment: .center)
             .padding(.trailing)
             
             VStack(alignment: .leading){
