@@ -74,7 +74,6 @@ struct RegisterView: View {
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
                         .focused($focusedField, equals: 5)
-                
                     
                     HStack{
                         Text("Gender")

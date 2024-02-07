@@ -68,7 +68,7 @@ struct ProductListView: View {
                         .listRowSeparator(.hidden)
                     }
                 } else {
-                    ProgressView()
+                    LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
                 }
             }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

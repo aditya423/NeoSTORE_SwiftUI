@@ -12,13 +12,13 @@ struct OrderDetailsVars {
     var showAlert = false
     var alertMessage = ""
     var isLoading = false
+    var order_details: OrderDetailsOverview?
+    var product_details: [OrderDetails]?
 }
 
-class OrderDetailsViewModel {
+class OrderDetailsViewModel: ObservableObject {
     
     @Published var vmVars = OrderDetailsVars()
-    @Published var order_details: OrderDetailsOverview?
-    @Published var product_details: [OrderDetails]?
     private var cancellables = Set<AnyCancellable>()
     
     func getOrderDetails(id: Int) {
@@ -33,8 +33,8 @@ class OrderDetailsViewModel {
                 }
             }, receiveValue: { (success, invalidData) in
                 if success != nil {
-                    self.order_details = success?.data
-                    self.product_details = success?.data?.order_details
+                    self.vmVars.order_details = success?.data
+                    self.vmVars.product_details = success?.data?.order_details
                     self.vmVars.isLoading = false
                 } else {
                     self.vmVars.alertMessage = invalidData?.user_msg ?? AlertMessages.invalidDataOrToken.rawValue

@@ -12,7 +12,6 @@ struct LoginView: View {
     @State var username = ""
     @State var password = ""
     @FocusState private var focusedField: Bool?
-    
     @ObservedObject var loginViewModel = LoginViewModel()
 
     var body: some View {
@@ -36,7 +35,7 @@ struct LoginView: View {
                 CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password", isSecureTextField: true)
                     .border(.white)
                     .padding([.leading, .trailing], 30)
-                    .focused($focusedField,equals: true)
+                    .focused($focusedField, equals: true)
                 
                 
                 HStack {

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct OrderListView: View {
     
+    @State var orderId: Int?
+    @State var isNavigating = false
     @StateObject var viewModel = OrderListViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -24,24 +26,44 @@ struct OrderListView: View {
                     List {
                         if let orderList = viewModel.order_list {
                             ForEach(0..<(viewModel.order_list?.count ?? 0), id: \.self) { indexRow in
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text("Order ID: \(orderList[indexRow].id ?? 0)")
-                                            .padding(.bottom, 5)
-                                        Text("Ordered Date: \(orderList[indexRow].created ?? "")")
+                                VStack {
+                                    ZStack {
+                                        HStack {
+                                            VStack(alignment: .leading) {
+                                                Text("Order ID : \(orderList[indexRow].id ?? 0)")
+                                                    .font(.system(size: 18))
+                                                    .padding(.bottom, 5)
+                                                Text("Ordered Date : \(orderList[indexRow].created ?? "")")
+                                                    .font(.system(size: 15))
+                                                    .foregroundColor(.gray)
+                                            }
+                                            .padding(.leading, 20)
+                                            Spacer()
+                                            VStack(alignment: .trailing) {
+                                                Text("₹\(Int(orderList[indexRow].cost ?? 0))")
+                                                    .font(.system(size: 20))
+                                            }
+                                            .padding(.trailing, 20)
+                                        }
+                                        .padding([.top, .bottom], 20)
                                     }
-                                    .padding(.leading, 20)
+                                    .onTapGesture {
+                                        orderId = orderList[indexRow].id ?? 0
+                                        isNavigating = true
+                                    }
+                                    
                                     Spacer()
-                                    VStack(alignment: .trailing) {
-                                        Text("₹\(Int(orderList[indexRow].cost ?? 0))")
-                                    }
-                                    .padding(.trailing, 20)
+                                        .frame(maxWidth: .infinity, maxHeight: 1)
+                                        .background(AppColors.grayColor)
                                 }
-                                .listRowInsets(EdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0))
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 .listRowSeparator(.hidden)
-                                .listRowBackground(Color.white)
                             }
                         }
+                    }
+                    
+                    NavigationLink(destination: OrderDetailsView(orderId: $orderId), isActive: $isNavigating) {
+                        EmptyView()
                     }
                 }
             }
