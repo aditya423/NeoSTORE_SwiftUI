@@ -66,8 +66,8 @@ struct HomeView: View {
                                 GridItem(.flexible(), spacing: 20),
                                 GridItem(.flexible(), spacing: 20)
                             ], spacing: 20) {
-                                ForEach(0..<viewModel.furnitureData.count, id: \.self) { index in
-                                    if let data = viewModel.furnitureData[index] {
+                                ForEach(0..<HomeViewModel.furnitureData.count, id: \.self) { index in
+                                    if let data = HomeViewModel.furnitureData[index] {
                                         let title = data["name"] as? String ?? ""
                                         let titlePosition = data["lblPosition"] as? Position
                                         let imgName = data["imgName"] as? String ?? ""
