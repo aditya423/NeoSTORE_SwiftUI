@@ -102,7 +102,6 @@ struct ProductListView: View {
                         .foregroundColor(.white)
                         .bold()
                 }
-                
             }
         }
         .toolbarBackground(

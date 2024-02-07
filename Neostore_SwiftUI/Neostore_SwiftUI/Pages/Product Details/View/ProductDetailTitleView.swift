@@ -50,6 +50,7 @@ struct ProductDetailTitleView: View {
             }
             .padding([.leading,.top,.bottom])
         }
+        .background(.white)
     }
 }
 

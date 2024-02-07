@@ -36,7 +36,7 @@ struct ProductDetailDescriptionView: View {
                 }
             }
             .padding()
-            AsyncImage(url: URL(string: productImages[0]?.image ?? ""))
+            AsyncImage(url: URL(string: productImages[selectedImage]?.image ?? ""))
             { phase in
                 switch phase {
                 case .success(let image):
@@ -50,9 +50,12 @@ struct ProductDetailDescriptionView: View {
                     ProgressView()
                 }
             }
-            .frame(maxWidth: 180,maxHeight: 180)
+            .frame(maxWidth: 200,maxHeight: 160)
             .padding()
-            .border(AppColors.grayColor,width: 1)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(AppColors.grayColor, lineWidth: 1)
+            )
             .cornerRadius(5)
             
             ScrollView(.horizontal) {
@@ -81,21 +84,29 @@ struct ProductDetailDescriptionView: View {
                         }
                         .padding(.horizontal)
                         .padding(10)
-                        .border((selectedImage == index ? .red:.black),width: 1)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke((selectedImage == index ? .red:.black), lineWidth: 1)
+                        )
                         .cornerRadius(5)
-                        .padding(.bottom,20)
-                        
+                        .padding(.bottom,10)
+                        .padding(.leading,(index == 0 ? 20 : 0))
                     }
                 }
             }
+            Rectangle()
+                .frame(maxWidth: .infinity,maxHeight: 1)
+                .background(AppColors.grayColor)
+                .opacity(0.2)
             VStack(alignment: .leading){
                 Text("Description")
                     .fontWeight(.bold)
                     .font(.title)
                     .padding(.horizontal,2)
                 Text("\(productDetails?.description ?? "")")
+                    .padding(.bottom)
             }
-            
+            .padding(.horizontal)
         }
         .background(.white)
     }
