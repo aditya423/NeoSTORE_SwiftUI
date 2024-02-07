@@ -16,7 +16,7 @@ struct SideBarView: View {
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                Group {
+                //Group {
                     if viewModel.vmVars.isLoading {
                         ZStack {
                             Color.black.edgesIgnoringSafeArea(.all)
@@ -32,20 +32,72 @@ struct SideBarView: View {
                         ZStack(alignment: .top) {
                             Color.black.edgesIgnoringSafeArea(.all)
                             List {
-                                ForEach(0..<viewModel.menuData.count+1, id: \.self) { i in
-                                    if i == 0 {
+                                ForEach(0..<viewModel.menuData.count+1, id: \.self) { indexRow in
+                                    let imageName = viewModel.menuData[indexRow]?["imageName"] ?? ""
+                                    let title = viewModel.menuData[indexRow]?["title"] ?? ""
+                                    switch indexRow {
+                                    case 0:
                                         ProfileView()
-                                    } else if i == 1 {
+                                    case 1:
                                         ZStack {
-                                            FirstMenuItemView(menuImage: Image(viewModel.menuImages[i-1]), menuData: viewModel.menuData[i-1], viewModel: viewModel)
+                                            FirstMenuItemView(imageName: imageName, title: title, viewModel: viewModel)
                                             NavigationLink(destination: MyCartView()) {
                                                 EmptyView()
                                             }
                                             .opacity(0)
                                         }
                                         .listRowBackground(Color.black)
-                                    } else {
-                                        MenuItemView(menuImage: Image(viewModel.menuImages[i-1]), menuData: viewModel.menuData[i-1])
+                                    case 2...5:
+                                        ZStack {
+                                            if let categoryId = viewModel.menuData[indexRow]?["categoryId"], let intCategoryId = Int(categoryId) {
+                                                let newCategoryId = intCategoryId - 1
+                                                MenuItemView(imageName: imageName, title: title)
+                                                NavigationLink(destination: ProductListView(categoryId: newCategoryId)) {
+                                                    EmptyView()
+                                                }
+                                                .opacity(0)
+                                            }
+                                        }
+                                        .listRowBackground(Color.black)
+                                    case 6:
+                                        ZStack {
+                                            MenuItemView(imageName: imageName, title: title)
+                                            NavigationLink(destination: MyAccountView()) {
+                                                EmptyView()
+                                            }
+                                            .opacity(0)
+                                        }
+                                        .listRowBackground(Color.black)
+                                    case 7:
+                                        ZStack {
+                                            MenuItemView(imageName: imageName, title: title)
+                                            NavigationLink(destination: StoreLocatorView()) {
+                                                EmptyView()
+                                            }
+                                            .opacity(0)
+                                        }
+                                        .listRowBackground(Color.black)
+                                    case 8:
+                                        ZStack {
+                                            MenuItemView(imageName: imageName, title: title)
+                                            NavigationLink(destination: OrderListView()) {
+                                                EmptyView()
+                                            }
+                                            .opacity(0)
+                                        }
+                                        .listRowBackground(Color.black)
+                                    case 9:
+                                        // LOGOUT
+                                        ZStack {
+                                            MenuItemView(imageName: imageName, title: title)
+                                            NavigationLink(destination: MyAccountView()) {
+                                                EmptyView()
+                                            }
+                                            .opacity(0)
+                                        }
+                                        .listRowBackground(Color.black)
+                                    default:
+                                        EmptyView()
                                     }
                                 }
                             }
@@ -56,7 +108,7 @@ struct SideBarView: View {
                         .animation(.default, value: isSidebarVisible)
                         Spacer()
                     }
-                }
+                //}
             }
         }
         .onChange(of: isSidebarVisible) { isVisible in

@@ -21,8 +21,17 @@ class SideBarViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     @Published var vmVars = SideBarPublishedVars()
     
-    let menuData = ["My Cart", "Tables", "Sofas", "Chairs", "Cupboards", "My Account", "Store Locator", "My Orders", "Logout"]
-    let menuImages = ["my-cart-icon", "table", "sofa_icon", "chair", "cupboard-icon", "username_icon", "storelocator_icon", "my-orders-icon", "logout_icon"]
+    let menuData = [0: ["imageName":"", "title":""],
+                    1: ["imageName":"my-cart-icon", "title":"My Cart"],
+                    2: ["imageName":"table", "title":"Tables", "categoryId":"1"],
+                    3: ["imageName":"sofa_icon", "title":"Sofas", "categoryId":"2"],
+                    4: ["imageName":"chair", "title":"Chairs", "categoryId":"3"],
+                    5: ["imageName":"cupboard-icon", "title":"Cupboards", "categoryId":"4"],
+                    6: ["imageName":"username_icon", "title":"My Account"],
+                    7: ["imageName":"storelocator_icon", "title":"Store Locator"],
+                    8: ["imageName":"my-orders-icon", "title":"My Orders"],
+                    9: ["imageName":"logout_icon", "title":"Logout"]
+    ]
     
     func getAccountDetails() {
         AccountDetailsService.getAccountDetails()
