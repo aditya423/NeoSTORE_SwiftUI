@@ -21,7 +21,6 @@ struct ProductListView: View {
            viewModel.getProductList(categoryId: String((categoryId ?? 0) + 1))
        }
     
-    var homeVM = HomeViewModel()
     var categoryId: Int?
     
     var body: some View {
@@ -47,9 +46,11 @@ struct ProductListView: View {
                     List{
                         ForEach(0..<(viewModel.filterProductList.count ), id: \.self) { index in
                             ZStack{
+                                ProductListCell(productData: viewModel.filterProductList[index])
                                 NavigationLink(destination: ProductDetailsView(productId: viewModel.filterProductList[index].id)) {
-                                    ProductListCell(productData: viewModel.filterProductList[index])
+                                    EmptyView()
                                 }
+                                .opacity(0)
                             }
                                 .onAppear {
                                     if index == ((viewModel.filterProductList.count ) - 1) {
@@ -88,7 +89,7 @@ struct ProductListView: View {
                 }
             }
             ToolbarItem(placement: .principal) {
-                Text((homeVM.furnitureData[categoryId ?? 0]?["name"] as? String ?? ""))
+                Text((HomeViewModel.furnitureData[categoryId ?? 0]?["name"] as? String ?? ""))
                     .font(.title2)
                     .foregroundColor(.white)
             }

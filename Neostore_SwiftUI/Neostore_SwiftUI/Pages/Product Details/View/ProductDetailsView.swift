@@ -25,10 +25,14 @@ struct ProductDetailsView: View {
                     .frame(maxWidth: .infinity, maxHeight: 1)
             VStack{
                 if viewModel.dataReceived {
-                    VStack{
-                        ProductDetailTitleView(productDetails: viewModel.productDetails)
+                    ScrollView {
+                        VStack{
+                            ProductDetailTitleView(productDetails: viewModel.productDetails)
+                            ProductDetailDescriptionView(productDetails: viewModel.productDetails, productImages: viewModel.productDetails?.product_images ?? [])
+                                .cornerRadius(10)
+                                .padding()
+                        }
                     }
-                    
                 } else {
                     ProgressView()
                 }
