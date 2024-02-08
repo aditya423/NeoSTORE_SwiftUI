@@ -23,7 +23,6 @@ enum Constants:String{
     case productDetails = "Product Details"
     case outOfStock = "Out of Stock"
     case description = "Description"
-    case enterQty = "Enter Qty"
 }
 
 class AppColors{
@@ -139,8 +138,9 @@ enum ImageNames: String {
     case downArrow = "chevron.down"
     case threeLines = "line.3.horizontal"
     case profileImage = "profile_image"
-    case emptyStar = "star_unchek"
-    case filledStar = "star_check"
+    case newProfileImage = "new_profile_image"
+    case emptyStar = "star_check"
+    case filledStar = "star.fill"
     case plusImage = "plus"
     case dob = "dob_icon"
     case search = "search_icon"
@@ -164,6 +164,7 @@ enum PageHeadings: String {
     case myAccount = "My Account"
     case storeLocator = "Store Locator"
     case forgotPassword = "Forgot Password"
+    case editProfile = "Edit Profile"
 }
 
 enum NotificationNames: String {
@@ -187,7 +188,6 @@ enum ButtonTitles: String {
     case done = "Done"
     case buyNow = "BUY NOW"
     case rate = "RATE"
-    case rateNow = "Rate Now"
 }
 
 enum Keys: String {

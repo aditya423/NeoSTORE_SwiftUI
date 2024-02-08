@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @ObservedObject var viewModel: SideBarViewModel
+    
     var body: some View {
         VStack(alignment: .center) {
             if let image = loadImage(imgName: ImageNames.profileImage.rawValue) {
@@ -40,11 +42,5 @@ struct ProfileView: View {
         .frame(maxWidth: .infinity, alignment: .center)
         .listRowBackground(Color.black)
         .padding(.bottom, 20)
-    }
-}
-
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
     }
 }

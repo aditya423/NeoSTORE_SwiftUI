@@ -39,7 +39,7 @@ struct SideBarView: View {
                                     switch indexRow {
                                     case 0:
                                         // Profile Image and Name
-                                        ProfileView()
+                                        ProfileView(viewModel: viewModel)
                                     case 1:
                                         // Cart
                                         ZStack {

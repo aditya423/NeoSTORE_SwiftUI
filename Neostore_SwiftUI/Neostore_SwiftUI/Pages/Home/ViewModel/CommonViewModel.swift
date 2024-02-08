@@ -12,4 +12,5 @@ class CommonViewModel {
     
     @Published var total_carts: String?
     @Published var user_data: UserDetails?
+    @Published var isImageUpdated: Bool?
 }
