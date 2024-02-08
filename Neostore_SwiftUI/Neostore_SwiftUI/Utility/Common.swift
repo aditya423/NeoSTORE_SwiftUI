@@ -29,9 +29,8 @@ struct LoaderView_Previews: PreviewProvider {
 }
 
 // SAVE IMAGE
-func saveImage(imageData: Data) {
+func saveImage(imageData: Data, fileName: String) {
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    let fileName = ImageNames.profileImage.rawValue
     let fileURL = documentsDirectory.appendingPathComponent(fileName)
     
     do {
@@ -55,4 +54,17 @@ func loadImage(imgName: String) -> Image? {
         }
     }
     return nil
+}
+
+// LOAD IMAGE DATA
+func loadImageData(imgName: String) -> Data {
+    let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let fileURL = documentsDirectory.appendingPathComponent(imgName)
+    
+    if FileManager.default.fileExists(atPath: fileURL.path) {
+        if let imageData = try? Data(contentsOf: fileURL) {
+            return imageData
+        }
+    }
+    return Data()
 }

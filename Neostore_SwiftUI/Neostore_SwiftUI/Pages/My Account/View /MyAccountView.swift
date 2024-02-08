@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import PhotosUI
+
 struct MyAccountView: View {
     
     @State var firstName = ""
@@ -16,19 +18,12 @@ struct MyAccountView: View {
     @State var isEditingProfile = false
     @State var showPicker = false
     @State var birthDate = Date()
+    @State var navigateToReset = false
+    @State var showImagePicker = false
+    @State var selectedItems = [PhotosPickerItem]()
+    @State var imgData = Data()
+    @State var screenFirstTime = 1
     @FocusState var focusedField: Int?
-    
-    func dateToString(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        return formatter.string(from: date)
-    }
-    
-    func stringToDate(date: String) -> Date {
-        let formatter = DateFormatter()
-        return formatter.date(from: date) ?? Date()
-    }
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var myAccountVM = MyAccountViewModel()
     
@@ -40,24 +35,58 @@ struct MyAccountView: View {
                     VStack {
                         Spacer().frame(height: UIScreen.main.bounds.height*0.12)
                         
-                        if let image = loadImage(imgName: ImageNames.profileImage.rawValue) {
-                            image
-                                .resizable()
-                                .frame(width: 100, height: 100)
-                                .aspectRatio(contentMode: .fill)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white, lineWidth: 3))
-                                .padding([.top,.bottom], 20)
-                                .disabled(isEditingProfile ? false : true)
+                        if let image = screenFirstTime==1 ? loadImage(imgName: ImageNames.profileImage.rawValue) : loadImage(imgName: ImageNames.newProfileImage.rawValue) {
+                            if isEditingProfile {
+                                PhotosPicker(selection: $selectedItems,
+                                             maxSelectionCount: 1,
+                                             selectionBehavior: .ordered,
+                                             matching: .images
+                                ) {
+                                    image
+                                        .resizable()
+                                        .frame(width: 120, height: 120)
+                                        .aspectRatio(contentMode: .fill)
+                                        .clipShape(Circle())
+                                        .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                                        .padding([.top,.bottom], 20)
+                                        .disabled(isEditingProfile ? false : true)
+                                }
+                            } else {
+                                image
+                                    .resizable()
+                                    .frame(width: 120, height: 120)
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                                    .padding([.top,.bottom], 20)
+                                    .disabled(isEditingProfile ? false : true)
+                            }
                         } else {
-                            Image("")
-                                .resizable()
-                                .frame(width: 100, height: 100)
-                                .aspectRatio(contentMode: .fill)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white, lineWidth: 3))
-                                .padding([.top,.bottom], 20)
-                                .disabled(isEditingProfile ? false : true)
+                            if isEditingProfile {
+                                PhotosPicker(selection: $selectedItems,
+                                             maxSelectionCount: 1,
+                                             selectionBehavior: .ordered,
+                                             matching: .images
+                                ) {
+                                    Image("")
+                                        .resizable()
+                                        .frame(width: 120, height: 120)
+                                        .aspectRatio(contentMode: .fill)
+                                        .clipShape(Circle())
+                                        .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                                        .padding([.top,.bottom], 20)
+                                        .disabled(isEditingProfile ? false : true)
+                                }
+                            } else {
+                                Image("")
+                                    .resizable()
+                                    .frame(width: 120, height: 120)
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                                    .padding([.top,.bottom], 20)
+                                    .disabled(isEditingProfile ? false : true)
+                            }
                         }
                         
                         CustomTextField(text: $firstName, isImage: true, image: ImageNames.username.rawValue, placeholder: "First Name")
@@ -112,6 +141,7 @@ struct MyAccountView: View {
                             if isEditingProfile {
                                 Button {
                                     isEditingProfile = false
+                                    saveImage(imageData: imgData, fileName: ImageNames.profileImage.rawValue)
                                     // UPDATE USER DETAILS API
                                 } label: {
                                     Text("SUBMIT")
@@ -184,7 +214,7 @@ struct MyAccountView: View {
                     VStack {
                         Spacer()
                         Button {
-                            // NAVIGATE TO RESET PASSWORD SCREEN
+                            navigateToReset = true
                         } label: {
                             Text("RESET PASSWORD")
                                 .foregroundColor(.gray)
@@ -201,6 +231,8 @@ struct MyAccountView: View {
                         .background(.white)
                     }
                 }
+                
+                NavigationLink(destination: ResetPasswordView(), isActive: $navigateToReset) {}
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(AppColors.primaryColor)
@@ -245,12 +277,26 @@ struct MyAccountView: View {
                 dob = CommonViewModel.shared.user_data?.dob ?? ""
                 birthDate = stringToDate(date: CommonViewModel.shared.user_data?.dob ?? "")
             }
+            .onChange(of: selectedItems) { newItem in
+                Task {
+                    screenFirstTime += 1
+                    guard let imageData = try? await newItem.first?.loadTransferable(type: Data.self) else { return }
+                    imgData = imageData
+                    saveImage(imageData: imgData, fileName: ImageNames.newProfileImage.rawValue)
+                    selectedItems.removeAll()
+                }
+            }
         }
     }
-}
-
-struct MyAccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyAccountView()
+    
+    func dateToString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter.string(from: date)
+    }
+    
+    func stringToDate(date: String) -> Date {
+        let formatter = DateFormatter()
+        return formatter.date(from: date) ?? Date()
     }
 }
