@@ -7,12 +7,12 @@
 
 import Foundation
 import Combine
-
+//MARK: - APIManager
 class APIManager: NSObject {
     
     static let sharedInstance = APIManager()
     private override init() {}
-    
+    // Common Api function
     func makeApiCall(serviceType: APIServices) -> (AnyPublisher<Data, Error>) {
         
         let session = URLSession.shared

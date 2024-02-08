@@ -7,6 +7,15 @@
 
 import Foundation
 
+struct MyCartVariables {
+    var showAlert = false
+    var alertMessage = ""
+    var isLoading = false
+    var productList: [ListCartItemsData]? = []
+    var total_items: Int = 0
+    var total_price: Int = 0
+}
+
 struct ListCartItemsSuccessResponse : Codable {
     let status : Int?
     let data : [ListCartItemsData]?

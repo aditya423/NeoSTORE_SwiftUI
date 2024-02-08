@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//MARK: - ProductListCell
 struct ProductListCell: View {
     
     var productData: ProductListDetails?
@@ -19,7 +19,6 @@ struct ProductListCell: View {
                 case .success(let image):
                     image
                         .resizable()
-                        
                 case .failure(_):
                     Image("")
                         .resizable()
@@ -52,7 +51,7 @@ struct ProductListCell: View {
                             .frame(maxWidth: .infinity)
                         HStack(spacing: 2) {
                                 ForEach(0..<5, id: \.self) { i in
-                                    Image( i < (productData?.rating ?? 0) ? "star_check" : "star_unchek")
+                                    Image( i < (productData?.rating ?? 0) ? ImageNames.filledStar.rawValue : ImageNames.emptyStar.rawValue)
                                         .resizable()
                                         .frame(width: 15, height: 15)
                                 }

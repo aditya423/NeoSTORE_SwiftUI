@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//MARK:- UserDefaultKeys
 enum UserDefaultKeys: String {
     case isLoggedIn
     case userToken
@@ -14,6 +14,7 @@ enum UserDefaultKeys: String {
     case password
 }
 
+//MARK: - UserDefaults functions
 extension UserDefaults {
     func getUserToken() -> String? {
         return string(forKey: UserDefaultKeys.userToken.rawValue)

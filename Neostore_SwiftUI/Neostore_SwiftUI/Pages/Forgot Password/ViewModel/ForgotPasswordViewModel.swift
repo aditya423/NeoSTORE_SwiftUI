@@ -8,13 +8,15 @@
 import Foundation
 import SwiftUI
 import Combine
-
+//MARK: - ForgotPasswordViewModel
 class ForgotPasswordViewModel: ObservableObject{
-    
+    //Published Object
     @Published var vmVars = NavPublishVars()
+    
     let validation = Validation()
     private var cancellables = Set<AnyCancellable>()
     
+    //Forgot Password API Call
     func forgotPassword(email: String){
         guard !email.isEmpty else {
             vmVars.alertMessage = AlertMessages.fillAllFieldsMsg.rawValue
@@ -32,6 +34,7 @@ class ForgotPasswordViewModel: ObservableObject{
                     self.vmVars.showAlert = true
                 }
             }, receiveValue: { (success , error) in
+                // On Success Navigate else Dont
                 if success != nil {
                     self.vmVars.isNavigating = true
                     self.vmVars.alertMessage = success?.userMsg ?? ""

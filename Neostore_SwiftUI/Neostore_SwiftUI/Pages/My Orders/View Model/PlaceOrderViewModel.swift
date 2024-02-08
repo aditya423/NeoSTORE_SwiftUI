@@ -8,13 +8,6 @@
 import Foundation
 import Combine
 
-struct PlaceOrderVars {
-    var showAlert = false
-    var alertMessage = ""
-    var isLoading = false
-    var isNavigating = false
-}
-
 class PlaceOrderViewModel: ObservableObject {
     
     @Published var vmVars = PlaceOrderVars()

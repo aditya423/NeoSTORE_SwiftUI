@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-
+//MARK: - MenuItemView
 struct MenuItemView: View {
-    
+    //Variables
     var imageName: String
     var title: String
     

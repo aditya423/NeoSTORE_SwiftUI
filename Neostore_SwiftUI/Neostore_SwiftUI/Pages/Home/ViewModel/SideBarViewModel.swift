@@ -8,19 +8,16 @@
 import Foundation
 import Combine
 
-struct SideBarPublishedVars {
-    var showAlert = false
-    var alertMessage = ""
-    var isLoading = false
-}
-
+//MARK: - SideBarViewModel
 class SideBarViewModel: ObservableObject {
+
+    //Publishing Variable
+    @Published var vmVars = SideBarPublishedVars()
     
     static var user_data: UserDetails?
     var total_orders: String?
     private var cancellables = Set<AnyCancellable>()
-    @Published var vmVars = SideBarPublishedVars()
-    
+    // Static SideBar Data
     let menuData = [0: ["imageName":"", "title":""],
                     1: ["imageName":"my-cart-icon", "title":"My Cart"],
                     2: ["imageName":"table", "title":"Tables", "categoryId":"1"],
@@ -33,6 +30,7 @@ class SideBarViewModel: ObservableObject {
                     9: ["imageName":"logout_icon", "title":"Logout"]
     ]
     
+    //Get Account Details Api Call
     func getAccountDetails() {
         AccountDetailsService.getAccountDetails()
             .sink(receiveCompletion: { completion in
@@ -44,6 +42,7 @@ class SideBarViewModel: ObservableObject {
                     self.vmVars.showAlert = true
                 }
             }, receiveValue: { (accountDetails, invalidToken, error) in
+                // On Success Set Values and on error Show Alert
                 if accountDetails != nil {
                     SideBarViewModel.user_data = accountDetails?.data?.user_data
                     CommonViewModel.shared.total_carts = String(accountDetails?.data?.total_carts ?? 0)

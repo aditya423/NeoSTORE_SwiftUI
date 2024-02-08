@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
-
+//MARK: - ProductDetailDescriptionView
 struct ProductDetailDescriptionView: View {
     
     var productDetails: ProductDetails? 
     var productImages: [ProductImages?] = []
-    @State var selectedImage = 0
     var isOutofStock: Bool = false
+    
+    //State Variables
+    @State var selectedImage = 0
+    
     var body: some View {
         VStack{
             HStack{
@@ -23,7 +26,7 @@ struct ProductDetailDescriptionView: View {
                     .padding(.horizontal)
                 Spacer()
                 if isOutofStock{
-                    Text("Out of Stock")
+                    Text(Constants.outOfStock.rawValue)
                         .foregroundColor(.red)
                         .font(.headline)
                         .padding(.horizontal)
@@ -99,7 +102,7 @@ struct ProductDetailDescriptionView: View {
                 .background(AppColors.grayColor)
                 .opacity(0.2)
             VStack(alignment: .leading){
-                Text("Description")
+                Text(Constants.description.rawValue)
                     .fontWeight(.bold)
                     .font(.title)
                     .padding(.horizontal,2)
@@ -111,7 +114,7 @@ struct ProductDetailDescriptionView: View {
         .background(.white)
     }
 }
-
+//preview
 struct ProductDetailDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
         ProductDetailDescriptionView()

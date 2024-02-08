@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-
+//MARK: - ForgotPasswordView
 struct ForgotPasswordView: View {
+    //State Objects
     @State var email = ""
-    
     @ObservedObject var forgotPasswordVM = ForgotPasswordViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -17,23 +17,23 @@ struct ForgotPasswordView: View {
         VStack {
             Spacer().frame(height: UIScreen.main.bounds.height*0.3)
             VStack {
-                Text("NeoSTORE")
+                Text(Constants.neoStore.rawValue)
                     .foregroundColor(.white)
                     .font(.system(size: 50))
                     .bold()
             }
             VStack {
-                
-                CustomTextField(text: $email, isImage: true, image: "email_icon", placeholder: "Email")
+                CustomTextField(text: $email, isImage: true, image:ImageNames.email.rawValue, placeholder: TextPlaceHolders.email.rawValue)
                     .border(.white)
                     .padding([.leading, .trailing], 30)
                     .padding(.bottom, 10)
                 
                 HStack {
+                    //Forgot password Validation and APi Call
                         Button {
                             forgotPasswordVM.forgotPassword(email: email)
                         } label: {
-                            Text("Submit")
+                            Text(Constants.submit.rawValue)
                                 .foregroundColor(.red)
                                 .font(.system(size: 25))
                                 .bold()
@@ -53,11 +53,9 @@ struct ForgotPasswordView: View {
                     }
                 }
                 .padding([.leading, .trailing], 30)
-               
             }
             .padding(.top, 30)
             Spacer()
-           
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(AppColors.primaryColor)
@@ -69,12 +67,12 @@ struct ForgotPasswordView: View {
                 Button {
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Image(systemName: "chevron.left")
+                    Image(systemName: ImageNames.systemImgLeft.rawValue)
                         .foregroundColor(.white)
                 }
             }
             ToolbarItem(placement: .principal) {
-                Text("Forgot Password")
+                Text(PageHeadings.forgotPassword.rawValue)
                     .font(.headline)
                     .foregroundColor(.white)
             }
@@ -84,11 +82,12 @@ struct ForgotPasswordView: View {
             for: .navigationBar
         )
         .alert(forgotPasswordVM.vmVars.alertMessage, isPresented: $forgotPasswordVM.vmVars.showAlert) {
-            Button("OK", role: .cancel) { }
+            Button(ButtonTitles.ok.rawValue, role: .cancel) { }
         }
     }
 }
 
+//preview
 struct ForgotPasswordView_Previews: PreviewProvider {
     static var previews: some View {
         ForgotPasswordView()

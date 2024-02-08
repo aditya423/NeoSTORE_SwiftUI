@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//MARK: - ProductDetailTitleView
 struct ProductDetailTitleView: View {
     
     var productDetails: ProductDetails? 
@@ -53,7 +53,7 @@ struct ProductDetailTitleView: View {
         .background(.white)
     }
 }
-
+//preview
 struct ProductDetailTitleView_Previews: PreviewProvider {
     static var previews: some View {
         ProductDetailTitleView()

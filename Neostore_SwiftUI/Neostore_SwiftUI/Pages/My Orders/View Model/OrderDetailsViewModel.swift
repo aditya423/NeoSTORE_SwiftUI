@@ -8,14 +8,6 @@
 import Foundation
 import Combine
 
-struct OrderDetailsVars {
-    var showAlert = false
-    var alertMessage = ""
-    var isLoading = false
-    var order_details: OrderDetailsOverview?
-    var product_details: [OrderDetails]?
-}
-
 class OrderDetailsViewModel: ObservableObject {
     
     @Published var vmVars = OrderDetailsVars()

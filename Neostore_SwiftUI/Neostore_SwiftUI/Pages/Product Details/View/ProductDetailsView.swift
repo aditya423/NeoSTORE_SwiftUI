@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-
+//MARK: - ProductDetailsView
 struct ProductDetailsView: View {
-    
+    //State Objects
     @ObservedObject var viewModel = ProductDetailsViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -24,6 +24,7 @@ struct ProductDetailsView: View {
             Color.red.edgesIgnoringSafeArea(.all)
                 .frame(maxWidth: .infinity, maxHeight: 1)
             VStack{
+                //Till Data not Received show Loader
                 if viewModel.dataReceived {
                     VStack{
                         ScrollView {
@@ -38,7 +39,7 @@ struct ProductDetailsView: View {
                             Button {
                                 
                             } label: {
-                                Text("BUY NOW")
+                                Text(ButtonTitles.buyNow.rawValue)
                                     .foregroundColor(.white)
                                     .font(.system(size: 25))
                                     .bold()
@@ -54,7 +55,7 @@ struct ProductDetailsView: View {
                             Button {
                                 
                             } label: {
-                                Text("RATE")
+                                Text(ButtonTitles.rate.rawValue)
                                     .foregroundColor(.white)
                                     .font(.system(size: 25))
                                     .bold()
@@ -73,7 +74,7 @@ struct ProductDetailsView: View {
                     }
                     
                 } else {
-                    ProgressView()
+                    LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -96,7 +97,7 @@ struct ProductDetailsView: View {
                     }
                 }
                 ToolbarItem(placement: .principal) {
-                    Text(viewModel.productDetails?.name ?? "Product Details")
+                    Text(viewModel.productDetails?.name ?? Constants.productDetails.rawValue)
                         .font(.title2)
                         .foregroundColor(.white)
                 }
@@ -108,7 +109,7 @@ struct ProductDetailsView: View {
         }
     }
 }
-
+//preview
 struct ProductDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         ProductDetailsView(productId: 2)

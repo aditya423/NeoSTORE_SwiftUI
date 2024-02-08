@@ -8,20 +8,22 @@
 import Foundation
 import SwiftUI
 import Combine
-
+//MARK: - RegisterViewModel
 class RegisterViewModel: ObservableObject {
-    
+    //State Object
     @Published var vmVars = NavPublishVars()
+    
     let validation = Validation()
     private var cancellables = Set<AnyCancellable>()
 
+    //Register Api Call
     func registerUserProfile(firstName: String, lastName: String, email: String, password: String, confirmPassword: String, mobileNumber: String, isTermsAccepted: Bool, genderSelected: String){
         guard !firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty && !mobileNumber.isEmpty && isTermsAccepted && !genderSelected.isEmpty else {
             vmVars.alertMessage = AlertMessages.fillAllFieldsMsg.rawValue
             vmVars.showAlert = true
             return
         }
-        
+        // Validation Check
         if let result = validation.registerValidation(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword, mobileNumber: mobileNumber) {
             if result == "" {
                 if password == confirmPassword {
@@ -35,6 +37,7 @@ class RegisterViewModel: ObservableObject {
                                 self.vmVars.showAlert = true
                             }
                         }, receiveValue: { (success, alreadyExists, error) in
+                            // On Success navigate else Show Alert
                             if success != nil {
                                 self.vmVars.isNavigating = true
                             } else if alreadyExists != nil {

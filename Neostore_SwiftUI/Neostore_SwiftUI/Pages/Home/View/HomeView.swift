@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
-
+//MARK: - HomeView
 struct HomeView: View {
-    
+    // State Variables
     @State private var isSidebarOpened = false
     @State private var selection = 0
     @State var navigationId = UUID()
+    
     var viewModel = HomeViewModel()
     var screenWidth = UIScreen.main.bounds.width
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.8
@@ -159,7 +160,7 @@ struct HomeView: View {
                         }
                     }
                     ToolbarItem(placement: .principal) {
-                        Text("NeoSTORE")
+                        Text(Constants.neoStore.rawValue)
                             .bold()
                             .font(.title)
                             .foregroundColor(.white)
@@ -202,12 +203,13 @@ struct HomeView: View {
             }
         }
         .id(navigationId)
-        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("popToHome"))) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name(NotificationNames.popToHome.rawValue))) { _ in
             navigationId = UUID()
         }
     }
 }
 
+//preview
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()

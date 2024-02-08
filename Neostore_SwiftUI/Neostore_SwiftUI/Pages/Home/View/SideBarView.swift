@@ -6,17 +6,18 @@
 //
 
 import SwiftUI
-
+//MARK: - SideBarView
 struct SideBarView: View {
-    
+    //State Objects
     @Binding var isSidebarVisible: Bool
     @StateObject var viewModel = SideBarViewModel()
+    
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.8
     
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                //Group {
+                // To Show Loader
                     if viewModel.vmVars.isLoading {
                         ZStack {
                             Color.black.edgesIgnoringSafeArea(.all)
@@ -37,8 +38,10 @@ struct SideBarView: View {
                                     let title = viewModel.menuData[indexRow]?["title"] ?? ""
                                     switch indexRow {
                                     case 0:
+                                        // Profile Image and Name
                                         ProfileView()
                                     case 1:
+                                        // Cart
                                         ZStack {
                                             FirstMenuItemView(imageName: imageName, title: title, viewModel: viewModel)
                                             NavigationLink(destination: MyCartView()) {
@@ -48,6 +51,7 @@ struct SideBarView: View {
                                         }
                                         .listRowBackground(Color.black)
                                     case 2...5:
+                                        // Furniture Items
                                         ZStack {
                                             if let categoryId = viewModel.menuData[indexRow]?["categoryId"], let intCategoryId = Int(categoryId) {
                                                 let newCategoryId = intCategoryId - 1
@@ -60,6 +64,7 @@ struct SideBarView: View {
                                         }
                                         .listRowBackground(Color.black)
                                     case 6:
+                                        // My Account
                                         ZStack {
                                             MenuItemView(imageName: imageName, title: title)
                                             NavigationLink(destination: MyAccountView()) {
@@ -69,6 +74,7 @@ struct SideBarView: View {
                                         }
                                         .listRowBackground(Color.black)
                                     case 7:
+                                        // Store Locator
                                         ZStack {
                                             MenuItemView(imageName: imageName, title: title)
                                             NavigationLink(destination: StoreLocatorView()) {
@@ -78,6 +84,7 @@ struct SideBarView: View {
                                         }
                                         .listRowBackground(Color.black)
                                     case 8:
+                                        // My Orders
                                         ZStack {
                                             MenuItemView(imageName: imageName, title: title)
                                             NavigationLink(destination: OrderListView()) {
@@ -87,11 +94,12 @@ struct SideBarView: View {
                                         }
                                         .listRowBackground(Color.black)
                                     case 9:
+                                        // For Logout
                                         MenuItemView(imageName: imageName, title: title)
                                             .onTapGesture {
                                                 UserDefaults.standard.setLoggedIn(value: false)
                                                 UserDefaults.standard.setUserToken(value: nil)
-                                                NotificationCenter.default.post(name: Notification.Name("popToLogin"), object: nil)
+                                                NotificationCenter.default.post(name: Notification.Name(NotificationNames.popToLogin.rawValue), object: nil)
                                             }
                                     default:
                                         EmptyView()
@@ -105,7 +113,6 @@ struct SideBarView: View {
                         .animation(.default, value: isSidebarVisible)
                         Spacer()
                     }
-                //}
             }
         }
         .onChange(of: isSidebarVisible) { isVisible in
@@ -118,7 +125,7 @@ struct SideBarView: View {
             viewModel.vmVars.isLoading = false
         }
         .alert(viewModel.vmVars.alertMessage, isPresented: $viewModel.vmVars.showAlert) {
-            Button("OK", role: .cancel) {
+            Button(ButtonTitles.ok.rawValue, role: .cancel) {
                 viewModel.vmVars.isLoading = false
             }
         }

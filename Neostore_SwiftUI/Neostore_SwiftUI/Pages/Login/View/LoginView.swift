@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-
+//MARK: - LoginView
 struct LoginView: View {
-    
+    //State Variable
     @State var username = ""
     @State var password = ""
     @FocusState private var focusedField: Bool?
@@ -18,13 +18,13 @@ struct LoginView: View {
         VStack {
             Spacer().frame(height: UIScreen.main.bounds.height*0.2)
             VStack {
-                Text("NeoSTORE")
+                Text(Constants.neoStore.rawValue)
                     .foregroundColor(.white)
                     .font(.system(size: 50))
                     .bold()
             }
             VStack {
-                CustomTextField(text: $username, isImage: true, image: "username_icon", placeholder: "Username")
+                CustomTextField(text: $username, isImage: true, image: ImageNames.username.rawValue, placeholder: TextPlaceHolders.username.rawValue)
                     .border(.white)
                     .padding([.leading, .trailing], 30)
                     .padding(.bottom, 10)
@@ -32,18 +32,19 @@ struct LoginView: View {
                         focusedField = true
                     }
                 
-                CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password", isSecureTextField: true)
+                CustomTextField(text: $password, isImage: true, image: ImageNames.password.rawValue, placeholder: TextPlaceHolders.password.rawValue, isSecureTextField: true)
                     .border(.white)
                     .padding([.leading, .trailing], 30)
                     .focused($focusedField, equals: true)
                 
                 
                 HStack {
+                    //Send for Validation and Api Call on Succes Navigate to Home
                     NavigationLink(destination: HomeView(), isActive: $loginViewModel.vmVars.isNavigating) {
                         Button {
                             loginViewModel.loginUserProfile(email: username, password: password)
                         } label: {
-                            Text("LOGIN")
+                            Text(Constants.login.rawValue)
                                 .foregroundColor(.red)
                                 .font(.system(size: 25))
                                 .bold()
@@ -59,8 +60,9 @@ struct LoginView: View {
                     }
                 }
                 .padding([.leading, .trailing], 30)
+                // Navigate to Forgot Password
                 NavigationLink(destination: ForgotPasswordView()) {
-                    Text("Forgot Password?")
+                    Text(Constants.forgotPassword.rawValue)
                         .font(.system(size: 20))
                         .fontWeight(.medium)
                         .foregroundColor(.white)
@@ -71,13 +73,14 @@ struct LoginView: View {
             Spacer()
             VStack {
                 HStack {
-                    Text("DON'T HAVE AN ACCOUNT?")
+                    Text(Constants.dontHaveAccount.rawValue)
                         .font(.system(size: 18))
                         .fontWeight(.medium)
                         .foregroundColor(.white)
                     Spacer()
+                    //Navigate to RegisterView
                     NavigationLink(destination: RegisterView()) {
-                        Image(systemName: "plus")
+                        Image(systemName: ImageNames.plusImage.rawValue)
                             .foregroundColor(.white)
                             .padding(10)
                             .background(Color(red: 0, green: 0, blue: 0, opacity: 0.3))
@@ -93,11 +96,11 @@ struct LoginView: View {
         .edgesIgnoringSafeArea(.all)
         .ignoresSafeArea(.keyboard)
         .alert(loginViewModel.vmVars.alertMessage, isPresented: $loginViewModel.vmVars.showAlert) {
-            Button("OK", role: .cancel) { }
+            Button(ButtonTitles.ok.rawValue, role: .cancel) { }
         }
     }
 }
-
+//preview
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
