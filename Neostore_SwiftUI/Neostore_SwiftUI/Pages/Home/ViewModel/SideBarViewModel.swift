@@ -14,7 +14,6 @@ class SideBarViewModel: ObservableObject {
     //Publishing Variable
     @Published var vmVars = SideBarPublishedVars()
     
-    static var user_data: UserDetails?
     var total_orders: String?
     private var cancellables = Set<AnyCancellable>()
     // Static SideBar Data
@@ -44,7 +43,7 @@ class SideBarViewModel: ObservableObject {
             }, receiveValue: { (accountDetails, invalidToken, error) in
                 // On Success Set Values and on error Show Alert
                 if accountDetails != nil {
-                    SideBarViewModel.user_data = accountDetails?.data?.user_data
+                    CommonViewModel.shared.user_data = accountDetails?.data?.user_data
                     CommonViewModel.shared.total_carts = String(accountDetails?.data?.total_carts ?? 0)
                     self.total_orders = String(accountDetails?.data?.total_orders ?? 0)
                     self.vmVars.isLoading = false
