@@ -164,6 +164,7 @@ enum PageHeadings: String {
     case myAccount = "My Account"
     case storeLocator = "Store Locator"
     case forgotPassword = "Forgot Password"
+    case editProfile = "Edit Profile"
 }
 
 enum NotificationNames: String {
