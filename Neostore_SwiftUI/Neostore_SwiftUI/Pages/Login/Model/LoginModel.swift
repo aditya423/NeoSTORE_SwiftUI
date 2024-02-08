@@ -6,7 +6,14 @@
 //
 
 import Foundation
+//MARK: - NavPublishVars
+struct NavPublishVars {
+    var isNavigating = false
+    var showAlert = false
+    var alertMessage = ""
+}
 
+//MARK: - LoginSuccessResponse
 struct LoginSuccessResponse: Codable {
     let status: Int?
     let data: LoginDetails?
@@ -18,6 +25,7 @@ struct LoginSuccessResponse: Codable {
     }
 }
 
+//MARK: - LoginDetails
 struct LoginDetails: Codable {
     let id, roleID: Int?
     let firstName, lastName, email, username: String?
@@ -45,6 +53,7 @@ struct LoginDetails: Codable {
     }
 }
 
+//MARK: - LoginErrorResponse
 struct LoginErrorResponse : Codable {
     let status : Int?
     let data : Bool?
@@ -59,6 +68,7 @@ struct LoginErrorResponse : Codable {
     }
 }
 
+//MARK: - LoginDataMissing
 struct LoginDataMissing : Codable {
     let status : Int?
     let message : String?

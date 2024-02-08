@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-
+//MARK: - RegisterView
 struct RegisterView: View {
-    
+    //State Variables
     @State var firstName = ""
     @State var lastName = ""
     @State var email = ""
@@ -18,7 +18,6 @@ struct RegisterView: View {
     @State var genderSelected = ""
     @State var isTermsAccepted = false
     @FocusState private var focusedField: Int?
-    
     @ObservedObject var registerViewModel = RegisterViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -27,13 +26,13 @@ struct RegisterView: View {
             VStack {
                 Spacer().frame(height: UIScreen.main.bounds.height*0.2)
                 VStack {
-                    Text("NeoSTORE")
+                    Text(Constants.neoStore.rawValue)
                         .foregroundColor(.white)
                         .font(.system(size: 50))
                         .bold()
                 }
                 VStack {
-                    CustomTextField(text: $firstName, isImage: true, image: "username_icon", placeholder: "First Name")
+                    CustomTextField(text: $firstName, isImage: true, image: ImageNames.username.rawValue, placeholder: TextPlaceHolders.firstName.rawValue)
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
@@ -42,7 +41,7 @@ struct RegisterView: View {
                             focusedField = 2
                         }
                     
-                    CustomTextField(text: $lastName, isImage: true, image: "username_icon", placeholder: "Last Name")
+                    CustomTextField(text: $lastName, isImage: true, image: ImageNames.username.rawValue, placeholder: TextPlaceHolders.lastName.rawValue)
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
@@ -51,7 +50,7 @@ struct RegisterView: View {
                             focusedField = 3
                         }
                     
-                    CustomTextField(text: $email, isImage: true, image: "email_icon", placeholder: "Email")
+                    CustomTextField(text: $email, isImage: true, image: ImageNames.email.rawValue, placeholder: TextPlaceHolders.email.rawValue)
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
@@ -60,7 +59,7 @@ struct RegisterView: View {
                             focusedField = 4
                         }
                     
-                    CustomTextField(text: $password, isImage: true, image: "password_icon", placeholder: "Password", isSecureTextField: true)
+                    CustomTextField(text: $password, isImage: true, image: ImageNames.password.rawValue, placeholder: TextPlaceHolders.password.rawValue, isSecureTextField: true)
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
@@ -69,14 +68,14 @@ struct RegisterView: View {
                             focusedField = 5
                         }
                     
-                    CustomTextField(text: $confirmPassword, isImage: true, image: "password_icon", placeholder: "Confirm Password", isSecureTextField: true)
+                    CustomTextField(text: $confirmPassword, isImage: true, image: ImageNames.password.rawValue, placeholder: TextPlaceHolders.confirmPassword.rawValue, isSecureTextField: true)
                         .border(.white)
                         .padding([.leading, .trailing], 30)
                         .padding(.bottom, 10)
                         .focused($focusedField, equals: 5)
                     
                     HStack{
-                        Text("Gender")
+                        Text(Constants.gender.rawValue)
                             .font(.system(size: 20))
                             .padding(.leading, 10)
                             .padding([.top, .bottom], 10)
@@ -84,15 +83,15 @@ struct RegisterView: View {
                             .foregroundColor(.white)
                         Spacer().frame(width: 40)
                         Button {
-                            genderSelected = "M"
+                            genderSelected = TextPlaceHolders.male.rawValue
                         } label: {
                             HStack{
-                                if genderSelected == "M"{
-                                    Image("chky")
+                                if genderSelected == TextPlaceHolders.male.rawValue{
+                                    Image(ImageNames.checkYes.rawValue)
                                 } else {
-                                    Image("chkn")
+                                    Image(ImageNames.checkNo.rawValue)
                                 }
-                                Text("Male")
+                                Text(Constants.male.rawValue)
                                     .font(.system(size: 20))
                                     .padding([.top, .bottom], 10)
                                     .fontWeight(.medium)
@@ -101,15 +100,15 @@ struct RegisterView: View {
                         }
                         Spacer().frame(width: 20)
                         Button {
-                            genderSelected = "F"
+                            genderSelected = TextPlaceHolders.female.rawValue
                         } label: {
                             HStack{
-                                if genderSelected == "F"{
-                                    Image("chky")
+                                if genderSelected == TextPlaceHolders.female.rawValue{
+                                    Image(ImageNames.checkYes.rawValue)
                                 } else {
-                                    Image("chkn")
+                                    Image(ImageNames.checkNo.rawValue)
                                 }
-                                Text("Female")
+                                Text(Constants.female.rawValue)
                                     .font(.system(size: 20))
                                     .padding([.top, .bottom], 10)
                                     .fontWeight(.medium)
@@ -118,7 +117,7 @@ struct RegisterView: View {
                         }
                     }
                     
-                    CustomTextField(text: $mobileNumber, isImage: true, image: "cellphone_icon", placeholder: "Phone Number")
+                    CustomTextField(text: $mobileNumber, isImage: true, image: ImageNames.phoneNumber.rawValue, placeholder: TextPlaceHolders.phoneNumber.rawValue)
                         .keyboardType(.numberPad)
                         .border(.white)
                         .padding([.leading, .trailing], 30)
@@ -131,23 +130,23 @@ struct RegisterView: View {
                         } label: {
                             HStack{
                                 if isTermsAccepted {
-                                    Image("checked_icon")
+                                    Image(ImageNames.checked.rawValue)
                                         .resizable()
                                         .frame(width: 15, height: 15)
                                 } else {
-                                    Image("uncheck_icon")
+                                    Image(ImageNames.unchecked.rawValue)
                                         .resizable()
                                         .frame(width: 12, height: 12)
                                 }
                             }
                         }
-                        Text(" I agree the")
+                        Text(Constants.iAgreeThe.rawValue)
                             .font(.system(size: 13))
                             .padding([.trailing],0)
                             .padding([.top, .bottom], 10)
                             .fontWeight(.medium)
                             .foregroundColor(.white)
-                        Text("Terms and Conditions")
+                        Text(Constants.termsAndConditions.rawValue)
                             .font(.system(size: 13))
                             .padding(.leading,0)
                             .padding([.top, .bottom], 10)
@@ -157,11 +156,11 @@ struct RegisterView: View {
                     }
                     
                     HStack{
-                        
+                        // Register Validation and Api Call
                         Button {
                             registerViewModel.registerUserProfile(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword, mobileNumber: mobileNumber, isTermsAccepted: isTermsAccepted, genderSelected: genderSelected)
                         } label: {
-                            Text("REGISTER")
+                            Text(Constants.register.rawValue)
                                 .foregroundColor(.red)
                                 .font(.system(size: 25))
                                 .bold()
@@ -196,19 +195,18 @@ struct RegisterView: View {
                 Button {
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Image(systemName: "chevron.left")
+                    Image(systemName: ImageNames.systemImgLeft.rawValue)
                         .foregroundColor(.white)
                 }
-
             }
             ToolbarItem(placement: .principal) {
-                Text("Register")
+                Text(PageHeadings.register.rawValue)
                     .font(.headline)
                     .foregroundColor(.white)
             }
             ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    Button("Done") {
+                Button(ButtonTitles.done.rawValue) {
                     focusedField = nil
                 }
             }
@@ -219,7 +217,7 @@ struct RegisterView: View {
         )
     }
 }
-
+//preview
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterView()

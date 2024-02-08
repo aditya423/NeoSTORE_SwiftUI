@@ -8,11 +8,6 @@
 import Foundation
 import Combine
 
-struct OrderListVars {
-    var showAlert = false
-    var alertMessage = ""
-    var isLoading = false
-}
 
 class OrderListViewModel: ObservableObject {
     

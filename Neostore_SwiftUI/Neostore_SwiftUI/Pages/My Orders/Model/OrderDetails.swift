@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct OrderDetailsVars {
+    var showAlert = false
+    var alertMessage = ""
+    var isLoading = false
+    var order_details: OrderDetailsOverview?
+    var product_details: [OrderDetails]?
+}
+
 struct OrderDetailsSuccessResponse : Codable {
     let status : Int?
     let data : OrderDetailsOverview?

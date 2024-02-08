@@ -18,7 +18,7 @@ enum NetworkEnvironment: String {
 var networkEnvironment: NetworkEnvironment {
     return .development
 }
-
+//MARK: - Base URl
 var BaseURL: String {
     switch networkEnvironment {
     case .development :
@@ -33,6 +33,7 @@ typealias stringStringDict = [String: String]
 let contentKey = "Content-Type"
 let contentValue = "application/x-www-form-urlencoded"
 
+// API Services types
 enum APIServices {
     case userRegister(parameters: stringAnyDict)
     case userLogin(parameters: stringAnyDict)
@@ -53,6 +54,7 @@ enum APIServices {
 }
 
 extension APIServices {
+    //Path + EndPoints
     var Path: String {
         let apiDomain = "/api/"
         var servicePath: String = ""
@@ -77,6 +79,7 @@ extension APIServices {
         return BaseURL + servicePath
     }
     
+    //Http Method
     var httpMethod: String {
         switch self {
         case .fetchAccountDetails, .getProductList, .getProductDetails, .getCartItems, .getOrderList, .getOrderDetail :

@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct OrderListVars {
+    var showAlert = false
+    var alertMessage = ""
+    var isLoading = false
+}
+
 struct OrderListSuccessResponse : Codable {
     let status : Int?
     let data : [OrderList]?

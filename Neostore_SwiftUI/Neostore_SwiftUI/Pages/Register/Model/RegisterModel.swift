@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+//MARK: - RegisterSuccessResponse
 struct RegisterSuccessResponse: Codable {
     let status: Int?
     let data: RegisterDetails?
@@ -18,7 +18,7 @@ struct RegisterSuccessResponse: Codable {
         case userMsg = "user_msg"
     }
 }
-
+//MARK: - RegisterDetails
 struct RegisterDetails: Codable {
     let id, roleID: Int?
     let firstName, lastName, email, username: String?
@@ -45,7 +45,7 @@ struct RegisterDetails: Codable {
         case accessToken = "access_token"
     }
 }
-
+//MARK: - RegisterErrorResponse
 struct RegisterErrorResponse : Codable {
     let status : Int?
     let data : RegisterDataAlreadyExist?
@@ -59,6 +59,8 @@ struct RegisterErrorResponse : Codable {
         case user_msg = "user_msg"
     }
 }
+
+//MARK: - RegisterDataAlreadyExist
 struct RegisterDataAlreadyExist : Codable {
     let first_name : String?
     let last_name : String?

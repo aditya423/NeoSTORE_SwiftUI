@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//MARK: - AddToCartSuccessResponse
 struct AddToCartSuccessResponse : Codable {
     let status : Int?
     let data : Bool?
@@ -23,6 +23,7 @@ struct AddToCartSuccessResponse : Codable {
     }
 }
 
+//MARK: - AddToCartInvalidProductId
 struct AddToCartInvalidProductId : Codable {
     let status : Int?
     let data : Bool?
@@ -37,6 +38,7 @@ struct AddToCartInvalidProductId : Codable {
     }
 }
 
+//MARK: - AddToCartInvalidQuantity
 struct AddToCartInvalidQuantity : Codable {
     let status : Int?
     let message : String?
@@ -49,6 +51,7 @@ struct AddToCartInvalidQuantity : Codable {
     }
 }
 
+//MARK: - AddToCartInvalidToken
 struct AddToCartInvalidToken : Codable {
     let status : Int?
     let message : String?
@@ -61,6 +64,7 @@ struct AddToCartInvalidToken : Codable {
     }
 }
 
+//MARK: - AddToCartWrongMethod
 struct AddToCartWrongMethod : Codable {
     let status : Int?
     let message : String?

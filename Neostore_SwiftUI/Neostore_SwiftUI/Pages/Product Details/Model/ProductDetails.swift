@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: RESPONSE
-
+//MARK: - ProductDetailsResponse
 struct ProductDetailsResponse : Codable {
     let status : Int?
     let data : ProductDetails?
@@ -19,6 +19,7 @@ struct ProductDetailsResponse : Codable {
     }
 }
 
+//MARK: - ProductDetails
 struct ProductDetails : Codable {
     let id : Int?
     let product_category_id : Int?
@@ -47,6 +48,7 @@ struct ProductDetails : Codable {
     }
 }
 
+//MARK: - ProductImages
 struct ProductImages : Codable {
     let id : Int?
     let product_id : Int?
@@ -64,20 +66,20 @@ struct ProductImages : Codable {
 }
 
 // MARK: ERROR
-
+//MARK: - ProductDetailsWrongMethod
 struct ProductDetailsWrongMethod : Codable {
     let status : Int?
     let message : String?
     let user_msg : String?
     
     enum CodingKeys: String, CodingKey {
-        
         case status = "status"
         case message = "message"
         case user_msg = "user_msg"
     }
 }
 
+//MARK: - ProductDetailsInvalidCategory
 struct ProductDetailsInvalidCategory : Codable {
     let status : Int?
     let data : Bool?
@@ -92,6 +94,7 @@ struct ProductDetailsInvalidCategory : Codable {
     }
 }
 
+//MARK: - ProductDetailsDataMissing
 struct ProductDetailsDataMissing : Codable {
     let status : Int?
     let message : String?

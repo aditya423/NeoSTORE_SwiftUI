@@ -8,8 +8,21 @@
 import Foundation
 import SwiftUI
 
-enum Constants{
-    
+enum Constants:String{
+    case neoStore = "NeoSTORE"
+    case login = "LOGIN"
+    case forgotPassword = "Forgot Password?"
+    case dontHaveAccount = "DON'T HAVE AN ACCOUNT?"
+    case gender = "Gender"
+    case male = "Male"
+    case female = "Female"
+    case iAgreeThe = " I agree the"
+    case termsAndConditions = "Terms and Conditions"
+    case register = "REGISTER"
+    case submit = "Submit"
+    case productDetails = "Product Details"
+    case outOfStock = "Out of Stock"
+    case description = "Description"
 }
 
 class AppColors{
@@ -56,7 +69,7 @@ enum AlertMessages: String {
     case noteMsg = "Note"
     case cancelMsg = "Cancel"
     case deleteMsg = "Delete"
-    case okMsg = "Ok"
+    case okMsg = "OK"
     case doneMsg = "Done"
     case chooseImageMsg = "Choose Image"
     case openCameraMsg = "Open Camera"
@@ -124,7 +137,7 @@ enum ImageNames: String {
     case backArrow = "chevron.backward"
     case downArrow = "chevron.down"
     case threeLines = "line.3.horizontal"
-    case profileImage = "profile_picture.jpg"
+    case profileImage = "profile_image"
     case emptyStar = "star_check"
     case filledStar = "star.fill"
     case plusImage = "plus"
@@ -134,6 +147,7 @@ enum ImageNames: String {
     case systemCart = "cart.fill"
     case cancel = "remove_button"
     case share = "share"
+    case systemImgLeft = "chevron.left"
 }
 
 enum PageHeadings: String {
@@ -148,12 +162,15 @@ enum PageHeadings: String {
     case myOrders = "My Orders"
     case myAccount = "My Account"
     case storeLocator = "Store Locator"
+    case forgotPassword = "Forgot Password"
 }
 
 enum NotificationNames: String {
     case updateCartItems = "updateCartItems"
     case updateCartData = "updateCartDataInSideBar"
     case updateData = "updateDataInSideBar"
+    case popToLogin = "popToLogin"
+    case popToHome = "popToHome"
 }
 
 enum Fonts: String {
@@ -165,6 +182,10 @@ enum ButtonTitles: String {
     case login = "LOGIN"
     case submit = "SUBMIT"
     case editProfile = "EDIT PROFILE"
+    case ok = "OK"
+    case done = "Done"
+    case buyNow = "BUY NOW"
+    case rate = "RATE"
 }
 
 enum Keys: String {

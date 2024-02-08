@@ -7,12 +7,14 @@
 
 import Foundation
 import Combine
-
+//MARK: - AccountDetailsService
 class AccountDetailsService {
     
     static func getAccountDetails() -> (AnyPublisher<(FetchAccountDetails?, AccountDetailsInvalidToken?, AccountDetailsWrongMethod?), Error>) {
+        //Calling Common API Function
         APIManager.sharedInstance.makeApiCall(serviceType: .fetchAccountDetails)
             .tryMap { data in
+                //Mapping response into Model and returing
                 do {
                     let responseData = try JSONDecoder().decode(FetchAccountDetails.self, from: data)
                     if responseData.status == 200 {

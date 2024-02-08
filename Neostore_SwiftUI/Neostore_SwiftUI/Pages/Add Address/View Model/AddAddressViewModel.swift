@@ -9,10 +9,6 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct AddAddressPublishers {
-    var showAlert = false
-    var alertMessage = ""
-}
 
 class AddAddressViewModel: ObservableObject{
     

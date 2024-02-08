@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 import Combine
-
+//MARK: - ProductDetailsViewModel
 class ProductDetailsViewModel: ObservableObject{
-    
+    //Published Objects
     @Published var vmVars = NavPublishVars()
     @Published var dataReceived = false
     
@@ -18,6 +18,7 @@ class ProductDetailsViewModel: ObservableObject{
     private var cancellables = Set<AnyCancellable>()
     var productDetails: ProductDetails?
 
+    //APi Call
     func getProductDetails(productId: String){
         ProductDetailsService.getProductDetails(product_id: productId)
             .sink(receiveCompletion: { completion in
@@ -29,6 +30,7 @@ class ProductDetailsViewModel: ObservableObject{
                                 self.vmVars.showAlert = true
                             }
                         }, receiveValue: { (success, errorMsg) in
+                            // On Success Set Data else Show Alert
                             if success != nil {
                                 self.dataReceived = true
                                 self.productDetails = success?.data

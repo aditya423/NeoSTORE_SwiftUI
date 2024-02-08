@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-
+//MARK: - CustomTextField
 struct CustomTextField: View {
-    
+    //State Variables
     @Binding var text: String
     
     var isImage: Bool
@@ -16,8 +16,10 @@ struct CustomTextField: View {
     var placeholder: String
     var isSecureTextField: Bool = false
     
+    //Body
     var body: some View {
         HStack {
+            //Check for Image
             if isImage{
                 Image(image)
                     .padding(.leading, 15)
@@ -29,6 +31,7 @@ struct CustomTextField: View {
                     Text(placeholder)
                         .foregroundColor(.white)
                 }
+                // Check for Password TextField
                 if isSecureTextField{
                     SecureField("", text: $text)
                         .textContentType(.oneTimeCode)

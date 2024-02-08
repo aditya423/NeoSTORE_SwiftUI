@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct PlaceOrderVars {
+    var showAlert = false
+    var alertMessage = ""
+    var isLoading = false
+    var isNavigating = false
+}
+
 struct PlaceOrderResponse : Codable {
     let status : Int?
     let message : String?

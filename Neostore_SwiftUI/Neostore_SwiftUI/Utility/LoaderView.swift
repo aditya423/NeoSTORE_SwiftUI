@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//MARK: - Custom Loader
 struct LoaderView: View {
     @State var bgColor: Color?
     @State var tintColor: Color?

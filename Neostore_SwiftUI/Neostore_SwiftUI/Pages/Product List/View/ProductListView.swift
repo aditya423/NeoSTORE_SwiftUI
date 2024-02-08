@@ -6,28 +6,28 @@
 //
 
 import SwiftUI
-
+//MARK: - ProductListView
 struct ProductListView: View {
-    
+    //State Objects
     @State var searchText = ""
     @State var isSearchTextFieldHidden = true
     @State private var timer: Timer? = nil
-    
     @ObservedObject var viewModel = ProductListViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    var categoryId: Int?
     init(categoryId: Int?) {
            self.categoryId = categoryId
            viewModel.getProductList(categoryId: String((categoryId ?? 0) + 1))
-       }
+    }
     
-    var categoryId: Int?
-    
+    //Body
     var body: some View {
         VStack(spacing: 0){
             Color.red.edgesIgnoringSafeArea(.all)
                     .frame(maxWidth: .infinity, maxHeight: 1)
             VStack{
+                // For Search Bar
                 if !isSearchTextFieldHidden{
                     TextField("Search",text: $searchText)
                         .onChange(of: searchText) { newValue in
@@ -42,6 +42,7 @@ struct ProductListView: View {
                     .cornerRadius(5)
                     .padding([.leading,.trailing,.top], 20)
                 }
+                // If Data Received reload View else show Loader
                 if viewModel.dataReceived {
                     List{
                         ForEach(0..<(viewModel.filterProductList.count ), id: \.self) { index in
@@ -52,6 +53,7 @@ struct ProductListView: View {
                                 }
                                 .opacity(0)
                             }
+                            //On Appear API Call with pagination
                                 .onAppear {
                                     if index == ((viewModel.filterProductList.count ) - 1) {
                                         viewModel.page += 1
@@ -111,7 +113,7 @@ struct ProductListView: View {
                 }
     }
 }
-
+//preview
 struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
         ProductListView(categoryId: 2)

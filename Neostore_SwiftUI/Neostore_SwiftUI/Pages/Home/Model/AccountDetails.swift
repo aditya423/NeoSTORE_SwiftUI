@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//MARK: - FetchAccountDetails
 struct FetchAccountDetails : Codable {
     let status : Int?
     let data : FetchedData?
@@ -21,6 +21,7 @@ struct FetchAccountDetails : Codable {
     }
 }
 
+//MARK: - FetchedData
 struct FetchedData : Codable {
     let user_data : UserDetails?
     let product_categories : [ProductCategories]?
@@ -35,6 +36,7 @@ struct FetchedData : Codable {
     }
 }
 
+//MARK: - UserDetails
 struct UserDetails: Codable {
     var id: Int?
     var role_id: Int?
@@ -68,7 +70,7 @@ struct UserDetails: Codable {
         case profile_pic = "profile_pic"
     }
 }
-
+//MARK: - ProductCategories
 struct ProductCategories : Codable {
     let id : Int?
     let name : String?
@@ -85,6 +87,7 @@ struct ProductCategories : Codable {
     }
 }
 
+//MARK: - AccountDetailsInvalidToken
 struct AccountDetailsInvalidToken : Codable {
     let status : Int?
     let message : String?
@@ -97,6 +100,7 @@ struct AccountDetailsInvalidToken : Codable {
     }
 }
 
+//MARK: - AccountDetailsWrongMethod
 struct AccountDetailsWrongMethod : Codable {
     let status : Int?
     let message : String?

@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
-
+//MARK: - FirstMenuItemView
 struct FirstMenuItemView: View {
     
     var imageName: String
     var title: String
+    //State Objects
     @ObservedObject var viewModel: SideBarViewModel
     
     var body: some View {

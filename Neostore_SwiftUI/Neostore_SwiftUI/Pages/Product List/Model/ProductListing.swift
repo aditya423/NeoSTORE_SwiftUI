@@ -7,9 +7,7 @@
 
 import Foundation
 
-
 // MARK: RESPONSE
-
 struct ProductListResponse : Codable {
     let status : Int?
     let data : [ProductListDetails]?
@@ -20,6 +18,7 @@ struct ProductListResponse : Codable {
     }
 }
 
+//MARK: - ProductListDetails
 struct ProductListDetails : Codable {
     let id : Int?
     let product_category_id : Int?
@@ -49,7 +48,7 @@ struct ProductListDetails : Codable {
 }
 
 // MARK: ERROR
-
+//MARK: - ProductListWrongMethod
 struct ProductListWrongMethod : Codable {
     let status : Int?
     let message : String?
@@ -62,6 +61,7 @@ struct ProductListWrongMethod : Codable {
     }
 }
 
+//MARK: - ProductListInvalidCategoryId
 struct ProductListInvalidCategoryId : Codable {
     let status : Int?
     let data : Bool?
@@ -76,6 +76,7 @@ struct ProductListInvalidCategoryId : Codable {
     }
 }
 
+//MARK: - ProductListDataMissing
 struct ProductListDataMissing : Codable {
     let status : Int?
     let message : String?

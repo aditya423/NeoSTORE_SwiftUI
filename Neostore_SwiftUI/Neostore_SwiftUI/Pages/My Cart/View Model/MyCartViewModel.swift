@@ -8,15 +8,6 @@
 import Foundation
 import Combine
 
-struct MyCartVariables {
-    var showAlert = false
-    var alertMessage = ""
-    var isLoading = false
-    var productList: [ListCartItemsData]? = []
-    var total_items: Int = 0
-    var total_price: Int = 0
-}
-
 class MyCartViewModel: ObservableObject {
     
     @Published var vmVars = MyCartVariables()

@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-
+//MARK: - ProfileView
 struct ProfileView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Image("profile_image")
+            Image(ImageNames.profileImage.rawValue)
                 .resizable()
                 .frame(width: 100, height: 100)
                 .aspectRatio(contentMode: .fill)
@@ -21,7 +21,7 @@ struct ProfileView: View {
                 .bold()
                 .font(.title2)
                 .foregroundColor(.white)
-            Text(verbatim: "\(SideBarViewModel.user_data?.email ?? "")")
+            Text(verbatim: "\(SideBarViewModel.user_data?.email ?? "")")        //verbatim because used @
                 .font(.subheadline)
                 .foregroundColor(.white)
         }
@@ -30,7 +30,7 @@ struct ProfileView: View {
         .padding(.bottom, 20)
     }
 }
-
+// preview
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
