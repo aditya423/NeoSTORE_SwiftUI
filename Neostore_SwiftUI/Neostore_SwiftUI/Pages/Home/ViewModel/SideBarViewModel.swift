@@ -18,7 +18,7 @@ class SideBarViewModel: ObservableObject {
     var total_orders: String?
     private var cancellables = Set<AnyCancellable>()
     // Static SideBar Data
-    let menuData = [0: ["imageName":"", "title":""],
+    let menuData = [0: ["imageName":"", "title":"", "row":"0"],
                     1: ["imageName":"my-cart-icon", "title":"My Cart"],
                     2: ["imageName":"table", "title":"Tables", "categoryId":"1"],
                     3: ["imageName":"sofa_icon", "title":"Sofas", "categoryId":"2"],

@@ -89,7 +89,7 @@ struct ProductDetailDescriptionView: View {
                         .padding(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke((selectedImage == index ? .red:.black), lineWidth: 1)
+                                .stroke((selectedImage == index ? .red : .gray), lineWidth: (selectedImage == index ? 2 : 1))
                         )
                         .cornerRadius(5)
                         .padding(.bottom,10)
@@ -109,6 +109,7 @@ struct ProductDetailDescriptionView: View {
                 Text("\(productDetails?.description ?? "")")
                     .padding(.bottom)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal)
         }
         .background(.white)

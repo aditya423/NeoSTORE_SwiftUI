@@ -9,6 +9,8 @@ import SwiftUI
 //MARK: - ProductDetailsView
 struct ProductDetailsView: View {
     //State Objects
+    @State var isBuyNowPresented: Bool = false
+    @State var isRateNowPresented: Bool = false
     @ObservedObject var viewModel = ProductDetailsViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -37,7 +39,7 @@ struct ProductDetailsView: View {
                         }
                         HStack(spacing:20){
                             Button {
-                                
+                                isBuyNowPresented = true
                             } label: {
                                 Text(ButtonTitles.buyNow.rawValue)
                                     .foregroundColor(.white)
@@ -52,8 +54,12 @@ struct ProductDetailsView: View {
                                         Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
                                     }
                             }
+                            .fullScreenCover(isPresented: $isBuyNowPresented, content: {
+                                BuyNowPopupView(viewModel: viewModel)
+                            })
+                            
                             Button {
-                                
+                                isRateNowPresented = true
                             } label: {
                                 Text(ButtonTitles.rate.rawValue)
                                     .foregroundColor(.white)
@@ -68,6 +74,9 @@ struct ProductDetailsView: View {
                                         Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
                                     }
                             }
+                            .fullScreenCover(isPresented: $isRateNowPresented, content: {
+                                RateNowPopupView(viewModel: viewModel)
+                            })
                         }
                         .padding(20)
                         .background(.white)
