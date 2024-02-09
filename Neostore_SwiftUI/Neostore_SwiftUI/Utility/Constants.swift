@@ -23,6 +23,7 @@ enum Constants:String{
     case productDetails = "Product Details"
     case outOfStock = "Out of Stock"
     case description = "Description"
+    case enterQty = "Enter Qty"
 }
 
 class AppColors{
@@ -188,6 +189,7 @@ enum ButtonTitles: String {
     case done = "Done"
     case buyNow = "BUY NOW"
     case rate = "RATE"
+    case rateNow = "RATE NOW"
 }
 
 enum Keys: String {
