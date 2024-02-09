@@ -11,6 +11,7 @@ struct NavPublishVars {
     var isNavigating = false
     var showAlert = false
     var alertMessage = ""
+    var isLoading = false
 }
 
 //MARK: - LoginSuccessResponse
