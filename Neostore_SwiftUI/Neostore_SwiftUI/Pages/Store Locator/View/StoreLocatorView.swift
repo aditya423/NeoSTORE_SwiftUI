@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct StoreLocatorView: View {
     var body: some View {

@@ -21,7 +21,7 @@ struct ProductDetailDescriptionView: View {
             HStack{
                 Text("Rs: \(productDetails?.cost ?? 3)")
                     .foregroundColor(.red)
-                    .fontWeight(.bold)
+                    .bold()
                     .font(.title3)
                     .padding(.horizontal)
                 Spacer()
@@ -103,7 +103,7 @@ struct ProductDetailDescriptionView: View {
                 .opacity(0.2)
             VStack(alignment: .leading){
                 Text(Constants.description.rawValue)
-                    .fontWeight(.bold)
+                    .bold()
                     .font(.title)
                     .padding(.horizontal,2)
                 Text("\(productDetails?.description ?? "")")
