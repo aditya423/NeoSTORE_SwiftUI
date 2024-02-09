@@ -52,16 +52,16 @@ struct ResetPasswordView: View {
                                 .frame(maxWidth: .infinity)
                                 .onChange(of: resetPasswordVM.vmVars.isNavigating) { newValue in
                                     if newValue {
-                                        self.presentationMode.wrappedValue.dismiss()
+                                        NotificationCenter.default.post(name: Notification.Name(NotificationNames.popToLogin.rawValue), object: nil)
                                     }
                                 }
                         }
-                    .background(.white)
-                    .cornerRadius(5)
-                    .padding(.top, 30)
-                    .alert(isPresented: $resetPasswordVM.vmVars.showAlert) {
-                        Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(resetPasswordVM.vmVars.alertMessage))
-                    }
+                        .background(.white)
+                        .cornerRadius(5)
+                        .padding(.top, 20)
+                        .alert(isPresented: $resetPasswordVM.vmVars.showAlert) {
+                            Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(resetPasswordVM.vmVars.alertMessage))
+                        }
                 }
                 .padding([.leading, .trailing], 30)
                
@@ -80,14 +80,17 @@ struct ResetPasswordView: View {
                 Button {
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Image(systemName: "chevron.left")
+                    Image(systemName: ImageNames.backArrow.rawValue)
+                        .font(.title3)
                         .foregroundColor(.white)
+                        .bold()
                 }
             }
             ToolbarItem(placement: .principal) {
                 Text("Reset Password")
-                    .font(.headline)
+                    .font(.title2)
                     .foregroundColor(.white)
+                    .bold()
             }
         }
         .toolbarBackground(

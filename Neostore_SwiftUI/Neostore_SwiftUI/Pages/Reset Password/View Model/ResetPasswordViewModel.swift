@@ -36,6 +36,9 @@ class ResetPasswordViewModel: ObservableObject{
                             }
                         }, receiveValue: { (success , errorMsg) in
                             if success != nil {
+                                UserDefaults.standard.setPassword(value: newPassword)
+                                UserDefaults.standard.setLoggedIn(value: false)
+                                UserDefaults.standard.setUserToken(value: nil)
                                 self.vmVars.isNavigating = true
                             } else if errorMsg != nil {
                                 self.vmVars.isNavigating = false

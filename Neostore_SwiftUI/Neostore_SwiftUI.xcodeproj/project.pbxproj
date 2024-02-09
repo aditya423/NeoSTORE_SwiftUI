@@ -78,6 +78,7 @@
 		F2B60DE92B68E1F20071204C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DE82B68E1F20071204C /* ProfileView.swift */; };
 		F2B60DEB2B68E2150071204C /* FirstMenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DEA2B68E2150071204C /* FirstMenuItemView.swift */; };
 		F2B60DED2B68E2310071204C /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B60DEC2B68E2310071204C /* MenuItemView.swift */; };
+		F2B8BCDC2B7606EE001EF179 /* EditAccountDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B8BCDB2B7606EE001EF179 /* EditAccountDetailsService.swift */; };
 		F2B9ABE62B723EB20078D0F1 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9ABE52B723EB20078D0F1 /* OrderListViewModel.swift */; };
 		F2B9ABE92B724C980078D0F1 /* MyOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9ABE82B724C980078D0F1 /* MyOrderService.swift */; };
 		F2B9ABEC2B7250540078D0F1 /* PlaceOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9ABEB2B7250540078D0F1 /* PlaceOrder.swift */; };
@@ -163,6 +164,7 @@
 		F2B60DE82B68E1F20071204C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F2B60DEA2B68E2150071204C /* FirstMenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMenuItemView.swift; sourceTree = "<group>"; };
 		F2B60DEC2B68E2310071204C /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
+		F2B8BCDB2B7606EE001EF179 /* EditAccountDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountDetailsService.swift; sourceTree = "<group>"; };
 		F2B9ABE52B723EB20078D0F1 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderListViewModel.swift; path = "Neostore_SwiftUI/Pages/My Orders/View Model/OrderListViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		F2B9ABE82B724C980078D0F1 /* MyOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderService.swift; sourceTree = "<group>"; };
 		F2B9ABEB2B7250540078D0F1 /* PlaceOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrder.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 		928550BD2B556D070024A2A5 /* My Account */ = {
 			isa = PBXGroup;
 			children = (
+				F2B8BCDA2B7606CD001EF179 /* WebService */,
 				928BEB262B6A23CA00CB2822 /* View Model */,
 				F2B60DCA2B68C4380071204C /* Model */,
 				928550CD2B556D8F0024A2A5 /* View  */,
@@ -768,6 +771,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F2B8BCDA2B7606CD001EF179 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				F2B8BCDB2B7606EE001EF179 /* EditAccountDetailsService.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
 		F2B9ABE72B724C5C0078D0F1 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
@@ -940,6 +951,7 @@
 				928D77F12B69280100D47F36 /* ForgotPasswordView.swift in Sources */,
 				F2B60DE52B68C7080071204C /* AccountDetails.swift in Sources */,
 				929272E82B6BD70B00014D5E /* ProductDetailDescriptionView.swift in Sources */,
+				F2B8BCDC2B7606EE001EF179 /* EditAccountDetailsService.swift in Sources */,
 				F2A657082B6107030070058F /* SideBarView.swift in Sources */,
 				928550D62B556DD50024A2A5 /* AddAddressView.swift in Sources */,
 				F2A6570C2B6127E90070058F /* SideBarViewModel.swift in Sources */,
