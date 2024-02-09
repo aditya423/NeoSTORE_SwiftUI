@@ -85,6 +85,7 @@
 		F2B9ABEE2B7256320078D0F1 /* OrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9ABED2B7256320078D0F1 /* OrderDetailsViewModel.swift */; };
 		F2B9ABF02B7256790078D0F1 /* PlaceOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9ABEF2B7256790078D0F1 /* PlaceOrderViewModel.swift */; };
 		F2C55AE62B5A7A74007A222A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C55AE52B5A7A74007A222A /* LoginService.swift */; };
+		F2D2A0652B7632DB00ED7B96 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D2A0642B7632DB00ED7B96 /* LocationManager.swift */; };
 		F2D6B3332B70BB180081E3E3 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6B3322B70BB180081E3E3 /* CommonViewModel.swift */; };
 		F2D6B3382B71085A0081E3E3 /* AddressListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6B3372B71085A0081E3E3 /* AddressListViewModel.swift */; };
 		F2D6B33A2B710B6E0081E3E3 /* AddressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6B3392B710B6E0081E3E3 /* AddressListView.swift */; };
@@ -171,6 +172,7 @@
 		F2B9ABED2B7256320078D0F1 /* OrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailsViewModel.swift; path = "Neostore_SwiftUI/Pages/My Orders/View Model/OrderDetailsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		F2B9ABEF2B7256790078D0F1 /* PlaceOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaceOrderViewModel.swift; path = "Neostore_SwiftUI/Pages/My Orders/View Model/PlaceOrderViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		F2C55AE52B5A7A74007A222A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		F2D2A0642B7632DB00ED7B96 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		F2D6B3322B70BB180081E3E3 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 		F2D6B3372B71085A0081E3E3 /* AddressListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListViewModel.swift; sourceTree = "<group>"; };
 		F2D6B3392B710B6E0081E3E3 /* AddressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListView.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				928550DB2B556E070024A2A5 /* StoreLocatorView.swift */,
+				F2D2A0642B7632DB00ED7B96 /* LocationManager.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -896,6 +899,7 @@
 				F2B60DCE2B68C4690071204C /* ResetPassword.swift in Sources */,
 				F2B60DC72B68C3FD0071204C /* OrderList.swift in Sources */,
 				F2B9ABE62B723EB20078D0F1 /* OrderListViewModel.swift in Sources */,
+				F2D2A0652B7632DB00ED7B96 /* LocationManager.swift in Sources */,
 				F2B60DCC2B68C4520071204C /* UpdateAccountDetails.swift in Sources */,
 				9287A6972B565BE9008CA296 /* Constants.swift in Sources */,
 				929ED64D2B6A707200EE1E29 /* ProductListCell.swift in Sources */,
@@ -1097,7 +1101,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Neostore_SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z37X84PRTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Neostore-SwiftUI-Info.plist";
@@ -1106,6 +1110,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1127,7 +1132,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Neostore_SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z37X84PRTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Neostore-SwiftUI-Info.plist";
@@ -1136,6 +1141,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

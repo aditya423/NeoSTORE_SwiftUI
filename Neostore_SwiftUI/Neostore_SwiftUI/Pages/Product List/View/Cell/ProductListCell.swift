@@ -32,7 +32,7 @@ struct ProductListCell: View {
             
             VStack(alignment: .leading){
                 Text(productData?.name ?? "")
-                    .fontWeight(.bold)
+                    .bold()
                     .font(.headline)
                 Text(productData?.producer ?? "")
                     .fontWeight(.light)
@@ -41,7 +41,7 @@ struct ProductListCell: View {
                     HStack{
                         Text("Rs: \(productData?.cost ?? 3)")
                             .foregroundColor(.red)
-                            .fontWeight(.bold)
+                            .bold()
                             .font(.title3)
                         Spacer()
                             .frame(maxWidth: .infinity)
