@@ -9,8 +9,29 @@ import SwiftUI
 import MapKit
 
 struct StoreLocatorView: View {
+    
+    @State private var search: String = ""
+    @EnvironmentObject var localSearchService: LocalSearchService
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            TextField("Search", text: $search)
+                .textFieldStyle(.roundedBorder)
+                .onSubmit {
+                    localSearchService.search(query: search)
+                }
+                .padding()
+            
+            if !localSearchService.landmarks.isEmpty {
+                LandmarkListView()
+            }
+            
+            Map(coordinateRegion: $localSearchService.region, showsUserLocation: true, annotationItems: localSearchService.landmarks) { landmark in
+                MapMarker(coordinate: landmark.coordinate, tint: localSearchService.landmark==landmark ? .red : .green)
+            }
+            .ignoresSafeArea()
+        }
+        .navigationBarBackButtonHidden()
     }
 }
 

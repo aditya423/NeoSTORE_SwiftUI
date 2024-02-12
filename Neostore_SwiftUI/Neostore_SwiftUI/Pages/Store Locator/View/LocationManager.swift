@@ -7,39 +7,19 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 class LocationManager: NSObject, ObservableObject {
     
     let locationManager = CLLocationManager()
+    @Published var region = MKCoordinateRegion.defaultRegion()
     
     override init() {
         super.init()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.distanceFilter = 100
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.requestLocation()
-    }
-}
-
-extension LocationManager: CLLocationManagerDelegate {
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch locationManager.authorizationStatus {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            print ("Location access restricted")
-        case .denied:
-            print ("Location access denied")
-        case .authorizedAlways, .authorizedWhenInUse:
-            print ("Location")
-        @unknown default:
-            break
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print (error.localizedDescription)
     }
 }
