@@ -11,7 +11,6 @@ import SwiftUI
 struct Neostore_SwiftUIApp: App {
 
     @State private var navigationId = UUID()
-    @Environment(\.scenePhase) var scenePhase
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
     
     var body: some Scene {
@@ -23,10 +22,11 @@ struct Neostore_SwiftUIApp: App {
                     LoginView()
                 }
             }
+            .environmentObject(LocationSearchViewModel())
             .id(navigationId)
             .onReceive(NotificationCenter.default.publisher(for: Notification.Name("popToLogin"))) { _ in
                 navigationId = UUID()
             }
-        }.onChange(of: scenePhase) { _ in }
+        }
     }
 }
