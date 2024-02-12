@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 import Combine
 
-class LocalSearchService: ObservableObject {
+class LocationSearchViewModel: ObservableObject {
     
     let locationManager = LocationManager()
     var cancellables = Set<AnyCancellable>()

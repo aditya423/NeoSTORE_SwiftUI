@@ -11,23 +11,23 @@ import MapKit
 struct StoreLocatorView: View {
     
     @State private var search: String = ""
-    @EnvironmentObject var localSearchService: LocalSearchService
+    @EnvironmentObject var locationSearchVM: LocationSearchViewModel
     
     var body: some View {
         VStack {
             TextField("Search", text: $search)
                 .textFieldStyle(.roundedBorder)
                 .onSubmit {
-                    localSearchService.search(query: search)
+                    locationSearchVM.search(query: search)
                 }
                 .padding()
             
-            if !localSearchService.landmarks.isEmpty {
+            if !locationSearchVM.landmarks.isEmpty {
                 LandmarkListView()
             }
             
-            Map(coordinateRegion: $localSearchService.region, showsUserLocation: true, annotationItems: localSearchService.landmarks) { landmark in
-                MapMarker(coordinate: landmark.coordinate, tint: localSearchService.landmark==landmark ? .red : .green)
+            Map(coordinateRegion: $locationSearchVM.region, showsUserLocation: true, annotationItems: locationSearchVM.landmarks) { landmark in
+                MapMarker(coordinate: landmark.coordinate, tint: locationSearchVM.landmark==landmark ? .red : .green)
             }
             .ignoresSafeArea()
         }

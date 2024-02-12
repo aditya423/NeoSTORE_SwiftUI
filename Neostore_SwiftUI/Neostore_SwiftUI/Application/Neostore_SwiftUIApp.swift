@@ -22,7 +22,7 @@ struct Neostore_SwiftUIApp: App {
                     LoginView()
                 }
             }
-            .environmentObject(LocalSearchService())
+            .environmentObject(LocationSearchViewModel())
             .id(navigationId)
             .onReceive(NotificationCenter.default.publisher(for: Notification.Name("popToLogin"))) { _ in
                 navigationId = UUID()

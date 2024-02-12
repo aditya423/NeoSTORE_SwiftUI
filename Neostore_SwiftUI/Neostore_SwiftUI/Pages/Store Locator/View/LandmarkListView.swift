@@ -10,11 +10,11 @@ import MapKit
 
 struct LandmarkListView: View {
     
-    @EnvironmentObject var localSearchService: LocalSearchService
+    @EnvironmentObject var locationSearchVM: LocationSearchViewModel
     
     var body: some View {
         VStack {
-            List(localSearchService.landmarks) { landmark in
+            List(locationSearchVM.landmarks) { landmark in
                 VStack(alignment: .leading) {
                     Text(landmark.name)
                         .padding(.horizontal, 20)
@@ -29,11 +29,11 @@ struct LandmarkListView: View {
                 }
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 .listRowSeparator(.hidden)
-                .listRowBackground(localSearchService.landmark==landmark ? AppColors.grayColor : Color.white)
+                .listRowBackground(locationSearchVM.landmark==landmark ? AppColors.grayColor : Color.white)
                 .onTapGesture {
-                    localSearchService.landmark = landmark
+                    locationSearchVM.landmark = landmark
                     withAnimation {
-                        localSearchService.region = MKCoordinateRegion.regionFromLandmark(landmark)
+                        locationSearchVM.region = MKCoordinateRegion.regionFromLandmark(landmark)
                     }
                 }
             }
