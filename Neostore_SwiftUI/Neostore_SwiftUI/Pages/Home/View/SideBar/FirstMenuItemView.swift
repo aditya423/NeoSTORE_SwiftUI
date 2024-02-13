@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
-//MARK: - FirstMenuItemView
+
 struct FirstMenuItemView: View {
     
+    // VARIABLES
     var imageName: String
     var title: String
-    //State Objects
     @ObservedObject var viewModel: SideBarViewModel
     
+    // VIEW
     var body: some View {
         VStack(alignment: .leading) {
             HStack {

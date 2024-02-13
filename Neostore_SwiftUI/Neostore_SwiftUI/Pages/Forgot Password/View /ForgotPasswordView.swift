@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
-//MARK: - ForgotPasswordView
+
 struct ForgotPasswordView: View {
-    //State Objects
+    
+    // VARIABLES
     @State var email = ""
     @ObservedObject var forgotPasswordVM = ForgotPasswordViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    // VIEW
     var body: some View {
         VStack {
             Spacer().frame(height: UIScreen.main.bounds.height*0.3)
@@ -33,12 +35,7 @@ struct ForgotPasswordView: View {
                         Button {
                             forgotPasswordVM.forgotPassword(email: email)
                         } label: {
-                            Text(Constants.submit.rawValue)
-                                .foregroundColor(.red)
-                                .font(.system(size: 25))
-                                .bold()
-                                .padding(10)
-                                .frame(maxWidth: .infinity)
+                            ButtonTextView(text: Constants.submit.rawValue, fgColor: Color.red)
                                 .onChange(of: forgotPasswordVM.vmVars.isNavigating) { newValue in
                                     if newValue {
                                         self.presentationMode.wrappedValue.dismiss()
@@ -47,7 +44,7 @@ struct ForgotPasswordView: View {
                         }
                     .background(.white)
                     .cornerRadius(5)
-                    .padding(.top, 30)
+                    .padding(.top, 20)
                     .alert(isPresented: $forgotPasswordVM.vmVars.showAlert) {
                         Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(forgotPasswordVM.vmVars.alertMessage))
                     }
@@ -68,13 +65,16 @@ struct ForgotPasswordView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: ImageNames.systemImgLeft.rawValue)
+                        .font(.title3)
                         .foregroundColor(.white)
+                        .bold()
                 }
             }
             ToolbarItem(placement: .principal) {
                 Text(PageHeadings.forgotPassword.rawValue)
-                    .font(.headline)
+                    .font(.title2)
                     .foregroundColor(.white)
+                    .bold()
             }
         }
         .toolbarBackground(

@@ -7,15 +7,15 @@
 
 import Foundation
 import Combine
-//MARK: - ForgotPasswordService
+
 class ForgotPasswordService {
     
     static func forgotPassword(email:String) -> (AnyPublisher<(ResetPasswordResponse?,ResetPasswordResponse?), Error>) {
         
         let params = ["email": email] as [String: Any]
-        //Calling Common API Function
         return APIManager.sharedInstance.makeApiCall(serviceType: .forgotPassword(parameters: params))
-        // operator which receives data, make changes and publishes that data
+        // OPERATOR -> which receives data, make changes and publishes that data
+        // used for DECODING data into model
             .tryMap { data in
                 //Mapping Data into Model
                 do {

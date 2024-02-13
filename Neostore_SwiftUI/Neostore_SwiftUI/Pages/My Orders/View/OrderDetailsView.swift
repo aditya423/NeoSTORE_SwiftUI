@@ -9,23 +9,25 @@ import SwiftUI
 
 struct OrderDetailsView: View {
     
+    // VARIABLES
     @State private var selectedQuantity = 1
     @State private var editIndex = 0
     @Binding var orderId: Int?
-    @StateObject var viewModel = OrderDetailsViewModel()
+    @StateObject var viewModel = MyOrdersViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    // VIEW
     var body: some View {
         VStack(spacing: 0) {
             Color.red.edgesIgnoringSafeArea(.all)
                 .frame(maxWidth: .infinity, maxHeight: 1)
             
             ZStack {
-                if viewModel.vmVars.isLoading {
+                if viewModel.orderDetailsVars.isLoading {
                     LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
                 } else {
                     List {
-                        if let productDetails = viewModel.vmVars.product_details {
+                        if let productDetails = viewModel.orderDetailsVars.product_details {
                             ForEach(0..<productDetails.count, id: \.self) { indexRow in
                                 VStack {
                                     HStack {
@@ -76,7 +78,7 @@ struct OrderDetailsView: View {
                             HStack {
                                 Text("TOTAL")
                                 Spacer()
-                                Text("₹\(Int(viewModel.vmVars.order_details?.cost ?? 0))")
+                                Text("₹\(Int(viewModel.orderDetailsVars.order_details?.cost ?? 0))")
                             }
                             .padding(.vertical, 20)
                             .bold()
@@ -109,7 +111,7 @@ struct OrderDetailsView: View {
             for: .navigationBar
         )
         .onAppear {
-            viewModel.vmVars.isLoading = true
+            viewModel.orderDetailsVars.isLoading = true
             viewModel.getOrderDetails(id: orderId ?? 0)
         }
     }

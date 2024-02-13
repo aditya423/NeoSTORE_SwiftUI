@@ -9,8 +9,10 @@ import Foundation
 
 class AddressListViewModel: ObservableObject {
     
+    // VARIABLES
     @Published var address: [String?] = []
     
+    // FUNCTIONS
     func setAddress() {
         address = [UserDefaults.standard.string(forKey: Keys.fullAddress.rawValue)]
     }

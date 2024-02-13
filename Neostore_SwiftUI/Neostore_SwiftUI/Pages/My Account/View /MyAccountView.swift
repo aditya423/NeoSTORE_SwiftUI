@@ -10,6 +10,7 @@ import PhotosUI
 
 struct MyAccountView: View {
     
+    // VARIABLES
     @State var oldFirstName = ""
     @State var oldLastName = ""
     @State var oldEmail = ""
@@ -33,8 +34,8 @@ struct MyAccountView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var myAccountVM = MyAccountViewModel()
     
+    // VIEW
     var body: some View {
-        
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 Color.red.edgesIgnoringSafeArea(.all)
@@ -156,12 +157,7 @@ struct MyAccountView: View {
                                             isEditingProfile = false
                                             setPreviousData()
                                         } label: {
-                                            Text("CANCEL")
-                                                .foregroundColor(.red)
-                                                .font(.system(size: 25))
-                                                .bold()
-                                                .padding(10)
-                                                .frame(maxWidth: .infinity)
+                                            ButtonTextView(text: "CANCEL", fgColor: Color.red)
                                         }
                                         .background(.white)
                                         .cornerRadius(5)
@@ -176,12 +172,7 @@ struct MyAccountView: View {
                                                 myAccountVM.editAccountDetails(firstName: firstName, lastName: lastName, email: email, dob: dob, profilePic: "", phoneNo: mobileNumber)
                                             }
                                         } label: {
-                                            Text("SUBMIT")
-                                                .foregroundColor(.red)
-                                                .font(.system(size: 25))
-                                                .bold()
-                                                .padding(10)
-                                                .frame(maxWidth: .infinity)
+                                            ButtonTextView(text: "SUBMIT", fgColor: Color.red)
                                         }
                                         .background(.white)
                                         .cornerRadius(5)
@@ -191,12 +182,7 @@ struct MyAccountView: View {
                                         Button {
                                             isEditingProfile = true
                                         } label: {
-                                            Text("EDIT PROFILE")
-                                                .foregroundColor(.red)
-                                                .font(.system(size: 25))
-                                                .bold()
-                                                .padding(10)
-                                                .frame(maxWidth: .infinity)
+                                            ButtonTextView(text: "EDIT PROFILE", fgColor: Color.red)
                                                 .onChange(of: myAccountVM.vmVars.isNavigating) { newValue in
                                                     if newValue {
                                                         self.presentationMode.wrappedValue.dismiss()
