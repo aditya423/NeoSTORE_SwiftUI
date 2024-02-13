@@ -14,8 +14,6 @@ class DeleteCartItemService {
         
         let params = ["product_id": id]
         return APIManager.sharedInstance.makeApiCall(serviceType: .deleteCart(parameters: params))
-        // OPERATOR -> which receives data, make changes and publishes that data
-        // used for DECODING data into model
             .tryMap { data in
                 do {
                     let responseData = try JSONDecoder().decode(DeleteCartResponse.self, from: data)

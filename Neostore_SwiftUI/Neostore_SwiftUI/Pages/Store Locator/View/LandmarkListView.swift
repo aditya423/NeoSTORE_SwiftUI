@@ -10,10 +10,8 @@ import MapKit
 
 struct LandmarkListView: View {
     
-    // VARIABLES
     @EnvironmentObject var locationSearchVM: LocationSearchViewModel
     
-    // VIEW
     var body: some View {
         VStack {
             List(locationSearchVM.landmarks) { landmark in

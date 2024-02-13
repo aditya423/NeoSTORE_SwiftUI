@@ -8,23 +8,22 @@
 import Foundation
 import SwiftUI
 import Combine
-
+//MARK: - ForgotPasswordViewModel
 class ForgotPasswordViewModel: ObservableObject{
-    
-    // VARIABLES
-    let validation = Validation()
-    private var cancellables = Set<AnyCancellable>()
+    //Published Object
     @Published var vmVars = NavPublishVars()
     
+    let validation = Validation()
+    private var cancellables = Set<AnyCancellable>()
+    
+    //Forgot Password API Call
     func forgotPassword(email: String){
-        // VALIDATION CHECK
         guard !email.isEmpty else {
             vmVars.alertMessage = AlertMessages.fillAllFieldsMsg.rawValue
             vmVars.showAlert = true
             return
         }
         
-        // API CALL
         ForgotPasswordService.forgotPassword(email: email)
             .sink (receiveCompletion: { completion in
                 switch completion {

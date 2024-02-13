@@ -22,21 +22,9 @@ struct LoaderView: View {
     }
 }
 
-// BUTTON TEXT
-struct ButtonTextView: View {
-    
-    @State var text: String
-    @State var fgColor: Color
-    
-    var body: some View {
-        VStack {
-            Text(text)
-                .foregroundColor(fgColor)
-                .font(.system(size: 25))
-                .bold()
-                .padding(10)
-                .frame(maxWidth: .infinity)
-        }
+struct LoaderView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoaderView()
     }
 }
 

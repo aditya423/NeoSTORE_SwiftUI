@@ -6,25 +6,25 @@
 //
 
 import SwiftUI
-
+//MARK: - HomeView
 struct HomeView: View {
+    // State Variables
+    @State private var isSidebarOpened = false
+    @State private var selection = 0
+    @State var navigationId = UUID()
     
-    // VARIABLES
     var viewModel = HomeViewModel()
     var screenWidth = UIScreen.main.bounds.width
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.8
     let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
-    @State private var isSidebarOpened = false
-    @State private var selection = 0
-    @State var navigationId = UUID()
     
     init() {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.red
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.darkGray
     }
     
-    // VIEW
     var body: some View {
+        
         ZStack {
             // HOME
             NavigationView {

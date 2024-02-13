@@ -14,9 +14,9 @@ class ResetPasswordService {
     static func resetUserPassword(oldPassword:String, newPassword: String, confirmPassword: String) -> (AnyPublisher<(ResetPasswordResponse?,String?), Error>) {
         
         let params = ["old_password": oldPassword, "password": newPassword, "confirm_password": confirmPassword] as [String: Any]
+        
         return APIManager.sharedInstance.makeApiCall(serviceType: .changePassword(parameters: params))
-        // OPERATOR -> which receives data, make changes and publishes that data
-        // used for DECODING data into model
+        // operator which receives data, make changes and publishes that data
             .tryMap { data in
                 do {
                     let responseData = try JSONDecoder().decode(ResetPasswordResponse.self, from: data)

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MyCartView: View {
     
-    // VARIABLES
     @State private var showPicker = false
     @State private var selectedQuantity = 1
     @State private var isLoading = true
@@ -19,8 +18,8 @@ struct MyCartView: View {
     @StateObject var viewModel = MyCartViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    // VIEW
     var body: some View {
+        
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 
@@ -134,7 +133,12 @@ struct MyCartView: View {
                                     // BUTTON
                                     VStack {
                                         ZStack {
-                                            ButtonTextView(text: "ORDER NOW", fgColor: Color.white)
+                                            Text("ORDER NOW")
+                                                .foregroundColor(.white)
+                                                .font(.system(size: 25))
+                                                .bold()
+                                                .padding(10)
+                                                .frame(maxWidth: .infinity)
                                                 .background(.red)
                                                 .cornerRadius(5)
                                                 .padding(20)

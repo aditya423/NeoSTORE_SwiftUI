@@ -7,15 +7,15 @@
 
 import Foundation
 import Combine
-
+//MARK: - RegisterService
 class RegisterService {
     
     static func registerUser(firstName: String, lastName: String, email: String, password: String, confirmPassword: String, gender: String, number: Int) -> (AnyPublisher<(RegisterSuccessResponse?, RegisterDataAlreadyExist?, RegisterErrorResponse?), Error>) {
         
         let params = ["first_name": firstName, "last_name": lastName, "email": email, "password": password, "confirm_password": confirmPassword, "gender": gender, "phone_no": number] as [String: Any]
+        //call Common API Call Function
         return APIManager.sharedInstance.makeApiCall(serviceType: .userRegister(parameters: params))
-        // OPERATOR -> which receives data, make changes and publishes that data
-        // used for DECODING data into model
+        // operator which receives data, make changes and publishes that data
             .tryMap { data in
                 do {
                     let responseData = try JSONDecoder().decode(RegisterSuccessResponse.self, from: data)

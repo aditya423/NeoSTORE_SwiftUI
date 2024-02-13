@@ -9,10 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    // VARIABLES
     @ObservedObject var viewModel: SideBarViewModel
     
-    // VIEW
     var body: some View {
         VStack(alignment: .center) {
             if let image = loadImage(imgName: ImageNames.profileImage.rawValue) {

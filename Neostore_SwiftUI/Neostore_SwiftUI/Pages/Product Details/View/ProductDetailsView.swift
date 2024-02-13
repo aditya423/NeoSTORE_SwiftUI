@@ -6,22 +6,19 @@
 //
 
 import SwiftUI
-
+//MARK: - ProductDetailsView
 struct ProductDetailsView: View {
-    
-    // VARIABLES
-    var productId: Int?
-    @State var isBuyNowPresented: Bool = false
-    @State var isRateNowPresented: Bool = false
+    //State Objects
     @ObservedObject var viewModel = ProductDetailsViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    var productId: Int?
     
     init(productId: Int?) {
         self.productId = productId
         viewModel.getProductDetails(productId: String(productId ?? 0))
     }
     
-    // VIEW
     var body: some View {
         ZStack{
             VStack(spacing: 0){
@@ -39,40 +36,39 @@ struct ProductDetailsView: View {
                                         .padding()
                                 }
                             }
-
                             HStack(spacing:20){
                                 Button {
-                                    isBuyNowPresented = true
+                                    viewModel.isBuyNowPresented = true
                                 } label: {
-                                    ButtonTextView(text: ButtonTitles.buyNow.rawValue, fgColor: Color.white)
+                                    Text(ButtonTitles.buyNow.rawValue)
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 25))
+                                        .bold()
+                                        .padding(10)
+                                        .frame(maxWidth: .infinity)
                                         .background(.red)
                                         .cornerRadius(5)
                                         .padding(.leading,10)
-                                        .alert(isPresented: $viewModel.vmVars.showAlert) {
-                                            Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
-                                        }
                                 }
-                                .fullScreenCover(isPresented: $isBuyNowPresented, content: {
-                                    BuyNowPopupView(viewModel: viewModel)
-                                })
+                                
                                 
                                 Button {
-                                    isRateNowPresented = true
+                                    viewModel.isRateNowPresented = true
                                 } label: {
-                                    ButtonTextView(text: ButtonTitles.rate.rawValue, fgColor: Color.white)
+                                    Text(ButtonTitles.rate.rawValue)
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 25))
+                                        .bold()
+                                        .padding(10)
+                                        .frame(maxWidth: .infinity)
                                         .background(.gray)
                                         .cornerRadius(5)
                                         .padding(.trailing,10)
-                                        .alert(isPresented: $viewModel.vmVars.showAlert) {
-                                            Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
-                                        }
                                 }
-                                .fullScreenCover(isPresented: $isRateNowPresented, content: {
-                                    RateNowPopupView(viewModel: viewModel)
-                                })
-                        }
-                        .padding(20)
-                        .background(.white)
+                                
+                            }
+                            .padding(20)
+                            .background(.white)
                         }
                         
                     } else {

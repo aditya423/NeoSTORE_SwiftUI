@@ -6,11 +6,10 @@
 //
 
 import Foundation
-
+//MARK: - HomeViewModel
 class HomeViewModel {
-    
-    // VARIABLES
     var productsImages = ["slider_img1", "slider_img2", "slider_img3", "slider_img4"]
+    //Static for Use from product list and product details
     static var furnitureData: [Int: [String: Any]] = [
         0: ["name":"Tables","lblPosition":Position.topRight,"imgName":"table","imgPosition": Position.bottomLeft,"categoryID":"1"],
         1: ["name":"Sofas","lblPosition":Position.bottomLeft,"imgName":"sofa","imgPosition": Position.topRight, "categoryID":"2"],

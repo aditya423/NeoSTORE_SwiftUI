@@ -8,11 +8,15 @@
 import Foundation
 import Combine
 
+//MARK: - SideBarViewModel
 class SideBarViewModel: ObservableObject {
 
-    // VARIABLES
+    //Publishing Variable
+    @Published var vmVars = SideBarPublishedVars()
+    
     var total_orders: String?
     private var cancellables = Set<AnyCancellable>()
+    // Static SideBar Data
     let menuData = [0: ["imageName":"", "title":"", "row":"0"],
                     1: ["imageName":"my-cart-icon", "title":"My Cart"],
                     2: ["imageName":"table", "title":"Tables", "categoryId":"1"],
@@ -24,9 +28,8 @@ class SideBarViewModel: ObservableObject {
                     8: ["imageName":"my-orders-icon", "title":"My Orders"],
                     9: ["imageName":"logout_icon", "title":"Logout"]
     ]
-    @Published var vmVars = SideBarPublishedVars()
     
-    // API CALL
+    //Get Account Details Api Call
     func getAccountDetails() {
         AccountDetailsService.getAccountDetails()
             .sink(receiveCompletion: { completion in
@@ -38,6 +41,7 @@ class SideBarViewModel: ObservableObject {
                     self.vmVars.showAlert = true
                 }
             }, receiveValue: { (accountDetails, invalidToken, error) in
+                // On Success Set Values and on error Show Alert
                 if accountDetails != nil {
                     CommonViewModel.shared.user_data = accountDetails?.data?.user_data
                     CommonViewModel.shared.total_carts = String(accountDetails?.data?.total_carts ?? 0)

@@ -6,13 +6,11 @@
 //
 
 import SwiftUI
-
+//MARK: - ProductDetailTitleView
 struct ProductDetailTitleView: View {
     
-    // VARIABLES
     var productDetails: ProductDetails? 
     
-    // VIEW
     var body: some View {
         HStack{
             VStack(alignment: .leading){

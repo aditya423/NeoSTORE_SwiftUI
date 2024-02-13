@@ -6,14 +6,12 @@
 //
 
 import SwiftUI
-
+//MARK: - MenuItemView
 struct MenuItemView: View {
-    
-    // VARIABLES
+    //Variables
     var imageName: String
     var title: String
     
-    // VIEW
     var body: some View {
         VStack(alignment: .leading) {
             HStack {

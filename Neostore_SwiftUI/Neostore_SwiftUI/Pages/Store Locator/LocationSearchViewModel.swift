@@ -11,7 +11,6 @@ import Combine
 
 class LocationSearchViewModel: ObservableObject {
     
-    // VARIABLES
     let locationManager = LocationManager()
     var cancellables = Set<AnyCancellable>()
     @Published var region: MKCoordinateRegion = MKCoordinateRegion.defaultRegion()
@@ -23,7 +22,6 @@ class LocationSearchViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    // FUNCTIONS
     func search(query: String) {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query

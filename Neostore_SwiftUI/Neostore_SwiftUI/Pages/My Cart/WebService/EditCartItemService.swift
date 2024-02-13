@@ -14,8 +14,6 @@ class EditCartItemService {
         
         let params = ["product_id": id, "quantity": qty]
         return APIManager.sharedInstance.makeApiCall(serviceType: .editCart(parameters: params))
-        // OPERATOR -> which receives data, make changes and publishes that data
-        // used for DECODING data into model
             .tryMap { data in
                 do {
                     let responseData = try JSONDecoder().decode(EditCartSuccessResponse.self, from: data)

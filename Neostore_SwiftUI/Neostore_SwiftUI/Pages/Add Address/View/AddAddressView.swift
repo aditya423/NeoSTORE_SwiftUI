@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AddAddressView: View {
     
-    // VARIABLES
     @State var address: String = ""
     @State var landmark: String = ""
     @State var city: String = ""
@@ -20,9 +19,9 @@ struct AddAddressView: View {
     @StateObject var viewModel = AddAddressViewModel()
     @ObservedObject var addressListVM: AddressListViewModel
     @FocusState var focusedField: Int?
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    // VIEW
     var body: some View {
             VStack(spacing:0){
                 Color.red.edgesIgnoringSafeArea(.all)
@@ -30,11 +29,11 @@ struct AddAddressView: View {
                 ScrollView {
                     ScrollViewReader { proxy in
                         VStack(alignment: .leading) {
-                            LabelTextFieldView(textFieldPlaceHolder: "NeoSOFT Technologies, 6th Floor, The Business Arcade, Prabhadevi (West)", textString: "ADDRESS", textFieldString: $address)
+                            LabelTextFieldView(textFieldString: $address, textFieldPlaceHolder: "NeoSOFT Technologies, 6th Floor, The Business Arcade, Prabhadevi (West)", textString: "ADDRESS")
                                 .onSubmit {
                                     focusedField = 2
                                 }
-                            LabelTextFieldView(textFieldPlaceHolder: "OPPOSITE TO MOTILAL OSWAL", textString: "LANDMARK", textFieldString: $landmark)
+                            LabelTextFieldView(textFieldString: $landmark, textFieldPlaceHolder: "OPPOSITE TO MOTILAL OSWAL", textString: "LANDMARK")
                                 .focused($focusedField, equals: 2)
                                 .onSubmit {
                                     focusedField = 3
@@ -42,12 +41,12 @@ struct AddAddressView: View {
                             
                             HStack{
                                 VStack{
-                                    LabelTextFieldView(textFieldPlaceHolder: "MUMBAI", textString: "CITY", textFieldString: $city)
+                                    LabelTextFieldView(textFieldString: $city, textFieldPlaceHolder: "MUMBAI", textString: "CITY")
                                         .focused($focusedField, equals: 3)
                                         .onSubmit {
                                             focusedField = 4
                                         }
-                                    LabelTextFieldView(textFieldPlaceHolder: "400012", textString: "ZIPCODE", textFieldString: $zipCode)
+                                    LabelTextFieldView(textFieldString: $zipCode, textFieldPlaceHolder: "400012", textString: "ZIPCODE")
                                         .id("zipcode")
                                         .focused($focusedField, equals: 5)
                                         .keyboardType(.numberPad)
@@ -58,12 +57,12 @@ struct AddAddressView: View {
                                         }
                                 }
                                 VStack{
-                                    LabelTextFieldView(textFieldPlaceHolder: "MAHARASHTRA", textString: "STATE", textFieldString: $state)
+                                    LabelTextFieldView(textFieldString: $state, textFieldPlaceHolder: "MAHARASHTRA", textString: "STATE")
                                         .focused($focusedField, equals: 4)
                                         .onSubmit {
                                             focusedField = 5
                                         }
-                                    LabelTextFieldView(textFieldPlaceHolder: "INDIA", textString: "COUNTRY", textFieldString: $country)
+                                    LabelTextFieldView(textFieldString: $country, textFieldPlaceHolder: "INDIA", textString: "COUNTRY")
                                         .id("country")
                                 }
                             }
@@ -77,7 +76,12 @@ struct AddAddressView: View {
                                     self.presentationMode.wrappedValue.dismiss()
                                 }
                             } label: {
-                                ButtonTextView(text: "SAVE ADDRESS", fgColor: Color.white)
+                                Text("SAVE ADDRESS")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 25))
+                                    .bold()
+                                    .padding(10)
+                                    .frame(maxWidth: .infinity)
                             }
                             .background(.red)
                             .cornerRadius(5)
@@ -137,3 +141,9 @@ struct AddAddressView: View {
             }
     }
 }
+
+//struct AddAddressView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddAddressView()
+//    }
+//}

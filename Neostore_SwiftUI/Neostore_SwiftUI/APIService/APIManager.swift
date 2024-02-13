@@ -7,14 +7,16 @@
 
 import Foundation
 import Combine
-
+//MARK: - APIManager
 class APIManager: NSObject {
     
     static let sharedInstance = APIManager()
     private override init() {}
-    
+    // Common Api function
     func makeApiCall(serviceType: APIServices) -> (AnyPublisher<Data, Error>) {
+        
         let session = URLSession.shared
+        
         let url = URL(string: serviceType.Path)!
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = serviceType.httpMethod
@@ -39,14 +41,17 @@ class APIManager: NSObject {
         }
         urlRequest.allHTTPHeaderFields = serviceType.header
         
-        // RETURNING FUTURE PUBLISHER -> which emits data received from the API call
+        // returning Future publisher, which emits data received from the API call
         return Future { promise in
+            
             let task = session.dataTask(with: urlRequest) {
                 data, response, error in
+                
                 guard error == nil else {
                     promise(.failure(error!))
                     return
                 }
+                
                 guard let content = data else {
                     promise(.failure(error!))
                     return

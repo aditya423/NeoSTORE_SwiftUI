@@ -6,16 +6,15 @@
 //
 
 import SwiftUI
-
+//MARK: - BuyNowPopupView
 struct BuyNowPopupView: View {
     
-    // VARIABLES
-    var productDetails: ProductDetails?
+    //State Objects
     @State var quantity:String = ""
     @StateObject var viewModel: ProductDetailsViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    // VIEW
+    //body
     var body: some View {
         VStack{
             VStack{
@@ -53,8 +52,13 @@ struct BuyNowPopupView: View {
                 Button {
                     viewModel.addToCart(quantity: quantity)
                 } label: {
-                    ButtonTextView(text: ButtonTitles.submit.rawValue, fgColor: Color.white)
-                        .background(.red)
+                    Text(ButtonTitles.submit.rawValue)
+                        .foregroundColor(.white)
+                        .font(.custom(Fonts.bold.rawValue, size: 25))
+                        .bold()
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .background(AppColors.primaryColor)
                         .cornerRadius(5)
                         .padding()
                         .padding(.horizontal,40)

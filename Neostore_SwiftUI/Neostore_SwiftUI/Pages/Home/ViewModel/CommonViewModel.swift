@@ -6,12 +6,10 @@
 //
 
 import Foundation
-
+//MARK: - CommonViewModel
 class CommonViewModel {
+    static let shared = CommonViewModel()  //For access of TotalCarts to mulitple viewControllers
     
-    static let shared = CommonViewModel()
-    
-    // VARIABLES
     @Published var total_carts: String?
     @Published var user_data: UserDetails?
     @Published var isImageUpdated: Bool?

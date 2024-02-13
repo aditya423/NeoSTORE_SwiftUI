@@ -6,23 +6,22 @@
 //
 
 import SwiftUI
-
+//MARK: - ProductListView
 struct ProductListView: View {
-    
-    // VARIABLRS
-    var categoryId: Int?
+    //State Objects
     @State var searchText = ""
     @State var isSearchTextFieldHidden = true
     @State private var timer: Timer? = nil
     @ObservedObject var viewModel = ProductListViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    var categoryId: Int?
     init(categoryId: Int?) {
         self.categoryId = categoryId
         viewModel.getProductList(categoryId: String((categoryId ?? 0) + 1))
     }
     
-    // VIEW
+    //Body
     var body: some View {
         VStack(spacing: 0){
             Color.red.edgesIgnoringSafeArea(.all)

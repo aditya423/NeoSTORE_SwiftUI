@@ -21,7 +21,7 @@ extension LocationManager: CLLocationManagerDelegate {
             print ("Location access denied")
         case .authorizedAlways, .authorizedWhenInUse:
             guard let location = locationManager.location else { return }
-            region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4))
+            region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
         @unknown default:
             break
         }
@@ -31,7 +31,7 @@ extension LocationManager: CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4))
+            self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
         }
     }
     

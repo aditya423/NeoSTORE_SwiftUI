@@ -9,20 +9,18 @@ import SwiftUI
 
 struct OrderListView: View {
     
-    // VARIABLES
     @State var orderId: Int?
     @State var isNavigating = false
-    @StateObject var viewModel = MyOrdersViewModel()
+    @StateObject var viewModel = OrderListViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    // VIEW
     var body: some View {
         VStack(spacing: 0) {
             Color.red.edgesIgnoringSafeArea(.all)
                 .frame(maxWidth: .infinity, maxHeight: 1)
             
             ZStack {
-                if viewModel.orderListVars.isLoading {
+                if viewModel.vmVars.isLoading {
                     LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
                 } else {
                     List {
@@ -94,7 +92,7 @@ struct OrderListView: View {
             for: .navigationBar
         )
         .onAppear {
-            viewModel.orderListVars.isLoading = true
+            viewModel.vmVars.isLoading = true
             viewModel.getOrderList()
         }
     }

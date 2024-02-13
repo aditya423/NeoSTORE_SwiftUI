@@ -7,16 +7,16 @@
 
 import Foundation
 import Combine
-
+//MARK: - ProductListService
 class ProductListService{
     
     static  func getProductList(categoryId: String, page: Int, limit: Int) -> (AnyPublisher<(ProductListResponse?, ProductListInvalidCategoryId?), Error>) {
         
         let params = ["product_category_id": categoryId, "page": page, "limit": limit] as [String: Any]
+        //Call Common api Function
         return APIManager.sharedInstance.makeApiCall(serviceType: .getProductList(parameters: params))
-        // OPERATOR -> which receives data, make changes and publishes that data
-        // used for DECODING data into model
             .tryMap { data in
+                //Mapping Data into Model
                 do {
                     let responseData = try JSONDecoder().decode(ProductListResponse.self, from: data)
                     if responseData.status != 200 {

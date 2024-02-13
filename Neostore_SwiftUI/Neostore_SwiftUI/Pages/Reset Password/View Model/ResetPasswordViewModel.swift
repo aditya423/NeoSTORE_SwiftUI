@@ -11,13 +11,11 @@ import Combine
 
 class ResetPasswordViewModel: ObservableObject{
     
-    // VARIABLES
+    @Published var vmVars = NavPublishVars()
     let validation = Validation()
     private var cancellables = Set<AnyCancellable>()
-    @Published var vmVars = NavPublishVars()
 
     func resetUserPassword(oldPassword: String, newPassword:String,confirmPassword: String){
-        // VALIDATION CHECK
         guard !oldPassword.isEmpty && !newPassword.isEmpty && !confirmPassword.isEmpty else {
             vmVars.alertMessage = AlertMessages.fillAllFieldsMsg.rawValue
             vmVars.showAlert = true
@@ -27,7 +25,6 @@ class ResetPasswordViewModel: ObservableObject{
         if let result = validation.resetPassValidation(oldPass: oldPassword, newPass: newPassword, confirmPass: confirmPassword) {
             if result == "" {
                 if newPassword == confirmPassword {
-                    // API CALL
                     ResetPasswordService.resetUserPassword(oldPassword: oldPassword, newPassword: newPassword, confirmPassword: confirmPassword)
                         .sink (receiveCompletion: { completion in
                             switch completion {

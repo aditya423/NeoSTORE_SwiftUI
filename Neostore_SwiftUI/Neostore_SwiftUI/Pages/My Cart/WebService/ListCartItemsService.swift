@@ -12,9 +12,7 @@ class ListCartItemsService {
     
     static func getCartItems() -> (AnyPublisher<(ListCartItemsSuccessResponse?, ListCartItemsCartEmpty?, ListCartItemsInvalidToken?, ListCartItemsWrongMethod?), Error>) {
         
-        return APIManager.sharedInstance.makeApiCall(serviceType: .getCartItems)
-        // OPERATOR -> which receives data, make changes and publishes that data
-        // used for DECODING data into model
+        APIManager.sharedInstance.makeApiCall(serviceType: .getCartItems)
             .tryMap { data in
                 do {
                     do {
