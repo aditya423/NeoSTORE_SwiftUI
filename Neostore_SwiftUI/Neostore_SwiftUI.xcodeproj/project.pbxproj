@@ -31,7 +31,6 @@
 		929272E42B6B6ABA00014D5E /* ProductListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929272E32B6B6ABA00014D5E /* ProductListService.swift */; };
 		929272E62B6BD6E700014D5E /* ProductDetailTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929272E52B6BD6E700014D5E /* ProductDetailTitleView.swift */; };
 		929272E82B6BD70B00014D5E /* ProductDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929272E72B6BD70B00014D5E /* ProductDetailDescriptionView.swift */; };
-		9292D2262B74A80900171844 /* StoreLocatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292D2252B74A80900171844 /* StoreLocatorViewModel.swift */; };
 		9292D2292B74A86000171844 /* BuyNowPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292D2282B74A86000171844 /* BuyNowPopupView.swift */; };
 		9292D22B2B74A87B00171844 /* RateNowPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292D22A2B74A87B00171844 /* RateNowPopupView.swift */; };
 		9292D22E2B74ACA500171844 /* AddAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292D22D2B74ACA500171844 /* AddAddressModel.swift */; };
@@ -50,7 +49,11 @@
 		F260DDB72B51517700101095 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDB62B51517700101095 /* CustomTextField.swift */; };
 		F260DDB92B51611700101095 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDB82B51611700101095 /* APIService.swift */; };
 		F260DDBB2B51613600101095 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260DDBA2B51613600101095 /* APIManager.swift */; };
-		F266CE312B5162DF007EB401 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266CE302B5162DF007EB401 /* Extensions.swift */; };
+		F2617FB62B79EBEF00EC12C2 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2617FB52B79EBEF00EC12C2 /* LocationSearchViewModel.swift */; };
+		F2617FB92B79EE0B00EC12C2 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2617FB82B79EE0B00EC12C2 /* Landmark.swift */; };
+		F2617FBB2B79FDC100EC12C2 /* LocationManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2617FBA2B79FDC100EC12C2 /* LocationManager+Extension.swift */; };
+		F2617FBD2B7A095900EC12C2 /* LandmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2617FBC2B7A095900EC12C2 /* LandmarkListView.swift */; };
+		F266CE312B5162DF007EB401 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266CE302B5162DF007EB401 /* UserDefaults+Extension.swift */; };
 		F266CE342B516617007EB401 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266CE332B516617007EB401 /* HomeView.swift */; };
 		F2A657082B6107030070058F /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A657072B6107030070058F /* SideBarView.swift */; };
 		F2A6570A2B6127C30070058F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A657092B6127C30070058F /* HomeViewModel.swift */; };
@@ -84,7 +87,9 @@
 		F2B9ABEC2B7250540078D0F1 /* PlaceOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9ABEB2B7250540078D0F1 /* PlaceOrder.swift */; };
 		F2B9ABEE2B7256320078D0F1 /* OrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9ABED2B7256320078D0F1 /* OrderDetailsViewModel.swift */; };
 		F2B9ABF02B7256790078D0F1 /* PlaceOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9ABEF2B7256790078D0F1 /* PlaceOrderViewModel.swift */; };
+		F2BEBA2B2B79E7B200F4289A /* MKCoordinateRegion+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BEBA2A2B79E7B200F4289A /* MKCoordinateRegion+Extension.swift */; };
 		F2C55AE62B5A7A74007A222A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C55AE52B5A7A74007A222A /* LoginService.swift */; };
+		F2D2A0652B7632DB00ED7B96 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D2A0642B7632DB00ED7B96 /* LocationManager.swift */; };
 		F2D6B3332B70BB180081E3E3 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6B3322B70BB180081E3E3 /* CommonViewModel.swift */; };
 		F2D6B3382B71085A0081E3E3 /* AddressListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6B3372B71085A0081E3E3 /* AddressListViewModel.swift */; };
 		F2D6B33A2B710B6E0081E3E3 /* AddressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6B3392B710B6E0081E3E3 /* AddressListView.swift */; };
@@ -117,7 +122,6 @@
 		929272E32B6B6ABA00014D5E /* ProductListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListService.swift; sourceTree = "<group>"; };
 		929272E52B6BD6E700014D5E /* ProductDetailTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailTitleView.swift; sourceTree = "<group>"; };
 		929272E72B6BD70B00014D5E /* ProductDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDescriptionView.swift; sourceTree = "<group>"; };
-		9292D2252B74A80900171844 /* StoreLocatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocatorViewModel.swift; sourceTree = "<group>"; };
 		9292D2282B74A86000171844 /* BuyNowPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyNowPopupView.swift; sourceTree = "<group>"; };
 		9292D22A2B74A87B00171844 /* RateNowPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateNowPopupView.swift; sourceTree = "<group>"; };
 		9292D22D2B74ACA500171844 /* AddAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressModel.swift; sourceTree = "<group>"; };
@@ -136,7 +140,11 @@
 		F260DDB62B51517700101095 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F260DDB82B51611700101095 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F260DDBA2B51613600101095 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		F266CE302B5162DF007EB401 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F2617FB52B79EBEF00EC12C2 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
+		F2617FB82B79EE0B00EC12C2 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
+		F2617FBA2B79FDC100EC12C2 /* LocationManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationManager+Extension.swift"; sourceTree = "<group>"; };
+		F2617FBC2B7A095900EC12C2 /* LandmarkListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkListView.swift; sourceTree = "<group>"; };
+		F266CE302B5162DF007EB401 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		F266CE332B516617007EB401 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F2A657072B6107030070058F /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		F2A657092B6127C30070058F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -170,7 +178,9 @@
 		F2B9ABEB2B7250540078D0F1 /* PlaceOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrder.swift; sourceTree = "<group>"; };
 		F2B9ABED2B7256320078D0F1 /* OrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailsViewModel.swift; path = "Neostore_SwiftUI/Pages/My Orders/View Model/OrderDetailsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		F2B9ABEF2B7256790078D0F1 /* PlaceOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaceOrderViewModel.swift; path = "Neostore_SwiftUI/Pages/My Orders/View Model/PlaceOrderViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		F2BEBA2A2B79E7B200F4289A /* MKCoordinateRegion+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Extension.swift"; sourceTree = "<group>"; };
 		F2C55AE52B5A7A74007A222A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		F2D2A0642B7632DB00ED7B96 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		F2D6B3322B70BB180081E3E3 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 		F2D6B3372B71085A0081E3E3 /* AddressListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListViewModel.swift; sourceTree = "<group>"; };
 		F2D6B3392B710B6E0081E3E3 /* AddressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListView.swift; sourceTree = "<group>"; };
@@ -279,8 +289,10 @@
 		928550BC2B556CEA0024A2A5 /* Store Locator */ = {
 			isa = PBXGroup;
 			children = (
-				9292D2242B74A7E200171844 /* View Model */,
+				F2617FB72B79EDFA00EC12C2 /* Model */,
 				928550CB2B556D810024A2A5 /* View */,
+				F2617FBE2B7A598000EC12C2 /* ViewModel */,
+				F2617FB42B79EBD700EC12C2 /* WebService */,
 			);
 			path = "Store Locator";
 			sourceTree = "<group>";
@@ -346,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				928550DB2B556E070024A2A5 /* StoreLocatorView.swift */,
+				F2617FBC2B7A095900EC12C2 /* LandmarkListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -527,14 +540,6 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
-		9292D2242B74A7E200171844 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-				9292D2252B74A80900171844 /* StoreLocatorViewModel.swift */,
-			);
-			path = "View Model";
-			sourceTree = "<group>";
-		};
 		9292D2272B74A81C00171844 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -635,11 +640,35 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F2617FB42B79EBD700EC12C2 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				F2D2A0642B7632DB00ED7B96 /* LocationManager.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		F2617FB72B79EDFA00EC12C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2617FB82B79EE0B00EC12C2 /* Landmark.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2617FBE2B7A598000EC12C2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F2617FB52B79EBEF00EC12C2 /* LocationSearchViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
 		F266CE2F2B5162D0007EB401 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F2BEBA292B79E78200F4289A /* Extensions */,
 				F260DDB62B51517700101095 /* CustomTextField.swift */,
-				F266CE302B5162DF007EB401 /* Extensions.swift */,
 				928550AB2B55604B0024A2A5 /* Validation.swift */,
 				9287A6962B565BE9008CA296 /* Constants.swift */,
 				F2A78E1E2B6B750D003101CF /* Common.swift */,
@@ -787,6 +816,16 @@
 			path = WebService;
 			sourceTree = "<group>";
 		};
+		F2BEBA292B79E78200F4289A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F266CE302B5162DF007EB401 /* UserDefaults+Extension.swift */,
+				F2BEBA2A2B79E7B200F4289A /* MKCoordinateRegion+Extension.swift */,
+				F2617FBA2B79FDC100EC12C2 /* LocationManager+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F2C55AE42B5A7A4A007A222A /* WebService */ = {
 			isa = PBXGroup;
 			children = (
@@ -896,9 +935,13 @@
 				F2B60DCE2B68C4690071204C /* ResetPassword.swift in Sources */,
 				F2B60DC72B68C3FD0071204C /* OrderList.swift in Sources */,
 				F2B9ABE62B723EB20078D0F1 /* OrderListViewModel.swift in Sources */,
+				F2D2A0652B7632DB00ED7B96 /* LocationManager.swift in Sources */,
 				F2B60DCC2B68C4520071204C /* UpdateAccountDetails.swift in Sources */,
+				F2617FB62B79EBEF00EC12C2 /* LocationSearchViewModel.swift in Sources */,
+				F2BEBA2B2B79E7B200F4289A /* MKCoordinateRegion+Extension.swift in Sources */,
 				9287A6972B565BE9008CA296 /* Constants.swift in Sources */,
 				929ED64D2B6A707200EE1E29 /* ProductListCell.swift in Sources */,
+				F2617FB92B79EE0B00EC12C2 /* Landmark.swift in Sources */,
 				928BEB312B6A61DC00CB2822 /* LabelTextFieldView.swift in Sources */,
 				F2B273B62B6CBBC1008A515B /* DeleteCartItemService.swift in Sources */,
 				92E379212B6783FF004F0FD6 /* ResetPasswordView.swift in Sources */,
@@ -939,7 +982,7 @@
 				F2B60DDE2B68C6820071204C /* ProductRating.swift in Sources */,
 				F2B60DD22B68C5D40071204C /* OrderDetailsView.swift in Sources */,
 				F2B9ABEC2B7250540078D0F1 /* PlaceOrder.swift in Sources */,
-				F266CE312B5162DF007EB401 /* Extensions.swift in Sources */,
+				F266CE312B5162DF007EB401 /* UserDefaults+Extension.swift in Sources */,
 				92961C692B679DDB008C9DC1 /* ResetPasswordService.swift in Sources */,
 				F2B60DD02B68C5C30071204C /* OrderListView.swift in Sources */,
 				928550D22B556DB70024A2A5 /* ProductDetailsView.swift in Sources */,
@@ -955,12 +998,12 @@
 				F2A657082B6107030070058F /* SideBarView.swift in Sources */,
 				928550D62B556DD50024A2A5 /* AddAddressView.swift in Sources */,
 				F2A6570C2B6127E90070058F /* SideBarViewModel.swift in Sources */,
+				F2617FBB2B79FDC100EC12C2 /* LocationManager+Extension.swift in Sources */,
 				F2A78E1F2B6B750D003101CF /* Common.swift in Sources */,
 				F2B60DD52B68C6100071204C /* ListCartItems.swift in Sources */,
 				F2B60DE92B68E1F20071204C /* ProfileView.swift in Sources */,
 				F2B9ABEE2B7256320078D0F1 /* OrderDetailsViewModel.swift in Sources */,
 				F260DDB92B51611700101095 /* APIService.swift in Sources */,
-				9292D2262B74A80900171844 /* StoreLocatorViewModel.swift in Sources */,
 				F2B60DE72B68DA2F0071204C /* AccountDetailsService.swift in Sources */,
 				F2B60DD72B68C6280071204C /* EditCartItems.swift in Sources */,
 				F2A6570A2B6127C30070058F /* HomeViewModel.swift in Sources */,
@@ -968,6 +1011,7 @@
 				928550AC2B55604B0024A2A5 /* Validation.swift in Sources */,
 				F260DDB72B51517700101095 /* CustomTextField.swift in Sources */,
 				928550B02B5561CC0024A2A5 /* LoginViewModel.swift in Sources */,
+				F2617FBD2B7A095900EC12C2 /* LandmarkListView.swift in Sources */,
 				929272E62B6BD6E700014D5E /* ProductDetailTitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1097,7 +1141,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Neostore_SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z37X84PRTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Neostore-SwiftUI-Info.plist";
@@ -1106,6 +1150,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1127,7 +1172,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Neostore_SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z37X84PRTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Neostore-SwiftUI-Info.plist";
@@ -1136,6 +1181,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

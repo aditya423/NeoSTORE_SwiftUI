@@ -18,7 +18,7 @@ struct ProductDetailTitleView: View {
                 
                 VStack(alignment:.leading){
                     Text(productDetails?.name ?? "")
-                        .fontWeight(.bold)
+                        .bold()
                         .font(.title)
                         .padding(.horizontal,2)
                     Text("Category: \(HomeViewModel.furnitureData[productDetails?.product_category_id ?? 0]?["name"] as? String ?? "")")
