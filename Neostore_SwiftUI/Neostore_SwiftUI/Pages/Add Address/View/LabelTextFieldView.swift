@@ -10,11 +10,12 @@ import SwiftUI
 
 struct LabelTextFieldView: View {
     
-    @Binding var textFieldString: String
-    
+    // VARIABLES
     var textFieldPlaceHolder: String
     var textString: String
+    @Binding var textFieldString: String
     
+    // VIEW
     var body: some View {
         VStack{
             HStack{

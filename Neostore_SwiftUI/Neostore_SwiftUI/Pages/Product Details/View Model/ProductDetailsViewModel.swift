@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
-//MARK: - ProductDetailsViewModel
+
 class ProductDetailsViewModel: ObservableObject{
     //Published Objects
     @Published var vmVars = NavPublishVars()
@@ -16,11 +16,14 @@ class ProductDetailsViewModel: ObservableObject{
     @Published var isBuyNowPresented = false
     @Published var isRateNowPresented = false
     
+    // VARIABLES
     let validation = Validation()
     private var cancellables = Set<AnyCancellable>()
     var productDetails: ProductDetails?
+    @Published var dataReceived = false
+    @Published var vmVars = NavPublishVars()
 
-    //get Product Details APi Call
+    // API CALL
     func getProductDetails(productId: String){
         ProductDetailsService.getProductDetails(product_id: productId)
             .sink(receiveCompletion: { completion in
@@ -32,7 +35,6 @@ class ProductDetailsViewModel: ObservableObject{
                                 self.vmVars.showAlert = true
                             }
                         }, receiveValue: { (success, errorMsg) in
-                            // On Success Set Data else Show Alert
                             if success != nil {
                                 self.dataReceived = true
                                 self.productDetails = success?.data

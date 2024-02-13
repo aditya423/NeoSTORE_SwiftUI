@@ -12,8 +12,10 @@ import Combine
 
 class AddAddressViewModel: ObservableObject{
     
+    // VARIABLES
     @Published var vmVars = AddAddressPublishers()
     
+    // VALIDATION
     func validateTextFields(address: String, landmark: String, city: String, state: String, zipcode: String, country: String) -> Bool {
         if address.isEmpty || landmark.isEmpty || city.isEmpty || state.isEmpty || zipcode.isEmpty || country.isEmpty {
             vmVars.showAlert = true

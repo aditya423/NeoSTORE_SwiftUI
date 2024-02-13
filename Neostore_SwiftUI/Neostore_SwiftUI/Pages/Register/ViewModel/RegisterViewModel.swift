@@ -8,25 +8,25 @@
 import Foundation
 import SwiftUI
 import Combine
-//MARK: - RegisterViewModel
+
 class RegisterViewModel: ObservableObject {
-    //State Object
-    @Published var vmVars = NavPublishVars()
     
+    // VARIABLES
     let validation = Validation()
     private var cancellables = Set<AnyCancellable>()
+    @Published var vmVars = NavPublishVars()
 
-    //Register Api Call
     func registerUserProfile(firstName: String, lastName: String, email: String, password: String, confirmPassword: String, mobileNumber: String, isTermsAccepted: Bool, genderSelected: String){
         guard !firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty && !mobileNumber.isEmpty && isTermsAccepted && !genderSelected.isEmpty else {
             vmVars.alertMessage = AlertMessages.fillAllFieldsMsg.rawValue
             vmVars.showAlert = true
             return
         }
-        // Validation Check
+        // VALIDATION CHECK
         if let result = validation.registerValidation(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword, mobileNumber: mobileNumber) {
             if result == "" {
                 if password == confirmPassword {
+                    // API CALL
                     RegisterService.registerUser(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword, gender: genderSelected, number: Int(mobileNumber) ?? 0)
                         .sink(receiveCompletion: { completion in
                             switch completion {

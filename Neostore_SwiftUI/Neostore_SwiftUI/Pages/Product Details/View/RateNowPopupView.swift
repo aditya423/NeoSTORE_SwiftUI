@@ -6,15 +6,16 @@
 //
 
 import SwiftUI
-//MARK: - RateNowPopupView
+
 struct RateNowPopupView: View {
     
-    //State Object
+    // VARIABLES
+    var productDetails: ProductDetails?
     @State var rating: Int = 0
     @StateObject var viewModel: ProductDetailsViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    //Body
+    // VIEW
     var body: some View {
         VStack{
             VStack{
@@ -64,13 +65,8 @@ struct RateNowPopupView: View {
                 Button {
                     viewModel.rateProduct(rating: String(rating))
                 } label: {
-                    Text(ButtonTitles.rateNow.rawValue)
-                        .foregroundColor(.white)
-                        .font(.custom(Fonts.bold.rawValue, size: 25))
-                        .bold()
-                        .padding(10)
-                        .frame(maxWidth: .infinity)
-                        .background(AppColors.primaryColor)
+                    ButtonTextView(text: ButtonTitles.rateNow.rawValue, fgColor: Color.white)
+                        .background(.red)
                         .cornerRadius(5)
                         .padding()
                         .padding(.horizontal,40)

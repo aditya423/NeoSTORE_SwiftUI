@@ -6,16 +6,16 @@
 //
 
 import SwiftUI
-//MARK: - ProductDetailDescriptionView
+
 struct ProductDetailDescriptionView: View {
     
+    // VARIABLES
     var productDetails: ProductDetails? 
     var productImages: [ProductImages?] = []
     var isOutofStock: Bool = false
-    
-    //State Variables
     @State var selectedImage = 0
     
+    // VIEW
     var body: some View {
         VStack{
             HStack{

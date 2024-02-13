@@ -8,21 +8,20 @@
 import Foundation
 import SwiftUI
 import Combine
-//MARK: - ProductListViewModel
+
 class ProductListViewModel: ObservableObject{
     
-    //Published Objects
-    @Published var vmVars = NavPublishVars()
-    @Published var dataReceived = false
-    
+    // VARIABLES
     let validation = Validation()
     private var cancellables = Set<AnyCancellable>()
     var productList: [ProductListDetails] = []
     var filterProductList: [ProductListDetails] = []
     var page: Int = 1
     var limit: Int = 10
+    @Published var dataReceived = false
+    @Published var vmVars = NavPublishVars()
 
-    // Api Call
+    // API CALL
     func getProductList(categoryId: String){
         ProductListService.getProductList(categoryId: categoryId, page: page, limit: limit)
                         .sink(receiveCompletion: { completion in
@@ -47,9 +46,7 @@ class ProductListViewModel: ObservableObject{
                         .store(in: &cancellables)
     }
     
-    
-    
-    // Search Filter
+    // SEARCH FILTER
     func filterProducts(text: String){
         if text != ""{
             filterProductList = productList.filter { $0.name?.lowercased().contains(text.lowercased()) ?? false}

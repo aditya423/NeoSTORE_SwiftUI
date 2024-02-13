@@ -9,19 +9,21 @@ import SwiftUI
 
 struct AddressListView: View {
     
-    @StateObject var placeOrderViewModel = PlaceOrderViewModel()
+    // VARIABLES
+    @StateObject var placeOrderViewModel = MyOrdersViewModel()
     @StateObject var viewModel = AddressListViewModel()
     @State private var checked = true
     @State private var isButtonEnabled = true
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    // VIEW
     var body: some View {
         VStack(spacing: 0) {
             Color.red.edgesIgnoringSafeArea(.all)
                 .frame(maxWidth: .infinity, maxHeight: 1)
             
             ZStack {
-                if placeOrderViewModel.vmVars.isLoading {
+                if placeOrderViewModel.placeOrderVars.isLoading {
                     LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
                 } else {
                     VStack {
@@ -80,17 +82,12 @@ struct AddressListView: View {
                                     .padding(.top, 15)
                                     
                                     HStack {
-                                        NavigationLink(destination: OrderListView(), isActive: $placeOrderViewModel.vmVars.isNavigating) {
+                                        NavigationLink(destination: OrderListView(), isActive: $placeOrderViewModel.placeOrderVars.isNavigating) {
                                             Button {
-                                                placeOrderViewModel.vmVars.isLoading = true
+                                                placeOrderViewModel.placeOrderVars.isLoading = true
                                                 placeOrderViewModel.placeOrder(address: address)
                                             } label: {
-                                                Text("PLACE ORDER")
-                                                    .foregroundColor(self.isButtonEnabled ? Color.white : AppColors.grayColor)
-                                                    .font(.system(size: 25))
-                                                    .bold()
-                                                    .padding(10)
-                                                    .frame(maxWidth: .infinity)
+                                                ButtonTextView(text: "PLACE ORDER", fgColor: self.isButtonEnabled ? Color.white : AppColors.grayColor)
                                                     .background(.red)
                                                     .cornerRadius(5)
                                             }
@@ -107,8 +104,8 @@ struct AddressListView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(.white)
-                    .alert(isPresented: $placeOrderViewModel.vmVars.showAlert) {
-                        Alert(title: Text(AlertMessages.errorMsg.rawValue), message: Text(placeOrderViewModel.vmVars.alertMessage))
+                    .alert(isPresented: $placeOrderViewModel.placeOrderVars.showAlert) {
+                        Alert(title: Text(AlertMessages.errorMsg.rawValue), message: Text(placeOrderViewModel.placeOrderVars.alertMessage))
                     }
                     .onAppear {
                         viewModel.setAddress()

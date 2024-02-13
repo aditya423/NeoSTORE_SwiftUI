@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct ResetPasswordView: View {
+    
+    // VARIABLES
     @State var oldPassword = ""
     @State var newPassword = ""
     @State var confirmPassword = ""
-    
     @ObservedObject var resetPasswordVM = ResetPasswordViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    // VIEW
     var body: some View {
         VStack {
             Spacer().frame(height: UIScreen.main.bounds.height*0.2)
@@ -44,12 +46,7 @@ struct ResetPasswordView: View {
                         Button {
                             resetPasswordVM.resetUserPassword(oldPassword: oldPassword, newPassword: newPassword, confirmPassword: confirmPassword)
                         } label: {
-                            Text("RESET PASSWORD")
-                                .foregroundColor(.red)
-                                .font(.system(size: 25))
-                                .bold()
-                                .padding(10)
-                                .frame(maxWidth: .infinity)
+                            ButtonTextView(text: "RESET PASSWORD", fgColor: Color.red)
                                 .onChange(of: resetPasswordVM.vmVars.isNavigating) { newValue in
                                     if newValue {
                                         NotificationCenter.default.post(name: Notification.Name(NotificationNames.popToLogin.rawValue), object: nil)

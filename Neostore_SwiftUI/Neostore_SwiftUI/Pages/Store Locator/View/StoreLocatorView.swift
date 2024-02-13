@@ -10,9 +10,11 @@ import MapKit
 
 struct StoreLocatorView: View {
     
+    // VARIABLES
     @State private var search: String = ""
     @EnvironmentObject var locationSearchVM: LocationSearchViewModel
     
+    // VIEW
     var body: some View {
         VStack {
             TextField("Search", text: $search)

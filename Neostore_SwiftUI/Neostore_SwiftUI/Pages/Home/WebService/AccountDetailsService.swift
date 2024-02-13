@@ -11,10 +11,11 @@ import Combine
 class AccountDetailsService {
     
     static func getAccountDetails() -> (AnyPublisher<(FetchAccountDetails?, AccountDetailsInvalidToken?, AccountDetailsWrongMethod?), Error>) {
-        //Calling Common API Function
-        APIManager.sharedInstance.makeApiCall(serviceType: .fetchAccountDetails)
+        
+        return APIManager.sharedInstance.makeApiCall(serviceType: .fetchAccountDetails)
+        // OPERATOR -> which receives data, make changes and publishes that data
+        // used for DECODING data into model
             .tryMap { data in
-                //Mapping response into Model and returing
                 do {
                     let responseData = try JSONDecoder().decode(FetchAccountDetails.self, from: data)
                     if responseData.status == 200 {

@@ -14,6 +14,8 @@ class EditAccountDetailsService {
         
         let params = ["first_name": firstName, "last_name": lastName, "email": email, "dob": dob, "profile_pic": profilePic, "phone_no": phoneNo]
         return APIManager.sharedInstance.makeApiCall(serviceType: .updateAccount(parameters: params))
+        // OPERATOR -> which receives data, make changes and publishes that data
+        // used for DECODING data into model
             .tryMap { data in
                 do {
                     let responseData = try JSONDecoder().decode(UpdateAccountSuccessResponse.self, from: data)
