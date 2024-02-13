@@ -10,11 +10,6 @@ import SwiftUI
 import Combine
 
 class ProductDetailsViewModel: ObservableObject{
-    //Published Objects
-    @Published var vmVars = NavPublishVars()
-    @Published var dataReceived = false
-    @Published var isBuyNowPresented = false
-    @Published var isRateNowPresented = false
     
     // VARIABLES
     let validation = Validation()
@@ -22,6 +17,8 @@ class ProductDetailsViewModel: ObservableObject{
     var productDetails: ProductDetails?
     @Published var dataReceived = false
     @Published var vmVars = NavPublishVars()
+    @Published var isBuyNowPresented = false
+    @Published var isRateNowPresented = false
 
     // API CALL
     func getProductDetails(productId: String){

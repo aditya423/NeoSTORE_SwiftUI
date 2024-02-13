@@ -41,35 +41,35 @@ struct ProductDetailsView: View {
                             }
 
                             HStack(spacing:20){
-                            Button {
-                                isBuyNowPresented = true
-                            } label: {
-                                ButtonTextView(text: ButtonTitles.buyNow.rawValue, fgColor: Color.white)
-                                    .background(.red)
-                                    .cornerRadius(5)
-                                    .padding(.leading,10)
-                                    .alert(isPresented: $viewModel.vmVars.showAlert) {
-                                        Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
-                                    }
-                            }
-                            .fullScreenCover(isPresented: $isBuyNowPresented, content: {
-                                BuyNowPopupView(viewModel: viewModel)
-                            })
-                            
-                            Button {
-                                isRateNowPresented = true
-                            } label: {
-                                ButtonTextView(text: ButtonTitles.rate.rawValue, fgColor: Color.white)
-                                    .background(.gray)
-                                    .cornerRadius(5)
-                                    .padding(.trailing,10)
-                                    .alert(isPresented: $viewModel.vmVars.showAlert) {
-                                        Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
-                                    }
-                            }
-                            .fullScreenCover(isPresented: $isRateNowPresented, content: {
-                                RateNowPopupView(viewModel: viewModel)
-                            })
+                                Button {
+                                    isBuyNowPresented = true
+                                } label: {
+                                    ButtonTextView(text: ButtonTitles.buyNow.rawValue, fgColor: Color.white)
+                                        .background(.red)
+                                        .cornerRadius(5)
+                                        .padding(.leading,10)
+                                        .alert(isPresented: $viewModel.vmVars.showAlert) {
+                                            Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
+                                        }
+                                }
+                                .fullScreenCover(isPresented: $isBuyNowPresented, content: {
+                                    BuyNowPopupView(viewModel: viewModel)
+                                })
+                                
+                                Button {
+                                    isRateNowPresented = true
+                                } label: {
+                                    ButtonTextView(text: ButtonTitles.rate.rawValue, fgColor: Color.white)
+                                        .background(.gray)
+                                        .cornerRadius(5)
+                                        .padding(.trailing,10)
+                                        .alert(isPresented: $viewModel.vmVars.showAlert) {
+                                            Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
+                                        }
+                                }
+                                .fullScreenCover(isPresented: $isRateNowPresented, content: {
+                                    RateNowPopupView(viewModel: viewModel)
+                                })
                         }
                         .padding(20)
                         .background(.white)
