@@ -47,6 +47,8 @@ class ProductListViewModel: ObservableObject{
                         .store(in: &cancellables)
     }
     
+    
+    
     // Search Filter
     func filterProducts(text: String){
         if text != ""{

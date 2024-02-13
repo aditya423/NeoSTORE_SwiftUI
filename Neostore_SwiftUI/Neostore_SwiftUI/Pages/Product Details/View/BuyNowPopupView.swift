@@ -9,10 +9,9 @@ import SwiftUI
 //MARK: - BuyNowPopupView
 struct BuyNowPopupView: View {
     
-    var productDetails: ProductDetails?
     //State Objects
     @State var quantity:String = ""
-    @ObservedObject var viewModel: ProductDetailsViewModel
+    @StateObject var viewModel: ProductDetailsViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     //body
@@ -51,7 +50,7 @@ struct BuyNowPopupView: View {
                     .border(AppColors.grayColor,width: 1)
                     .keyboardType(.numberPad)
                 Button {
-                    
+                    viewModel.addToCart(quantity: quantity)
                 } label: {
                     Text(ButtonTitles.submit.rawValue)
                         .foregroundColor(.white)
@@ -63,9 +62,7 @@ struct BuyNowPopupView: View {
                         .cornerRadius(5)
                         .padding()
                         .padding(.horizontal,40)
-                        .alert(isPresented: $viewModel.vmVars.showAlert) {
-                            Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
-                        }
+                        
                 }
             }
             .background(.white)
@@ -74,7 +71,7 @@ struct BuyNowPopupView: View {
             .padding(.vertical,50)
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .background(.black.opacity(0.2))
+        .background(.clear)
     }
 }
 

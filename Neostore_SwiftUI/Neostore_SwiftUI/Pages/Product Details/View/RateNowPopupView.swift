@@ -9,19 +9,18 @@ import SwiftUI
 //MARK: - RateNowPopupView
 struct RateNowPopupView: View {
     
-    var productDetails: ProductDetails?
     //State Object
     @State var rating: Int = 0
-    @ObservedObject var viewModel: ProductDetailsViewModel
+    @StateObject var viewModel: ProductDetailsViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     //Body
     var body: some View {
         VStack{
             VStack{
-                Text("\(productDetails?.name ?? "")")
+                Text("\(viewModel.productDetails?.name ?? "")")
                     .padding()
-                AsyncImage(url: URL(string: productDetails?.product_images?[0].image ?? ""))
+                AsyncImage(url: URL(string: viewModel.productDetails?.product_images?[0].image ?? ""))
                 { phase in
                     switch phase {
                     case .success(let image):
@@ -63,7 +62,7 @@ struct RateNowPopupView: View {
                         .padding()
                 }
                 Button {
-                    
+                    viewModel.rateProduct(rating: String(rating))
                 } label: {
                     Text(ButtonTitles.rateNow.rawValue)
                         .foregroundColor(.white)
@@ -75,9 +74,7 @@ struct RateNowPopupView: View {
                         .cornerRadius(5)
                         .padding()
                         .padding(.horizontal,40)
-                        .alert(isPresented: $viewModel.vmVars.showAlert) {
-                            Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
-                        }
+                        .background(Color.clear)
                 }
             }
             .background(.white)
@@ -85,8 +82,6 @@ struct RateNowPopupView: View {
             .padding()
             .padding(.vertical,50)
         }
-        .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .background(.black.opacity(0.2))
     }
 }
 
