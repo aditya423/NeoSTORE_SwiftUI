@@ -11,10 +11,10 @@ import MapKit
 extension MKCoordinateRegion {
     
     static func defaultRegion() -> MKCoordinateRegion {
-        MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 19.218180, longitude: 72.834450), span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
+        MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 19.218180, longitude: 72.834450), span: MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4))
     }
     
     static func regionFromLandmark(_ landmark: Landmark) -> MKCoordinateRegion {
-        MKCoordinateRegion(center: landmark.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
+        MKCoordinateRegion(center: landmark.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025))
     }
 }

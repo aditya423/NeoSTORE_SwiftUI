@@ -10,10 +10,12 @@ import Combine
 
 class MyCartViewModel: ObservableObject {
     
-    @Published var vmVars = MyCartVariables()
+    // VARIABLES
     var pickerData = ["1", "2", "3", "4", "5", "6", "7", "8"]
     private var cancellables = Set<AnyCancellable>()
+    @Published var vmVars = MyCartVariables()
     
+    // MARK: GET ITEMS API CALL
     func getCartItemsList() {
         ListCartItemsService.getCartItems()
             .sink(receiveCompletion: { completion in
@@ -47,6 +49,7 @@ class MyCartViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    // MARK: DELETE CART ITEMS API CALL
     func deleteCartItem(id: Int) {
         DeleteCartItemService.deleteItemFromCart(id: id)
             .sink(receiveCompletion: { completion in
@@ -79,6 +82,7 @@ class MyCartViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    // MARK: EDIT CART ITEMS API CALL
     func editItemQuantity(id: Int, qty: Int) {
         EditCartItemService.editCartItemQuantity(id: id, qty: qty)
             .sink(receiveCompletion: { completion in

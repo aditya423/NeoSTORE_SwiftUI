@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
-//MARK: - LoginView
+
 struct LoginView: View {
-    //State Variable
+    
+    // VARIABLES
     @State var username = ""
     @State var password = ""
     @FocusState private var focusedField: Bool?
     @ObservedObject var loginViewModel = LoginViewModel()
 
+    // VIEW
     var body: some View {
         VStack {
             Spacer().frame(height: UIScreen.main.bounds.height*0.2)
@@ -44,17 +46,12 @@ struct LoginView: View {
                         Button {
                             loginViewModel.loginUserProfile(email: username, password: password)
                         } label: {
-                            Text(Constants.login.rawValue)
-                                .foregroundColor(.red)
-                                .font(.system(size: 25))
-                                .bold()
-                                .padding(10)
-                                .frame(maxWidth: .infinity)
+                            ButtonTextView(text: Constants.login.rawValue, fgColor: Color.red)
                         }
                     }
                     .background(.white)
                     .cornerRadius(5)
-                    .padding(.top, 30)
+                    .padding(.top, 20)
                     .alert(isPresented: $loginViewModel.vmVars.showAlert) {
                         Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(loginViewModel.vmVars.alertMessage))
                     }
@@ -100,6 +97,7 @@ struct LoginView: View {
         }
     }
 }
+
 //preview
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

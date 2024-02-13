@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
-//MARK: - RegisterView
+
 struct RegisterView: View {
-    //State Variables
+    
+    // VARIABLES
     @State var firstName = ""
     @State var lastName = ""
     @State var email = ""
@@ -21,6 +22,7 @@ struct RegisterView: View {
     @ObservedObject var registerViewModel = RegisterViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    // VIEW
     var body: some View {
         ScrollView {
             VStack {
@@ -160,12 +162,7 @@ struct RegisterView: View {
                         Button {
                             registerViewModel.registerUserProfile(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword, mobileNumber: mobileNumber, isTermsAccepted: isTermsAccepted, genderSelected: genderSelected)
                         } label: {
-                            Text(Constants.register.rawValue)
-                                .foregroundColor(.red)
-                                .font(.system(size: 25))
-                                .bold()
-                                .padding(10)
-                                .frame(maxWidth: .infinity)
+                            ButtonTextView(text: Constants.register.rawValue, fgColor: Color.red)
                                 .onChange(of: registerViewModel.vmVars.isNavigating) { newValue in
                                     if newValue {
                                         self.presentationMode.wrappedValue.dismiss()
@@ -174,7 +171,7 @@ struct RegisterView: View {
                         }
                         .background(.white)
                         .cornerRadius(5)
-                        .padding(.top, 30)
+                        .padding(.top, 20)
                         .padding(.bottom, 50)
                         .alert(isPresented: $registerViewModel.vmVars.showAlert) {
                             Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(registerViewModel.vmVars.alertMessage))

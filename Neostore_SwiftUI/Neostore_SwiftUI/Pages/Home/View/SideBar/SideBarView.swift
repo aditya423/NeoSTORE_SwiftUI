@@ -6,18 +6,18 @@
 //
 
 import SwiftUI
-//MARK: - SideBarView
+
 struct SideBarView: View {
-    //State Objects
+    
+    // VARIABLES
+    var sideBarWidth = UIScreen.main.bounds.size.width * 0.8
     @Binding var isSidebarVisible: Bool
     @StateObject var viewModel = SideBarViewModel()
     
-    var sideBarWidth = UIScreen.main.bounds.size.width * 0.8
-    
+    // VIEW
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                // To Show Loader
                     if viewModel.vmVars.isLoading {
                         ZStack {
                             Color.black.edgesIgnoringSafeArea(.all)

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// URLS
 let DEV_ROOT_POINT = "http://staging.php-dev.in:8844/trainingapp"
 let PROD_ROOT_POINT = ""
 
@@ -15,10 +16,12 @@ enum NetworkEnvironment: String {
     case production
 }
 
+// ENVIRONMENT
 var networkEnvironment: NetworkEnvironment {
     return .development
 }
-//MARK: - Base URl
+
+// MARK: BASE URL
 var BaseURL: String {
     switch networkEnvironment {
     case .development :
@@ -33,7 +36,7 @@ typealias stringStringDict = [String: String]
 let contentKey = "Content-Type"
 let contentValue = "application/x-www-form-urlencoded"
 
-// API Services types
+// MARK: API SERVICES TYPES
 enum APIServices {
     case userRegister(parameters: stringAnyDict)
     case userLogin(parameters: stringAnyDict)
@@ -54,7 +57,7 @@ enum APIServices {
 }
 
 extension APIServices {
-    //Path + EndPoints
+    // PATH + ENDPOINTS
     var Path: String {
         let apiDomain = "/api/"
         var servicePath: String = ""
@@ -79,7 +82,7 @@ extension APIServices {
         return BaseURL + servicePath
     }
     
-    //Http Method
+    // HTTP METHOD
     var httpMethod: String {
         switch self {
         case .fetchAccountDetails, .getProductList, .getProductDetails, .getCartItems, .getOrderList, .getOrderDetail :
@@ -89,6 +92,7 @@ extension APIServices {
         }
     }
     
+    // PARAMS BASED ON SERVICE TYPES
     var parameters: stringAnyDict? {
         switch self {
         case .userRegister(parameters: let param), .userLogin(let param), .forgotPassword(let param), .changePassword(let param), .updateAccount(let param), .getProductList(let param), .getProductDetails(let param), .setRating(let param), .addToCart(let param), .editCart(let param), .deleteCart(let param), .setOrder(let param), .getOrderDetail(let param) :
@@ -98,6 +102,7 @@ extension APIServices {
         }
     }
     
+    // HEADER BASED ON SERVICE TYPES
     var header: stringStringDict {
         var headerDict: stringStringDict = ["":""]
         headerDict[contentKey] = contentValue

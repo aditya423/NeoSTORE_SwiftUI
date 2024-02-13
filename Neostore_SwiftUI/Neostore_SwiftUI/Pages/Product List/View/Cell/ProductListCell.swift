@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
-//MARK: - ProductListCell
+
 struct ProductListCell: View {
     
+    // VARIABLES
     var productData: ProductListDetails?
     
+    // VIEW
     var body: some View {
         HStack{
             AsyncImage(url: URL(string: productData?.product_images ?? ""))
