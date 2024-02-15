@@ -44,7 +44,6 @@ struct ProductListView: View {
                         .padding([.leading,.trailing,.top], 20)
                 }
                 // If Data Received reload View else show Loader
-                
                 if viewModel.dataReceived {
                     List{
                         ForEach(0..<(viewModel.filterProductList.count ), id: \.self) { index in
@@ -73,7 +72,7 @@ struct ProductListView: View {
                         .listRowSeparator(.hidden)
                     }
                 } else {
-                    LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
+                    ProductListShimmerView()
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -51,6 +51,7 @@ struct ProductDetailDescriptionView: View {
                         .scaledToFit()
                 default:
                     ProgressView()
+                        .frame(width: 200, height: 160, alignment: .center)
                 }
             }
             .frame(maxWidth: 200,maxHeight: 160)
@@ -79,6 +80,7 @@ struct ProductDetailDescriptionView: View {
                                     .scaledToFit()
                             default:
                                 ProgressView()
+                                    .frame(width: 80, height: 80, alignment: .center)
                             }
                         }
                         .frame(maxWidth: 80,maxHeight: 80,alignment: .center)

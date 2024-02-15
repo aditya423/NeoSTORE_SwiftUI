@@ -12,7 +12,7 @@ struct OrderDetailsVars {
     var alertMessage = ""
     var isLoading = false
     var order_details: OrderDetailsOverview?
-    var product_details: [OrderDetails]?
+    var product_details: [OrderDetails]? = [OrderDetails(id: 1, order_id: 1, product_id: 1, quantity: 1, total: 1, prod_name: "Product Name", prod_cat_name: "Product Category", prod_image: "")]
 }
 
 struct OrderDetailsSuccessResponse : Codable {
