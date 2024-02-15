@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductListView: View {
     
-    // VARIABLRS
+    // VARIABLES
     var categoryId: Int?
     @State var searchText = ""
     @State var isSearchTextFieldHidden = true
@@ -37,7 +37,7 @@ struct ProductListView: View {
                                 viewModel.filterProducts(text:searchText)
                             }
                         }
-                        .frame(maxWidth: .infinity,maxHeight: 50)
+                        .frame(maxWidth: .infinity, maxHeight: 50)
                         .padding(.leading)
                         .background(.white)
                         .cornerRadius(5)
@@ -46,7 +46,7 @@ struct ProductListView: View {
                 // If Data Received reload View else show Loader
                 if viewModel.dataReceived {
                     List{
-                        ForEach(0..<(viewModel.filterProductList.count ), id: \.self) { index in
+                        ForEach(0..<(viewModel.filterProductList.count), id: \.self) { index in
                             ZStack{
                                 ProductListCell(productData: viewModel.filterProductList[index])
                                 NavigationLink(destination: ProductDetailsView(productId: viewModel.filterProductList[index].id)) {
@@ -54,20 +54,24 @@ struct ProductListView: View {
                                 }
                                 .opacity(0)
                             }
-                            //On Appear API Call with pagination
+                            .listRowBackground(Color.white)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .padding(.top, index==0 ? 20 : 0)
+                            .padding(.bottom, index==viewModel.filterProductList.count-1 ? 20 : 0)
                             .onAppear {
+                                // Pagination
                                 if index == ((viewModel.filterProductList.count ) - 1) {
                                     viewModel.page += 1
                                     viewModel.getProductList(categoryId: String((categoryId ?? 0) + 1))
                                 }
                             }
-                            .listRowInsets(EdgeInsets(top: (index == 0 ? 20 : 0), leading: 10, bottom: 0, trailing: 0))
-                            .padding(0)
-                            Rectangle()
-                                .frame(maxWidth: .infinity,maxHeight: 1)
-                                .foregroundColor(AppColors.grayColor)
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                .padding(0)
+                            
+                            if !(index == viewModel.filterProductList.count-1) {
+                                Rectangle()
+                                    .frame(maxWidth: .infinity, maxHeight: 1)
+                                    .foregroundColor(AppColors.grayColor)
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            }
                         }
                         .listRowSeparator(.hidden)
                     }

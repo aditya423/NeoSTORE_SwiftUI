@@ -26,7 +26,6 @@ struct MyAccountView: View {
     @State var birthDate = Date()
     @State var navigateToReset = false
     @State var showImagePicker = false
-    @State var selectedItems = [PhotosPickerItem]()
     @State var selectedImageData = Data()
     @State var image = Image("")
     @State var photoPickerIsPresented = false

@@ -29,8 +29,9 @@ struct ProductListCell: View {
                     ProgressView()
                 }
             }
-            .frame(maxWidth: 80,maxHeight: 80,alignment: .center)
-            .padding(.trailing)
+            .frame(width: 100, height: 70)
+            .background(AppColors.grayColor)
+            .padding(.leading, 20)
             
             VStack(alignment: .leading){
                 Text(productData?.name ?? "")
@@ -44,7 +45,7 @@ struct ProductListCell: View {
                         Text("Rs: \(productData?.cost ?? 3)")
                             .foregroundColor(.red)
                             .bold()
-                            .font(.title3)
+                            .font(.system(size: 18))
                         Spacer()
                             .frame(maxWidth: .infinity)
                     }
@@ -52,19 +53,17 @@ struct ProductListCell: View {
                         Spacer()
                             .frame(maxWidth: .infinity)
                         HStack(spacing: 2) {
-                                ForEach(0..<5, id: \.self) { i in
-                                    Image( i < (productData?.rating ?? 0) ? ImageNames.filledStar.rawValue : ImageNames.emptyStar.rawValue)
-                                        .resizable()
-                                        .frame(width: 15, height: 15)
-                                }
+                            ForEach(0..<5, id: \.self) { i in
+                                Image( i < (productData?.rating ?? 0) ? ImageNames.filledStar.rawValue : ImageNames.emptyStar.rawValue)
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
                             }
-                            .frame(maxWidth: .infinity,maxHeight: 15)
-                            .padding(0)
+                        }
                     }
                 }
             }
+            .padding([.leading, .trailing], 15)
         }
-        .padding(0)
     }
 }
 
