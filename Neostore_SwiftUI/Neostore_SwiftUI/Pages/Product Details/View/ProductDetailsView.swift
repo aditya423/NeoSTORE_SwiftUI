@@ -11,8 +11,6 @@ struct ProductDetailsView: View {
     
     // VARIABLES
     var productId: Int?
-    @State var isBuyNowPresented: Bool = false
-    @State var isRateNowPresented: Bool = false
     @ObservedObject var viewModel = ProductDetailsViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -41,7 +39,7 @@ struct ProductDetailsView: View {
 
                             HStack(spacing:20){
                                 Button {
-                                    isBuyNowPresented = true
+                                    viewModel.isBuyNowPresented = true
                                 } label: {
                                     ButtonTextView(text: ButtonTitles.buyNow.rawValue, fgColor: Color.white)
                                         .background(.red)
@@ -51,12 +49,9 @@ struct ProductDetailsView: View {
                                             Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
                                         }
                                 }
-                                .fullScreenCover(isPresented: $isBuyNowPresented, content: {
-                                    BuyNowPopupView(viewModel: viewModel)
-                                })
                                 
                                 Button {
-                                    isRateNowPresented = true
+                                    viewModel.isRateNowPresented = true
                                 } label: {
                                     ButtonTextView(text: ButtonTitles.rate.rawValue, fgColor: Color.white)
                                         .background(.gray)
@@ -66,9 +61,6 @@ struct ProductDetailsView: View {
                                             Alert(title: Text(AlertMessages.noteMsg.rawValue), message: Text(viewModel.vmVars.alertMessage))
                                         }
                                 }
-                                .fullScreenCover(isPresented: $isRateNowPresented, content: {
-                                    RateNowPopupView(viewModel: viewModel)
-                                })
                         }
                         .padding(20)
                         .background(.white)

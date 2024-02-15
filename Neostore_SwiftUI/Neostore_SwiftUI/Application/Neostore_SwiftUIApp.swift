@@ -27,6 +27,9 @@ struct Neostore_SwiftUIApp: App {
             .onReceive(NotificationCenter.default.publisher(for: Notification.Name("popToLogin"))) { _ in
                 navigationId = UUID()
             }
+            .onReceive(NotificationCenter.default.publisher(for: Notification.Name(NotificationNames.popToHome.rawValue))) { _ in
+                navigationId = UUID()
+            }
         }
     }
 }
