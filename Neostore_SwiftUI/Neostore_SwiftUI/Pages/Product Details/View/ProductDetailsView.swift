@@ -29,7 +29,6 @@ struct ProductDetailsView: View {
                     .frame(maxWidth: .infinity, maxHeight: 1)
                 VStack{
                     //Till Data not Received show Loader
-                    if viewModel.dataReceived {
                         VStack{
                             ScrollView {
                                 VStack{
@@ -74,10 +73,7 @@ struct ProductDetailsView: View {
                         .padding(20)
                         .background(.white)
                         }
-                        
-                    } else {
-                        LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
-                    }
+                        .applyShimmer(if: !viewModel.dataReceived)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(red: 242/255, green: 242/255, blue: 247/255))

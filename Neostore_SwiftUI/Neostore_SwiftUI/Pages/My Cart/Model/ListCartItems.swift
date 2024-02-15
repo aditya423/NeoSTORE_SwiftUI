@@ -11,7 +11,7 @@ struct MyCartVariables {
     var showAlert = false
     var alertMessage = ""
     var isLoading = false
-    var productList: [ListCartItemsData]? = []
+    var productList: [ListCartItemsData]? = [ListCartItemsData(id: 1, product_id: 1, product: ListCartItemsProduct(id: 1, name: "Product Details", cost: 5000, product_category: "Product Category", product_images: "", sub_total: 5)),ListCartItemsData(id: 1, product_id: 1, product: ListCartItemsProduct(id: 1, name: "Product Details", cost: 5000, product_category: "Product Category", product_images: "", sub_total: 5)),ListCartItemsData(id: 1, product_id: 1, product: ListCartItemsProduct(id: 1, name: "Product Details", cost: 5000, product_category: "Product Category", product_images: "", sub_total: 5)),ListCartItemsData(id: 1, product_id: 1, product: ListCartItemsProduct(id: 1, name: "Product Details", cost: 5000, product_category: "Product Category", product_images: "", sub_total: 5)),ListCartItemsData(id: 1, product_id: 1, product: ListCartItemsProduct(id: 1, name: "Product Details", cost: 5000, product_category: "Product Category", product_images: "", sub_total: 5))]
     var total_items: Int = 0
     var total_price: Int = 0
 }

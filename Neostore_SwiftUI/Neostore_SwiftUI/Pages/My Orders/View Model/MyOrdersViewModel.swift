@@ -13,7 +13,7 @@ class MyOrdersViewModel: ObservableObject {
     @Published var orderListVars = OrderListVars()
     @Published var orderDetailsVars = OrderDetailsVars()
     @Published var placeOrderVars = PlaceOrderVars()
-    @Published var order_list: [OrderList]?
+    @Published var order_list: [OrderList]? = [OrderList(id: 1, cost: 500, created: ""),OrderList(id: 1, cost: 500, created: ""),OrderList(id: 1, cost: 500, created: ""),OrderList(id: 1, cost: 500, created: "")]
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: GET ORDER LIST API CALL

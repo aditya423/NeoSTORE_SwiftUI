@@ -23,9 +23,6 @@ struct OrderDetailsView: View {
                 .frame(maxWidth: .infinity, maxHeight: 1)
             
             ZStack {
-                if viewModel.orderDetailsVars.isLoading {
-                    LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
-                } else {
                     List {
                         if let productDetails = viewModel.orderDetailsVars.product_details {
                             ForEach(0..<productDetails.count, id: \.self) { indexRow in
@@ -84,7 +81,7 @@ struct OrderDetailsView: View {
                             .bold()
                         }
                     }
-                }
+                    .applyShimmer(if: viewModel.orderDetailsVars.isLoading)
             }
         }
         .navigationBarTitleDisplayMode(.inline)

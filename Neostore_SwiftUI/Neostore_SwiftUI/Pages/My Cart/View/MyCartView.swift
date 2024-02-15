@@ -28,9 +28,6 @@ struct MyCartView: View {
                     .frame(maxWidth: .infinity, maxHeight: 1)
                 
                 ZStack {
-                    if viewModel.vmVars.isLoading {
-                        LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
-                    } else {
                         List {
                             // ITEM ROWS
                             if let productList = viewModel.vmVars.productList {
@@ -156,6 +153,7 @@ struct MyCartView: View {
                             }
                         }
                         .frame(maxWidth: .infinity)
+                        .applyShimmer(if: viewModel.vmVars.isLoading)
                         .alert(AlertMessages.doYouWantDelete.rawValue, isPresented: $isPresentingAlert) {
                             Button("OK", role: .destructive) {
                                 isPresentingAlert = false
@@ -197,7 +195,6 @@ struct MyCartView: View {
                                 .frame(width: geometry.size.width, height: 200, alignment: .bottom)
                             }
                         }
-                    }
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

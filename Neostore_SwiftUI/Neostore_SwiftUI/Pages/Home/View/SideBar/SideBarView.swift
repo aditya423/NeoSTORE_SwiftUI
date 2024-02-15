@@ -18,18 +18,6 @@ struct SideBarView: View {
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                    if viewModel.vmVars.isLoading {
-                        ZStack {
-                            Color.black.edgesIgnoringSafeArea(.all)
-                            VStack {
-                                LoaderView(bgColor: .white, tintColor: nil)
-                            }
-                        }
-                        .frame(width: sideBarWidth)
-                        .offset(x: isSidebarVisible ? 0 : -sideBarWidth)
-                        .animation(.default, value: isSidebarVisible)
-                        Spacer()
-                    } else {
                         ZStack(alignment: .top) {
                             Color.black.edgesIgnoringSafeArea(.all)
                             List {
@@ -112,9 +100,9 @@ struct SideBarView: View {
                         .offset(x: isSidebarVisible ? 0 : -sideBarWidth)
                         .animation(.default, value: isSidebarVisible)
                         Spacer()
-                    }
             }
         }
+        .applyShimmer(if: viewModel.vmVars.isLoading)
         .onChange(of: isSidebarVisible) { isVisible in
             if isVisible {
                 viewModel.vmVars.isLoading = true

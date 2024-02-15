@@ -22,9 +22,6 @@ struct OrderListView: View {
                 .frame(maxWidth: .infinity, maxHeight: 1)
             
             ZStack {
-                if viewModel.orderListVars.isLoading {
-                    LoaderView(bgColor: AppColors.grayColor, tintColor: Color.red)
-                } else {
                     List {
                         if let orderList = viewModel.order_list {
                             ForEach(0..<(viewModel.order_list?.count ?? 0), id: \.self) { indexRow in
@@ -63,11 +60,11 @@ struct OrderListView: View {
                             }
                         }
                     }
+                    .applyShimmer(if: viewModel.orderListVars.isLoading)
                     
                     NavigationLink(destination: OrderDetailsView(orderId: $orderId), isActive: $isNavigating) {
                         EmptyView()
                     }
-                }
             }
         }
         .navigationBarTitleDisplayMode(.inline)

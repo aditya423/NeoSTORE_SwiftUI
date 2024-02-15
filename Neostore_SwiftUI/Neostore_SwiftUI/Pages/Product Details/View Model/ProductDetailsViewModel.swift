@@ -14,7 +14,7 @@ class ProductDetailsViewModel: ObservableObject{
     // VARIABLES
     let validation = Validation()
     private var cancellables = Set<AnyCancellable>()
-    var productDetails: ProductDetails?
+    var productDetails: ProductDetails? = ProductDetails(id: 1, product_category_id: 1, name: "Product Details", producer: "Product Details", description: "This is the description of Product List details", cost: 5000, rating: 5, view_count: 5, created: "Product Details", modified: "Product Details", product_images: [ProductImages(id: 1, product_id: 1, image: "", created: "", modified: ""),ProductImages(id: 1, product_id: 1, image: "", created: "", modified: ""),ProductImages(id: 1, product_id: 1, image: "", created: "", modified: "")])
     @Published var dataReceived = false
     @Published var vmVars = NavPublishVars()
     @Published var isBuyNowPresented = false
