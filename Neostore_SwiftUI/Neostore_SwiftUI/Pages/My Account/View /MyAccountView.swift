@@ -27,9 +27,10 @@ struct MyAccountView: View {
     @State var navigateToReset = false
     @State var showImagePicker = false
     @State var selectedItems = [PhotosPickerItem]()
-    @State var previousImageData = Data()
     @State var selectedImageData = Data()
-    @State var screenFirstTime = 1
+    @State var image = Image("")
+    @State var photoPickerIsPresented = false
+    @State var selectedImages: [UIImage] = []
     @FocusState var focusedField: Int?
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var myAccountVM = MyAccountViewModel()
@@ -49,59 +50,17 @@ struct MyAccountView: View {
                             VStack {
                                 Spacer().frame(height: UIScreen.main.bounds.height*0.12)
                                 
-                                if let image = screenFirstTime==1 ? loadImage(imgName: ImageNames.profileImage.rawValue) : Image(uiImage: UIImage(data: selectedImageData) ?? UIImage()) {
-                                    if isEditingProfile {
-                                        PhotosPicker(selection: $selectedItems,
-                                                     maxSelectionCount: 1,
-                                                     selectionBehavior: .ordered,
-                                                     matching: .images
-                                        ) {
-                                            image
-                                                .resizable()
-                                                .frame(width: 120, height: 120)
-                                                .aspectRatio(contentMode: .fill)
-                                                .clipShape(Circle())
-                                                .overlay(Circle().stroke(Color.white, lineWidth: 3))
-                                                .padding([.top,.bottom], 20)
-                                                .disabled(isEditingProfile ? false : true)
-                                        }
-                                    } else {
-                                        image
-                                            .resizable()
-                                            .frame(width: 120, height: 120)
-                                            .aspectRatio(contentMode: .fill)
-                                            .clipShape(Circle())
-                                            .overlay(Circle().stroke(Color.white, lineWidth: 3))
-                                            .padding([.top,.bottom], 20)
-                                            .disabled(isEditingProfile ? false : true)
+                                image
+                                    .resizable()
+                                    .frame(width: 120, height: 120)
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                                    .padding([.top,.bottom], 20)
+                                    .disabled(isEditingProfile ? false : true)
+                                    .onTapGesture {
+                                        isEditingProfile ? (photoPickerIsPresented=true) : (photoPickerIsPresented=false)
                                     }
-                                } else {
-                                    if isEditingProfile {
-                                        PhotosPicker(selection: $selectedItems,
-                                                     maxSelectionCount: 1,
-                                                     selectionBehavior: .ordered,
-                                                     matching: .images
-                                        ) {
-                                            Image("")
-                                                .resizable()
-                                                .frame(width: 120, height: 120)
-                                                .aspectRatio(contentMode: .fill)
-                                                .clipShape(Circle())
-                                                .overlay(Circle().stroke(Color.white, lineWidth: 3))
-                                                .padding([.top,.bottom], 20)
-                                                .disabled(isEditingProfile ? false : true)
-                                        }
-                                    } else {
-                                        Image("")
-                                            .resizable()
-                                            .frame(width: 120, height: 120)
-                                            .aspectRatio(contentMode: .fill)
-                                            .clipShape(Circle())
-                                            .overlay(Circle().stroke(Color.white, lineWidth: 3))
-                                            .padding([.top,.bottom], 20)
-                                            .disabled(isEditingProfile ? false : true)
-                                    }
-                                }
                                 
                                 CustomTextField(text: $firstName, isImage: true, image: ImageNames.username.rawValue, placeholder: "First Name")
                                     .border(.white)
@@ -201,6 +160,9 @@ struct MyAccountView: View {
                         .alert(myAccountVM.vmVars.alertMessage, isPresented: $myAccountVM.vmVars.showAlert) {
                             Button("OK", role: .cancel) {}
                         }
+                        .sheet(isPresented: $photoPickerIsPresented) {
+                            PhotoPicker(pickerResult: $selectedImages, isPresented: $photoPickerIsPresented)
+                        }
                         
                         if showPicker {
                             VStack(spacing: 0) {
@@ -299,15 +261,13 @@ struct MyAccountView: View {
                 dob = CommonViewModel.shared.user_data?.dob ?? ""
                 oldDob = CommonViewModel.shared.user_data?.dob ?? ""
                 birthDate = stringToDate(date: CommonViewModel.shared.user_data?.dob ?? "")
-                previousImageData = loadImageData(imgName: ImageNames.profileImage.rawValue)
                 selectedImageData = loadImageData(imgName: ImageNames.profileImage.rawValue)
+                image = loadImage(imgName: ImageNames.profileImage.rawValue) ?? Image("")
             }
-            .onChange(of: selectedItems) { newItem in
-                Task {
-                    screenFirstTime += 1
-                    guard let imageData = try? await newItem.first?.loadTransferable(type: Data.self) else { return }
-                    selectedImageData = imageData
-                    selectedItems.removeAll()
+            .onChange(of: selectedImages) { _ in
+                if !selectedImages.isEmpty {
+                    image = Image(uiImage: selectedImages[0])
+                    selectedImageData = selectedImages[0].jpegData(compressionQuality: 1.0) ?? Data()
                 }
             }
         }
@@ -329,7 +289,8 @@ struct MyAccountView: View {
     }
     
     func setPreviousData() {
-        selectedImageData = previousImageData
+        image = loadImage(imgName: ImageNames.profileImage.rawValue) ?? Image("")
+        selectedImageData = loadImageData(imgName: ImageNames.profileImage.rawValue)
         firstName = oldFirstName
         lastName = oldLastName
         email = oldEmail
