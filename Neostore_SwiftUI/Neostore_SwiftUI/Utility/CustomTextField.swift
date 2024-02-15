@@ -42,7 +42,7 @@ struct CustomTextField: View {
             .font(.system(size: 20))
             .padding(.leading, 10)
             .padding([.top, .bottom], 10)
-            .fontWeight(.medium)
+            .font(.footnote.weight(.medium))
             .foregroundColor(.white)
         }
     }
