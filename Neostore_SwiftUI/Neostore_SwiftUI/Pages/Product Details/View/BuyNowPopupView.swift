@@ -19,7 +19,17 @@ struct BuyNowPopupView: View {
     var body: some View {
         VStack{
             VStack{
+                HStack{
+                    Spacer()
+                    Button {
+                        viewModel.isBuyNowPresented = false
+                    } label: {
+                        Image(ImageNames.cancel.rawValue)
+                            .padding([.horizontal,.top])
+                    }
+                }
                 Text("\(viewModel.productDetails?.name ?? "")")
+                    .font(.title2)
                     .padding()
                 AsyncImage(url: URL(string: viewModel.productDetails?.product_images?[0].image ?? ""))
                 { phase in

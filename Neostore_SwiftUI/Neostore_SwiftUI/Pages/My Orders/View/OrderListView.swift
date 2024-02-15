@@ -66,6 +66,7 @@ struct OrderListView: View {
                         EmptyView()
                     }
             }
+            .navigationDestination(isPresented: $isNavigating , destination: {OrderDetailsView(orderId: $orderId)})
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()

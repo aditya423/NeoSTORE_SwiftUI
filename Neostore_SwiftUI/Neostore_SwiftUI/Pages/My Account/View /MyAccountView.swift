@@ -247,10 +247,10 @@ struct MyAccountView: View {
                                 .background(.white)
                             }
                         }
-                        
                         NavigationLink(destination: ResetPasswordView(), isActive: $navigateToReset) {}
                     }
                 }
+                .navigationDestination(isPresented: $navigateToReset , destination: {ResetPasswordView()})
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(AppColors.primaryColor)

@@ -91,6 +91,7 @@ struct AddressListView: View {
                                                     .background(.red)
                                                     .cornerRadius(5)
                                             }
+                                            .navigationDestination(isPresented: $placeOrderViewModel.placeOrderVars.isNavigating , destination: {OrderListView()})
                                         }
                                         .disabled(isButtonEnabled ? false : true)
                                         .padding(.top, 15)

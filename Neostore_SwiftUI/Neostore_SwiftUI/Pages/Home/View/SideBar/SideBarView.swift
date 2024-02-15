@@ -28,10 +28,12 @@ struct SideBarView: View {
                                     case 0:
                                         // Profile Image and Name
                                         ProfileView(viewModel: viewModel)
+                                            .applyShimmer(if: viewModel.vmVars.isLoading)
                                     case 1:
                                         // Cart
                                         ZStack {
                                             FirstMenuItemView(imageName: imageName, title: title, viewModel: viewModel)
+                                                .applyShimmer(if: viewModel.vmVars.isLoading)
                                             NavigationLink(destination: MyCartView()) {
                                                 EmptyView()
                                             }
@@ -44,6 +46,7 @@ struct SideBarView: View {
                                             if let categoryId = viewModel.menuData[indexRow]?["categoryId"], let intCategoryId = Int(categoryId) {
                                                 let newCategoryId = intCategoryId - 1
                                                 MenuItemView(imageName: imageName, title: title)
+                                                    .applyShimmer(if: viewModel.vmVars.isLoading)
                                                 NavigationLink(destination: ProductListView(categoryId: newCategoryId)) {
                                                     EmptyView()
                                                 }
@@ -55,6 +58,7 @@ struct SideBarView: View {
                                         // My Account
                                         ZStack {
                                             MenuItemView(imageName: imageName, title: title)
+                                                .applyShimmer(if: viewModel.vmVars.isLoading)
                                             NavigationLink(destination: MyAccountView()) {
                                                 EmptyView()
                                             }
@@ -65,6 +69,7 @@ struct SideBarView: View {
                                         // Store Locator
                                         ZStack {
                                             MenuItemView(imageName: imageName, title: title)
+                                                .applyShimmer(if: viewModel.vmVars.isLoading)
                                             NavigationLink(destination: StoreLocatorView()) {
                                                 EmptyView()
                                             }
@@ -75,6 +80,7 @@ struct SideBarView: View {
                                         // My Orders
                                         ZStack {
                                             MenuItemView(imageName: imageName, title: title)
+                                                .applyShimmer(if: viewModel.vmVars.isLoading)
                                             NavigationLink(destination: OrderListView()) {
                                                 EmptyView()
                                             }
@@ -84,6 +90,7 @@ struct SideBarView: View {
                                     case 9:
                                         // For Logout
                                         MenuItemView(imageName: imageName, title: title)
+                                            .applyShimmer(if: viewModel.vmVars.isLoading)
                                             .onTapGesture {
                                                 UserDefaults.standard.setLoggedIn(value: false)
                                                 UserDefaults.standard.setUserToken(value: nil)
@@ -102,7 +109,6 @@ struct SideBarView: View {
                         Spacer()
             }
         }
-        .applyShimmer(if: viewModel.vmVars.isLoading)
         .onChange(of: isSidebarVisible) { isVisible in
             if isVisible {
                 viewModel.vmVars.isLoading = true

@@ -15,7 +15,7 @@ struct Neostore_SwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            CustomNavigationView {
                 if UserDefaults.standard.isLoggedIn() {
                     HomeView()
                 } else {
@@ -25,6 +25,9 @@ struct Neostore_SwiftUIApp: App {
             .environmentObject(LocationSearchViewModel())
             .id(navigationId)
             .onReceive(NotificationCenter.default.publisher(for: Notification.Name("popToLogin"))) { _ in
+                navigationId = UUID()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: Notification.Name(NotificationNames.popToHome.rawValue))) { _ in
                 navigationId = UUID()
             }
         }

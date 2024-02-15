@@ -17,6 +17,7 @@ struct HomeView: View {
     @State private var isSidebarOpened = false
     @State private var selection = 0
     @State var navigationId = UUID()
+    @StateObject var sideBarViewModel = SideBarViewModel()
     
     init() {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.red
@@ -199,7 +200,13 @@ struct HomeView: View {
                             }
                         }
                 }
-                SideBarView(isSidebarVisible: $isSidebarOpened)
+                if sideBarViewModel.vmVars.isLoading{
+                    SideBarView(isSidebarVisible: $isSidebarOpened)
+                        .redacted(reason: .placeholder)
+                        .shimmering()
+                } else {
+                    SideBarView(isSidebarVisible: $isSidebarOpened)
+                }
             }
         }
         .id(navigationId)
