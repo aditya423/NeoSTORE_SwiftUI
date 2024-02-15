@@ -15,7 +15,7 @@ struct Neostore_SwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            CustomNavigationView {
                 if UserDefaults.standard.isLoggedIn() {
                     HomeView()
                 } else {

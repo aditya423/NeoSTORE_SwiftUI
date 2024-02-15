@@ -48,6 +48,7 @@ struct LoginView: View {
                         } label: {
                             ButtonTextView(text: Constants.login.rawValue, fgColor: Color.red)
                         }
+                        .navigationDestination(isPresented: $loginViewModel.vmVars.isNavigating, destination: {HomeView()})
                     }
                     .background(.white)
                     .cornerRadius(5)
