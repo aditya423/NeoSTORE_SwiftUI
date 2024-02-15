@@ -46,7 +46,7 @@ struct ProductListView: View {
                 // If Data Received reload View else show Loader
                 if viewModel.dataReceived {
                     List{
-                        ForEach(0..<(viewModel.filterProductList.count ), id: \.self) { index in
+                        ForEach(0..<(viewModel.filterProductList.count), id: \.self) { index in
                             ZStack{
                                 ProductListCell(productData: viewModel.filterProductList[index])
                                 NavigationLink(destination: ProductDetailsView(productId: viewModel.filterProductList[index].id)) {
@@ -54,7 +54,10 @@ struct ProductListView: View {
                                 }
                                 .opacity(0)
                             }
+                            .listRowBackground(Color.white)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                             .padding(.top, index==0 ? 20 : 0)
+                            .padding(.bottom, index==viewModel.filterProductList.count-1 ? 20 : 0)
                             .onAppear {
                                 // Pagination
                                 if index == ((viewModel.filterProductList.count ) - 1) {
@@ -62,13 +65,13 @@ struct ProductListView: View {
                                     viewModel.getProductList(categoryId: String((categoryId ?? 0) + 1))
                                 }
                             }
-                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            .listRowBackground(Color.white)
                             
-                            Rectangle()
-                                .frame(maxWidth: .infinity, maxHeight: 1)
-                                .foregroundColor(AppColors.grayColor)
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            if !(index == viewModel.filterProductList.count-1) {
+                                Rectangle()
+                                    .frame(maxWidth: .infinity, maxHeight: 1)
+                                    .foregroundColor(AppColors.grayColor)
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            }
                         }
                         .listRowSeparator(.hidden)
                     }
