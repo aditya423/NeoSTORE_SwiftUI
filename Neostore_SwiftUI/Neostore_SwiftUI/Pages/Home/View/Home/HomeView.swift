@@ -200,13 +200,15 @@ struct HomeView: View {
                             }
                         }
                 }
-                if sideBarViewModel.vmVars.isLoading{
-                    SideBarView(isSidebarVisible: $isSidebarOpened)
-                        .redacted(reason: .placeholder)
-                        .shimmering()
-                } else {
-                    SideBarView(isSidebarVisible: $isSidebarOpened)
-                }
+//                if sideBarViewModel.vmVars.isLoading{
+//                    SideBarView(isSidebarVisible: $isSidebarOpened)
+//                        .redacted(reason: .placeholder)
+//                        .shimmering()
+//                } else {
+//                    SideBarView(isSidebarVisible: $isSidebarOpened)
+//                }
+                SideBarView(isSidebarVisible: $isSidebarOpened)
+                    .offset(x: isSidebarOpened ? 0 : -sideBarWidth)
             }
         }
         .id(navigationId)

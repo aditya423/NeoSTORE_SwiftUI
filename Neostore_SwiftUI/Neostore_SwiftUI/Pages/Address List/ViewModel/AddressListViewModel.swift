@@ -10,7 +10,7 @@ import Foundation
 class AddressListViewModel: ObservableObject {
     
     // VARIABLES
-    @Published var address: [String?] = []
+    @Published var address: [String?]? = []
     
     // FUNCTIONS
     func setAddress() {
